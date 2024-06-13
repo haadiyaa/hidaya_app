@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/gradient.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
@@ -114,7 +116,8 @@ class DashBoardPage extends StatelessWidget {
                             children: [
                               DashboardIcons(
                                 onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (_)=>QiblaDir()));
+                                  // Navigator.push(context, MaterialPageRoute(builder: (_)=>QiblaDir()));
+                                  GoRouter.of(context).pushNamed(MyAppRouteConstants.qiblaDirRoute);
                                 },
                                 text: 'Qibla',
                                 image: Constants.qiblaDirIcon,
