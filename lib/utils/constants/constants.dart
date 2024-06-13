@@ -34,6 +34,7 @@ class Constants {
   static const Color greenDark = Color(0xff121F19);
   static const Color white = Color(0xffffffff);
   static const Color black = Color(0xff000000);
+  static const Color lightGreen= Color(0xff243F33);
 
   //====================GRADIENT-Color======================
   static const Color gradGreenLight = Color(0xff36A434);
@@ -44,7 +45,6 @@ class Constants {
   static const Color gradRedDark= Color(0xff992323);
   static const Color gradVioletLight= Color(0xff623AFF);
   static const Color gradVioletDark= Color(0xff3B2399);
-  static const Color grey= Color(0xff757575);
 
   //============================Icons=======================
   static  Icon arrowRight=Icon(Icons.arrow_right_alt_rounded,color: white,size: 30.sp,);

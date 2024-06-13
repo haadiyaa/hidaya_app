@@ -8,6 +8,7 @@ import 'package:hidhayah/view/dashboard/widgets/dashheadleft.dart';
 import 'package:hidhayah/view/dashboard/widgets/dashheadright.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontainer.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontent.dart';
+import 'package:hidhayah/view/qibladirection/view/qibladirectionpage.dart';
 
 class DashBoardPage extends StatelessWidget {
   const DashBoardPage({super.key});
@@ -104,7 +105,7 @@ class DashBoardPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const Padding(
+                     Padding(
                       padding: Constants.mainContainSubPadd,
                       child: Column(
                         children: [
@@ -112,18 +113,21 @@ class DashBoardPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               DashboardIcons(
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (_)=>QiblaDir()));
+                                },
                                 text: 'Qibla',
                                 image: Constants.qiblaDirIcon,
-                                padding: EdgeInsets.all(5),
+                                padding: const EdgeInsets.all(5),
                               ),
-                              DashboardIcons(
+                              const DashboardIcons(
                                   text: 'Duas', image: Constants.duaIcon),
-                              DashboardIcons(
+                              const DashboardIcons(
                                   text: 'Tasbih', image: Constants.tasbih2),
                             ],
                           ),
                           Constants.height20,
-                          Row(
+                          const Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -149,7 +153,7 @@ class DashBoardPage extends StatelessWidget {
                       width: size.width,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Constants.grey,
+                        color: Constants.lightGreen,
                       ),
                       child: const Text('data'),
                     ),
