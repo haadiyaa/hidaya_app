@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_qiblah/flutter_qiblah.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
-import 'package:smooth_compass/utils/src/compass_ui.dart';
+import 'package:hidhayah/view/qibladirection/widgets/qiblacompass.dart';
 
 class QiblaDir extends StatefulWidget {
   const QiblaDir({super.key});
@@ -10,6 +11,7 @@ class QiblaDir extends StatefulWidget {
 }
 
 class _QiblaDirState extends State<QiblaDir> {
+  final _deviceSupport = FlutterQiblah.androidDeviceSensorSupport();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,40 +19,24 @@ class _QiblaDirState extends State<QiblaDir> {
       appBar: AppBar(
         title: const Text('Qibla'),
       ),
-      body: Center(
-        child: SmoothCompass(
-          compassBuilder: (context, compassData, compassAsset) {
-            return SizedBox(
-              height: 200,
-              width: 200,
-              child: Stack(
-                children: [
-                  Positioned(
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        // image: DecorationImage(
-                        //   image: AssetImage('assets/images/compass/compass.png'),
-                        //   fit: BoxFit.fill,
-                        // ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: Container(),
-                  ),
-                ],
-              ),
+      body: FutureBuilder(
+        future: _deviceSupport,
+        builder: (_, AsyncSnapshot<bool?> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          }
+          if (snapshot.hasError) {
+            return const Center(
+              child: Text('Error!!'),
             );
-          },
-        ),
+          }
+          if (snapshot.data!) {
+            return const QiblaCompass();
+          } else {
+            //maaaaaaapppppppppppppp
+           return  const Center(child: Text('map'));
+          
+        }}
       ),
     );
   }

@@ -10,6 +10,8 @@ class Constants {
   static const String quiz='assets/images/icons/quiz.jpg';
   static const String calendar='assets/images/icons/calendar.jpeg';
   static const String mapIcon='assets/images/icons/masjidnearme.jpeg';
+  static const String compass='assets/images/compass/compass2.png';
+  static const String compassNeedle='assets/images/compass/needle.png';
   //====================PADDING==========================
   static const EdgeInsets gradContainPadd=EdgeInsets.only(left: 20,top: 10,bottom: 10,right: 10);
   static const EdgeInsets mainContainPadd= EdgeInsets.all(30);
