@@ -37,9 +37,12 @@ class _QiblaDirState extends State<QiblaDir> {
           } else {
             if (!_snackbarVisibility) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content:
-                      Text('Your device does not support the Quibla compass serivce')));
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text(
+                        'Your device does not support the Quibla compass serivce'),
+                  ),
+                );
               });
               _snackbarVisibility = true;
             }
