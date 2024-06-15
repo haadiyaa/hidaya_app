@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_qiblah/flutter_qiblah.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/view/qibladirection/widgets/qiblacompass.dart';
+import 'package:hidhayah/view/qibladirection/widgets/qiblamap.dart';
 
 class QiblaDir extends StatefulWidget {
   const QiblaDir({super.key});
@@ -12,6 +13,7 @@ class QiblaDir extends StatefulWidget {
 
 class _QiblaDirState extends State<QiblaDir> {
   final _deviceSupport = FlutterQiblah.androidDeviceSensorSupport();
+  bool _snackbarVisibility = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,10 +35,18 @@ class _QiblaDirState extends State<QiblaDir> {
           if (snapshot.data!) {
             return const QiblaCompass();
           } else {
-            //maaaaaaapppppppppppppp
-           return  const Center(child: Text('map'));
-          
-        }}
+            if (!_snackbarVisibility) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content:
+                      Text('Your device does not support the Quibla compass serivce')));
+              });
+              _snackbarVisibility = true;
+            }
+
+            return const QiblaMaps();
+          }
+        },
       ),
     );
   }

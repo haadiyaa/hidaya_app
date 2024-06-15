@@ -10,7 +10,6 @@ import 'package:hidhayah/view/dashboard/widgets/dashheadleft.dart';
 import 'package:hidhayah/view/dashboard/widgets/dashheadright.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontainer.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontent.dart';
-import 'package:hidhayah/view/qibladirection/view/qibladirectionpage.dart';
 
 class DashBoardPage extends StatelessWidget {
   const DashBoardPage({super.key});
