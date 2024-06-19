@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
@@ -28,9 +29,24 @@ class DashBoardPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomText(
-                      text: 'Salaam,',
-                      style: TextStyles.dashboardHeadStyle,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomText(
+                          text: 'Salaam,',
+                          style: TextStyles.dashboardHeadStyle,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            GoRouter.of(context).pushNamed(
+                                      MyAppRouteConstants.loginRoute);
+                          },
+                          child: CircleAvatar(
+                            backgroundColor: Constants.gradGreenDark,
+                            child: Constants.profile,
+                          ),
+                        ),
+                      ],
                     ),
                     Constants.height10,
                     const Row(
@@ -106,7 +122,7 @@ class DashBoardPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                     Padding(
+                    Padding(
                       padding: Constants.mainContainSubPadd,
                       child: Column(
                         children: [
@@ -116,7 +132,8 @@ class DashBoardPage extends StatelessWidget {
                               DashboardIcons(
                                 onTap: () {
                                   // Navigator.push(context, MaterialPageRoute(builder: (_)=>QiblaDir()));
-                                  GoRouter.of(context).pushNamed(MyAppRouteConstants.qiblaDirRoute);
+                                  GoRouter.of(context).pushNamed(
+                                      MyAppRouteConstants.qiblaDirRoute);
                                 },
                                 text: 'Qibla',
                                 image: Constants.qiblaDirIcon,
@@ -139,8 +156,7 @@ class DashBoardPage extends StatelessWidget {
                                 padding: EdgeInsets.all(5),
                               ),
                               DashboardIcons(
-                                  text: 'Calendar',
-                                  image: Constants.calendar),
+                                  text: 'Calendar', image: Constants.calendar),
                               DashboardIcons(
                                   text: 'Masgid Near Me',
                                   image: Constants.mapIcon),

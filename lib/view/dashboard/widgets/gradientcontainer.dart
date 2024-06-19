@@ -17,7 +17,7 @@ class GradientContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FittedBox(
-      fit: BoxFit.contain,
+      fit: BoxFit.scaleDown,
       child: Container(
         padding: Constants.gradContainPadd,
         height: size.height * 0.13,
