@@ -3,15 +3,37 @@ import 'package:go_router/go_router.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/view/loginsignup/widgets/loginwidget.dart';
+import 'package:hidhayah/view/loginsignup/widgets/signup_widget.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMixin {
+  late TabController tabController;
+  @override
+  void initState() {
+    super.initState();
+    tabController = TabController(
+      initialIndex: 0,
       length: 2,
-      child: Scaffold(
+      vsync: this,
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    tabController.dispose();
+  }
+  @override
+  Widget build(BuildContext context) {
+    
+    return
+   Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
           actions: [
@@ -28,14 +50,15 @@ class LoginPage extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                  color: Constants.greenLight,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: const [
-                    BoxShadow(
-                      offset: Offset(2, 2),
-                      blurRadius: 4,
-                    ),
-                  ]),
+                color: Constants.greenLight,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: const [
+                  BoxShadow(
+                    offset: Offset(2, 2),
+                    blurRadius: 4,
+                  ),
+                ],
+              ),
               child: TabBar(
                 unselectedLabelColor: Constants.greenDark,
                 splashBorderRadius: BorderRadius.circular(30),
@@ -62,18 +85,20 @@ class LoginPage extends StatelessWidget {
                     text: 'Sign Up',
                   ),
                 ],
+              controller: tabController,
               ),
             ),
           ),
         ),
         backgroundColor: Constants.greenDark,
-        body: const TabBarView(
+        body: TabBarView(
+          controller: tabController,
           children: [
             LoginWidget(),
-            Icon(Icons.car_crash),
+            SignUpWidget(),
+            // Icon(Icons.car_crash),
           ],
         ),
-      ),
-    );
+   );
   }
 }

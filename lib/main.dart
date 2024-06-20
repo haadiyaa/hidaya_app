@@ -12,11 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size=MediaQuery.of(context).size;
+    // final size=MediaQuery.of(context).size;
     final MyAppRouter myAppRouter = MyAppRouter();
     return ScreenUtilInit(
-      designSize: Size(size.width, size.height),
-      minTextAdapt: true,
+      // designSize: Size(Constants.getHeight(context),Constants.getWidth(context)),
+      // minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => MaterialApp.router(
         routerConfig: myAppRouter.router,

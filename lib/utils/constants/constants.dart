@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Constants {
+  static double getHeight(context){
+    final height=MediaQuery.of(context).size.height;
+    return height;
+  }
+  static double getWidth(context){
+    final width=MediaQuery.of(context).size.width;
+    return width;
+  }
   //=====================IMAGES==============================
   static const String qiblaDirIcon='assets/images/icons/qibla.png';
   static const String duaIcon='assets/images/icons/dua2.jpg';

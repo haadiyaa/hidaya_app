@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
@@ -38,8 +37,9 @@ class DashBoardPage extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            GoRouter.of(context).pushNamed(
-                                      MyAppRouteConstants.loginRoute);
+                            // Navigator.push(context, MaterialPageRoute(builder: (_)=>SignIn()));
+                            GoRouter.of(context)
+                                .pushNamed(MyAppRouteConstants.loginRoute);
                           },
                           child: CircleAvatar(
                             backgroundColor: Constants.gradGreenDark,
@@ -116,7 +116,7 @@ class DashBoardPage extends StatelessWidget {
                           size: size,
                           gradient: Gradients.gradientBox4,
                           child: const GradientContainerContent(
-                            title: 'Islamic Videos',
+                            title: 'Islamic ',
                             subtitle: 'Watch',
                           ),
                         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hidhayah/utils/constants/constants.dart';
 
 class TextStyles {
   //=========================dashboard===============================================
@@ -11,4 +12,8 @@ class TextStyles {
   //gradientcontainertext
   static TextStyle gradContainerTextStyle = TextStyle(fontSize: 18.sp,fontWeight: FontWeight.bold);
   static TextStyle gradContainerSubTextStyle = TextStyle(fontSize: 18.sp,fontWeight: FontWeight.normal);
+
+  //====================Label text=====================================
+  static const TextStyle loginLabelStyle =  TextStyle(color: Constants.greenDark);
+
 }
