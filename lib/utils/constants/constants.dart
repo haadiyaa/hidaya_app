@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Constants {
+  //======================API====================
+  static String url='https://quiz-world-ruddy.vercel.app';
+  static String register='/api/users/register';
+  static String login='/api/users/login';
+  static String forgotPassword='/api/users/forgot-password';
+
+  //=====================mediaquery=================
   static double getHeight(context){
     final height=MediaQuery.of(context).size.height;
     return height;
