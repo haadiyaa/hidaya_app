@@ -15,5 +15,12 @@ class TextStyles {
 
   //====================Label text=====================================
   static const TextStyle loginLabelStyle =  TextStyle(color: Constants.greenDark);
+  static const TextStyle forgotLabelStyle =  TextStyle(color: Constants.white);
+
+  //===================login style===================================
+  static const TextStyle forgotPasStyle =  TextStyle(color: Constants.black,fontWeight: FontWeight.w300);
+  static const TextStyle textFieldStyle =  TextStyle(color: Constants.black,fontWeight: FontWeight.bold);
+  static const TextStyle forgottextFieldStyle =  TextStyle(color: Constants.white,fontWeight: FontWeight.bold);
+  static const TextStyle loginfooterStyle =  TextStyle(fontWeight: FontWeight.w300);
 
 }

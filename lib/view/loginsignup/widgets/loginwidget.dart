@@ -1,73 +1,126 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
-import 'package:hidhayah/utils/styles/borderstyles.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
+import 'package:hidhayah/view/loginsignup/widgets/custombutton.dart';
+import 'package:hidhayah/view/loginsignup/widgets/customtextfield.dart';
+import 'package:hidhayah/view/loginsignup/widgets/forgotpasswordwidget.dart';
 
 class LoginWidget extends StatelessWidget {
   LoginWidget({
     super.key,
+    required this.controller,
   });
+  final TabController controller;
 
-  // final GlobalKey _key=GlobalKey<FormState>();
-  final TextEditingController userNameController=TextEditingController();
-  final TextEditingController emailController=TextEditingController();
-  final TextEditingController passController=TextEditingController();
+  final _key = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
 
-  final userFocusNode=FocusNode();
-  final emailFocusNode=FocusNode();
-  final passFocusNode=FocusNode();
+  final userFocusNode = FocusNode();
+  final emailFocusNode = FocusNode();
+  final passFocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        margin: const EdgeInsets.all(20),
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Constants.greenLight,
-        ),
-        child: Column(
-          children: [
-            CusomTextField(label: 'User Name',controller: userNameController,focusNode: userFocusNode,textInputType: TextInputType.name,),
-            CusomTextField(label: 'Email',controller: emailController,focusNode: emailFocusNode,textInputType: TextInputType.emailAddress,),
-            CusomTextField(label: 'Password',controller: passController,focusNode: passFocusNode,textInputType: TextInputType.visiblePassword,),
-            const SizedBox(
-              height: 10,
+    final size = MediaQuery.of(context).size;
+    return SingleChildScrollView(
+      child: Center(
+        child: Container(
+          margin: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Constants.greenLight,
+              boxShadow: const [
+                BoxShadow(offset: Offset(5, 5), blurRadius: 10)
+              ]),
+          child: Form(
+            key: _key,
+            child: Column(
+              children: [
+                CusomTextField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Plase enter something';
+                    }
+                    return null;
+                  },
+                  label: 'Email',
+                  controller: emailController,
+                  focusNode: userFocusNode,
+                  textInputType: TextInputType.name,
+                ),
+                CusomTextField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Plase enter something';
+                    }
+                    return null;
+                  },
+                  label: 'Password',
+                  controller: passController,
+                  focusNode: passFocusNode,
+                  textInputType: TextInputType.visiblePassword,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        showBottomSheet(
+                          backgroundColor: Constants.greenLight,
+                          enableDrag: true,
+                          showDragHandle: true,
+                          context: context,
+                          builder: (context) {
+                            return SingleChildScrollView(
+                              child: BottomSheet(
+                                enableDrag: true,
+                                backgroundColor: Constants.greenLight,
+                                onClosing: () {},
+                                builder: (context) {
+                                  return ForgotPasswordWidget(size: size);
+                                },
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.only(bottom: 10.0),
+                        child: Text(
+                          'Forgot Password?',
+                          style: TextStyles.forgotPasStyle,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                CustomButton(
+                  size: size,
+                  text: 'Sign In',
+                  onPressed: () {
+                    if (_key.currentState!.validate()) {
+                      GoRouter.of(context)
+                          .pushNamed(MyAppRouteConstants.profileRoute);
+                    }
+                  },
+                ),
+                Constants.height15,
+                GestureDetector(
+                  onTap: () {
+                    controller.animateTo(1);
+                  },
+                  child: const Text(
+                    'Don\'t have an account?  Register Now!',
+                    style: TextStyles.loginfooterStyle,
+                  ),
+                ),
+              ],
             ),
-            ElevatedButton(onPressed: () {}, child: const Text('Login')),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CusomTextField extends StatelessWidget {
-  const CusomTextField({
-    super.key, required this.label, required this.controller, required this.focusNode, required this.textInputType,
-  });
-  final FocusNode focusNode;
-  final String label;
-  final TextEditingController controller;
-  final TextInputType textInputType;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 8),
-      child: TextFormField(
-        keyboardType: textInputType,
-        focusNode: focusNode,
-        controller: controller,
-        // autofocus: true,
-        decoration: InputDecoration(
-          labelText: label,
-          labelStyle: TextStyles.loginLabelStyle,
-          enabledBorder: BorderStyles.textfieldBorder,
-          focusedBorder: BorderStyles.textfieldBorder,
-          focusedErrorBorder: BorderStyles.textfieldBorder,
-          errorBorder: BorderStyles.textfieldBorder,
+          ),
         ),
       ),
     );

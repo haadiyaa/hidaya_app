@@ -20,6 +20,11 @@ class Constants {
   static const String mapIcon='assets/images/icons/masjidnearme.jpeg';
   static const String compass='assets/images/compass/compass.svg';
   static const String compassNeedle='assets/images/compass/needle.svg';
+
+  //=========================lottie=============================
+  static const String loginanimation='assets/lottie/w3LFqxwCTY.json';
+  static const String loginanimation2='assets/lottie/ac.json';
+
   //====================PADDING==========================
   static const EdgeInsets gradContainPadd=EdgeInsets.only(left: 20,top: 10,bottom: 10,right: 10);
   static const EdgeInsets mainContainPadd= EdgeInsets.all(30);
@@ -42,6 +47,7 @@ class Constants {
   //====================COLORS============================
   static const Color greenLight = Color(0xff7A9D8B);
   static const Color greenDark = Color(0xff121F19);
+  static const Color greenDark2 =Color.fromARGB(255, 30, 51, 41);
   static const Color white = Color(0xffffffff);
   static const Color black = Color(0xff000000);
   static const Color grey = Color.fromARGB(100, 136, 136, 136);
