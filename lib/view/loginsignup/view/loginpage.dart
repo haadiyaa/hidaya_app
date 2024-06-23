@@ -115,15 +115,12 @@ class _LoginPageState extends State<LoginPage>
             child: TabBarView(
               controller: tabController,
               children: [
-                LoginWidget(
-                  controller: tabController,
-                ),
+                // LoginWidget(
+                //   controller: tabController,
+                // ),
                 SignUpWidget(
                   controller: tabController,
                 ),
-                // SignUpWidget(
-                //   controller: tabController,
-                // ),
               ],
             ),
           ),

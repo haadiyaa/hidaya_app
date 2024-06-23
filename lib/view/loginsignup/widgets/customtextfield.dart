@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/borderstyles.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
 
@@ -9,14 +8,12 @@ class CusomTextField extends StatelessWidget {
     super.key,
     required this.label,
     required this.controller,
-    required this.focusNode,
-    required this.textInputType,
+     this.textInputType,
     this.validator,
   });
-  final FocusNode focusNode;
   final String label;
   final TextEditingController controller;
-  final TextInputType textInputType;
+  final TextInputType? textInputType;
   final String? Function(String?)? validator;
 
   @override
@@ -26,8 +23,7 @@ class CusomTextField extends StatelessWidget {
       child: TextFormField(
         style: TextStyles.textFieldStyle,
         validator: validator,
-        keyboardType: textInputType,
-        focusNode: focusNode,
+        // keyboardType: textInputType,
         controller: controller,
         decoration: InputDecoration(
           labelText: label,

@@ -1,10 +1,132 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
+import 'package:hidhayah/routes/approuteconst.dart';
+import 'package:hidhayah/utils/constants/constants.dart';
+import 'package:hidhayah/view/loginsignup/widgets/custombutton.dart';
+import 'package:hidhayah/view/loginsignup/widgets/customlightbutton.dart';
+import 'package:hidhayah/view/profile/widgets/customprofilebutton.dart';
+
+class ProfilePageWrapper extends StatelessWidget {
+  const ProfilePageWrapper({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => LoginBloc(),
+      child: const ProfilePage(),
+    );
+  }
+}
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    final size = MediaQuery.of(context).size;
+    return Scaffold(
+      backgroundColor: Constants.greenDark,
+      appBar: AppBar(
+        title: const Text('profile'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(20),
+            width: size.width,
+            height: size.height * 0.7,
+            decoration: const BoxDecoration(
+              color: Constants.greenDark2,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+            ),
+            child: Column(
+              children: [
+                Container(
+                  decoration: const BoxDecoration(
+                      shape: BoxShape.circle, color: Colors.amber),
+                  clipBehavior: Clip.antiAlias,
+                  height: 100,
+                  width: 100,
+                ),
+                const Text(
+                  'Name',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                const Text(
+                  'email@gmail.com',
+                  style: TextStyle(
+                    fontSize: 14,
+                  ),
+                ),
+                Constants.height20,
+                CustomProfileButton(
+                  onPressed: () {},
+                  text: 'Edit Profile',
+                ),
+                Constants.height10,
+                const ListTile(
+                  title: Text(
+                    'About Us',
+                    style: TextStyle(
+                    color: Constants.white,
+                    ),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_circle_right_outlined,
+                    color: Constants.white,
+                  ),
+                ),
+                const ListTile(
+                  title: Text(
+                    'Privacy Policy',
+                    style: TextStyle(
+                    color: Constants.white,
+                    ),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_circle_right_outlined,
+                    color: Constants.white,
+                  ),
+                ),
+                Constants.height20,
+                BlocListener<LoginBloc, LoginState>(
+                  listener: (context, state) {
+                    if (state.loginStatus == LoginStatus.initial) {
+                      ScaffoldMessenger.of(context)
+                        ..hideCurrentSnackBar()
+                        ..showSnackBar(
+                          const SnackBar(content: Text('Signed Out')),
+                        );
+                      GoRouter.of(context).pushReplacementNamed(
+                          MyAppRouteConstants.loginRoute2);
+                    }
+                  },
+                  child: CustomProfileButton(
+                    fgcolor: Constants.greenDark,
+                    bgcolor: Constants.greenLight,
+                    text: 'Sign Out',
+                    onPressed: () {
+                      context.read<LoginBloc>().add(const LogoutEvent());
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // Center(
+          //   child:
+          // ),
+        ],
+      ),
+    );
   }
 }

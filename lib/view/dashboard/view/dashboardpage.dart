@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/gradient.dart';
@@ -10,9 +12,22 @@ import 'package:hidhayah/view/dashboard/widgets/dashheadleft.dart';
 import 'package:hidhayah/view/dashboard/widgets/dashheadright.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontainer.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontent.dart';
+import 'package:hidhayah/view/loginsignup/widgets/customtextfield.dart';
 
+class DashboardpageWrapper extends StatelessWidget {
+  const DashboardpageWrapper({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<LoginBloc>(
+      create: (context) => LoginBloc(),
+      child: DashBoardPage(),
+    );
+  }
+}
 class DashBoardPage extends StatelessWidget {
-  const DashBoardPage({super.key});
+  DashBoardPage({super.key});
+  final userNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,15 +50,29 @@ class DashBoardPage extends StatelessWidget {
                           text: 'Salaam,',
                           style: TextStyles.dashboardHeadStyle,
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            // Navigator.push(context, MaterialPageRoute(builder: (_)=>SignIn()));
-                            GoRouter.of(context)
-                                .pushNamed(MyAppRouteConstants.loginRoute);
+                        BlocListener<LoginBloc, LoginState>(
+                          listener: (context, state) {
+                            if (state.loginStatus == LoginStatus.loggedIn) {
+                              GoRouter.of(context).pushNamed(
+                                  MyAppRouteConstants.profileRoute);
+                            } else {
+                              GoRouter.of(context)
+                                  .pushNamed(MyAppRouteConstants.loginRoute2);
+                            }
                           },
-                          child: CircleAvatar(
-                            backgroundColor: Constants.gradGreenDark,
-                            child: Constants.profile,
+                          child: GestureDetector(
+                            onTap: () {
+                              context
+                                  .read<LoginBloc>()
+                                  .add(const CheckStatusEvent());
+                              // Navigator.push(context, MaterialPageRoute(builder: (_)=>SignIn()));
+                              // GoRouter.of(context)
+                              //     .pushNamed(MyAppRouteConstants.loginRoute);
+                            },
+                            child: CircleAvatar(
+                              backgroundColor: Constants.gradGreenDark,
+                              child: Constants.profile,
+                            ),
                           ),
                         ),
                       ],
@@ -156,7 +185,8 @@ class DashBoardPage extends StatelessWidget {
                                 padding: EdgeInsets.all(5),
                               ),
                               DashboardIcons(
-                                  text: 'Calendar', image: Constants.calendar),
+                                  text: 'Calendar',
+                                  image: Constants.calendar),
                               DashboardIcons(
                                   text: 'Masgid Near Me',
                                   image: Constants.mapIcon),
@@ -177,7 +207,18 @@ class DashBoardPage extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
+              CusomTextField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Plase enter something';
+                  }
+                  return null;
+                },
+                label: 'User Name',
+                controller: userNameController,
+                textInputType: TextInputType.name,
+              ),
             ],
           ),
         ),

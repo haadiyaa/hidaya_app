@@ -1,14 +1,15 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'login_bloc.dart';
 
-enum LoginStatus { initial, loading, success, error }
+enum LoginStatus { initial, loading, success, error ,loggedIn}
 
 class LoginState extends Equatable {
   final String email;
+  final String name;
   final String password;
   final String message;
   final LoginStatus loginStatus;
-  LoginState({
+  const LoginState({
+    this.name = '',
     this.email = '',
     this.password = '',
     this.message = '',
@@ -16,12 +17,14 @@ class LoginState extends Equatable {
   });
   LoginState copyWith({
     String? email,
+    String? name,
     String? password,
     String? message,
     LoginStatus? loginStatus,
   }) {
     return LoginState(
       email: email ?? this.email,
+      name: name ?? this.name,
       password: password ?? this.password,
       message: message ?? this.message,
       loginStatus: loginStatus ?? this.loginStatus,
@@ -29,5 +32,5 @@ class LoginState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [email,password,message,loginStatus];
+  List<Object?> get props => [email, password, message, loginStatus,name];
 }

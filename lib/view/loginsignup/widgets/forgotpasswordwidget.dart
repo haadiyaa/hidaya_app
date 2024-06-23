@@ -1,7 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/view/loginsignup/widgets/customlightbutton.dart';
 import 'package:hidhayah/view/loginsignup/widgets/forgottextfield.dart';

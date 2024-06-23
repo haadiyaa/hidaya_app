@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Constants {
+  //===================token====================
+  static const String LOGINTOKEN='loginToken';
   //======================API====================
   static String url='https://quiz-world-ruddy.vercel.app';
   static String register='/api/users/register';
@@ -17,6 +19,7 @@ class Constants {
     final width=MediaQuery.of(context).size.width;
     return width;
   }
+
   //=====================IMAGES==============================
   static const String qiblaDirIcon='assets/images/icons/qibla.png';
   static const String duaIcon='assets/images/icons/dua2.jpg';

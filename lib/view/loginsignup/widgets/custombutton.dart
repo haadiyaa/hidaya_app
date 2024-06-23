@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:hidhayah/main.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
+import 'package:hidhayah/utils/styles/textstyle.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({

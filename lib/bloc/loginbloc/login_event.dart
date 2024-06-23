@@ -19,15 +19,18 @@ class LoginApi extends LoginEvent {
   
 }
 class SignUpApi extends LoginEvent {
-  final String email;
-  final String name;
-  final String password;
+  final UserModel user;
   const SignUpApi({
-    required this.email,
-    required this.name,
-    required this.password,
+    required this.user,
   });
 
   @override
-  List<Object?> get props => [email,name,password];
+  List<Object?> get props => [user];
+}
+
+class CheckStatusEvent extends LoginEvent {
+  const CheckStatusEvent();
+}
+class LogoutEvent extends LoginEvent {
+  const LogoutEvent();
 }

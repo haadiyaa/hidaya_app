@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
     // final size=MediaQuery.of(context).size;
     final MyAppRouter myAppRouter = MyAppRouter();
     return ScreenUtilInit(
-      // designSize: Size(Constants.getHeight(context),Constants.getWidth(context)),
+      // designSize: const Size(360,690),
       // minTextAdapt: true,
-      splitScreenMode: true,
+      // splitScreenMode: true,
       builder: (context, child) => MaterialApp.router(
         routerConfig: myAppRouter.router,
         // routeInformationParser: myAppRouter.router.routeInformationParser,

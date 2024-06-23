@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
+import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/loginsignup/widgets/custombutton.dart';
-import 'package:hidhayah/view/loginsignup/widgets/customlightbutton.dart';
 import 'package:hidhayah/view/loginsignup/widgets/customtextfield.dart';
 import 'package:hidhayah/view/profile/view/profilepage.dart';
 
@@ -20,11 +20,6 @@ class SignUpWidget extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
   final TextEditingController pass2Controller = TextEditingController();
-
-  final userFocusNode = FocusNode();
-  final emailFocusNode = FocusNode();
-  final passFocusNode = FocusNode();
-  final pass2FocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +48,6 @@ class SignUpWidget extends StatelessWidget {
                   },
                   label: 'User Name',
                   controller: userNameController,
-                  focusNode: userFocusNode,
                   textInputType: TextInputType.name,
                 ),
                 CusomTextField(
@@ -65,7 +59,6 @@ class SignUpWidget extends StatelessWidget {
                   },
                   label: 'Email',
                   controller: emailController,
-                  focusNode: emailFocusNode,
                   textInputType: TextInputType.emailAddress,
                 ),
                 CusomTextField(
@@ -77,7 +70,6 @@ class SignUpWidget extends StatelessWidget {
                   },
                   label: 'Password',
                   controller: passController,
-                  focusNode: passFocusNode,
                   textInputType: TextInputType.visiblePassword,
                 ),
                 CusomTextField(
@@ -92,7 +84,6 @@ class SignUpWidget extends StatelessWidget {
                   },
                   label: 'Confirm Password',
                   controller: pass2Controller,
-                  focusNode: pass2FocusNode,
                   textInputType: TextInputType.visiblePassword,
                 ),
                 const SizedBox(
@@ -106,7 +97,8 @@ class SignUpWidget extends StatelessWidget {
                         ..showSnackBar(
                           SnackBar(content: Text(state.message.toString())),
                         );
-                    } if (state.loginStatus == LoginStatus.loading) {
+                    }
+                    if (state.loginStatus == LoginStatus.loading) {
                       ScaffoldMessenger.of(context)
                         ..hideCurrentSnackBar()
                         ..showSnackBar(
@@ -119,21 +111,30 @@ class SignUpWidget extends StatelessWidget {
                         ..showSnackBar(
                           const SnackBar(content: Text('Sign up successfull!')),
                         );
-                        Navigator.push(context, MaterialPageRoute(builder: (_)=>ProfilePage()));
+                      controller.animateTo(0);
                     }
+                    // else {
+                    //   ScaffoldMessenger.of(context)
+                    //   ..hideCurrentSnackBar()
+                    //   ..showSnackBar(const SnackBar(
+                    //       content: Text('Sign up not successfull!')));
+                    // }
                   },
                   child: CustomButton(
                     size: size,
                     text: 'Sign Up',
                     onPressed: () {
                       if (_key.currentState!.validate()) {
-                        context.read<LoginBloc>().add(
-                              SignUpApi(
-                                email: emailController.text.trim(),
-                                name: userNameController.text.trim(),
-                                password: passController.text.trim(),
-                              ),
-                            );
+                      final user = UserModel(
+                        email: emailController.text.trim(),
+                        name: userNameController.text.trim(),
+                        password: passController.text.trim(),
+                      );
+                      context.read<LoginBloc>().add(
+                            SignUpApi(
+                              user: user,
+                            ),
+                          );
                       }
                     },
                   ),

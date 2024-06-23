@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
@@ -10,17 +12,13 @@ import 'package:hidhayah/view/loginsignup/widgets/forgotpasswordwidget.dart';
 class LoginWidget extends StatelessWidget {
   LoginWidget({
     super.key,
-    required this.controller,
+    // required this.controller,
   });
-  final TabController controller;
+  // final TabController controller;
 
   final _key = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
-
-  final userFocusNode = FocusNode();
-  final emailFocusNode = FocusNode();
-  final passFocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +47,6 @@ class LoginWidget extends StatelessWidget {
                   },
                   label: 'Email',
                   controller: emailController,
-                  focusNode: userFocusNode,
                   textInputType: TextInputType.name,
                 ),
                 CusomTextField(
@@ -61,7 +58,6 @@ class LoginWidget extends StatelessWidget {
                   },
                   label: 'Password',
                   controller: passController,
-                  focusNode: passFocusNode,
                   textInputType: TextInputType.visiblePassword,
                 ),
                 Row(
@@ -98,20 +94,50 @@ class LoginWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                CustomButton(
-                  size: size,
-                  text: 'Sign In',
-                  onPressed: () {
-                    if (_key.currentState!.validate()) {
-                      GoRouter.of(context)
-                          .pushNamed(MyAppRouteConstants.profileRoute);
+                BlocListener<LoginBloc, LoginState>(
+                  listener: (context, state) {
+                    if (state.loginStatus == LoginStatus.error) {
+                      ScaffoldMessenger.of(context)
+                        ..hideCurrentSnackBar()
+                        ..showSnackBar(
+                          SnackBar(content: Text(state.message.toString())),
+                        );
+                    }
+                    if (state.loginStatus == LoginStatus.loading) {
+                      ScaffoldMessenger.of(context)
+                        ..hideCurrentSnackBar()
+                        ..showSnackBar(
+                          const SnackBar(content: Text('Submitting...')),
+                        );
+                    }
+                    if (state.loginStatus == LoginStatus.success) {
+                      ScaffoldMessenger.of(context)
+                        ..hideCurrentSnackBar()
+                        ..showSnackBar(
+                          const SnackBar(content: Text('Sign in successfull!')),
+                        );
+                        GoRouter.of(context)
+                                .pushReplacementNamed(MyAppRouteConstants.profileRoute);
+                      // Navigator.push(context,
+                      //     MaterialPageRoute(builder: (_) => ProfilePage()));
                     }
                   },
+                  child: CustomButton(
+                    size: size,
+                    text: 'Sign In',
+                    onPressed: () {
+                      if (_key.currentState!.validate()) {
+                        context.read<LoginBloc>().add(LoginApi(
+                            email: emailController.text.trim(),
+                            password: passController.text.trim()));
+                      }
+                    },
+                  ),
                 ),
                 Constants.height15,
                 GestureDetector(
                   onTap: () {
-                    controller.animateTo(1);
+                    // controller.animateTo(1);
                   },
                   child: const Text(
                     'Don\'t have an account?  Register Now!',
