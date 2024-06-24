@@ -18,7 +18,7 @@ class SignUpPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              GoRouter.of(context).pop(MyAppRouteConstants.loginPopRoute);
+              GoRouter.of(context).pop();
             },
             icon: const Icon(Icons.cancel_outlined),
           ),
@@ -26,14 +26,18 @@ class SignUpPage extends StatelessWidget {
         title: Text('Sign Up'),
       ),
       body: SingleChildScrollView(
-        child: Column(children: [
-          Center(child: BlocProvider<LoginBloc>(
-            create: (context) => LoginBloc(),
-            child: SignUpWidget(
-                  // controller: tabController,
-                ),
-          ),)
-        ],),
+        child: Column(
+          children: [
+            Center(
+              child: BlocProvider<LoginBloc>(
+                create: (context) => LoginBloc(),
+                child: SignUpWidget(
+                    // controller: tabController,
+                    ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -18,7 +18,7 @@ class LoginPagee extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              GoRouter.of(context).pop(MyAppRouteConstants.loginPopRoute);
+              GoRouter.of(context).pop();
             },
             icon: const Icon(Icons.cancel_outlined),
           ),

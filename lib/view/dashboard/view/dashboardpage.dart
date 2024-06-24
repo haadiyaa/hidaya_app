@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hidhayah/bloc/functionbloc/functions_bloc.dart';
-import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
 import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
@@ -14,6 +13,7 @@ import 'package:hidhayah/view/dashboard/widgets/dashheadleft.dart';
 import 'package:hidhayah/view/dashboard/widgets/dashheadright.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontainer.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontent.dart';
+import 'package:intl/intl.dart';
 
 class DashboardpageWrapper extends StatelessWidget {
   const DashboardpageWrapper({super.key});
@@ -96,14 +96,14 @@ class DashBoardPage extends StatelessWidget {
                       ],
                     ),
                     Constants.height10,
-                    const Row(
+                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        DashHeadLeft(
+                        const DashHeadLeft(
                           salah: 'Asr',
                         ),
                         DashHeadRight(
-                          date: '12 June 2024',
+                          date: DateFormat('dd MMM yyyy').format(DateTime.now()),
                           place: 'Kozhikode',
                         )
                       ],

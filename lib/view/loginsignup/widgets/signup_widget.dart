@@ -126,7 +126,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         ..showSnackBar(
                           const SnackBar(content: Text('Sign up successfull!')),
                         );
-                      GoRouter.of(context).pushReplacementNamed(
+                      GoRouter.of(context).goNamed(
                           MyAppRouteConstants.loginRoute2);
                       // controller.animateTo(0);
                     }
@@ -161,7 +161,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                   onTap: () {
                     // controller.animateTo(0);
                     GoRouter.of(context)
-                        .pushReplacementNamed(MyAppRouteConstants.loginRoute2);
+                        .goNamed(MyAppRouteConstants.loginRoute2);
                   },
                   child: const Text(
                     'Already have an account?  Sign In!',

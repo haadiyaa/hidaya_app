@@ -21,7 +21,7 @@ class QiblaMaps extends StatefulWidget {
 
 class _QiblaMapsState extends State<QiblaMaps> {
   final Completer<GoogleMapController> _controller = Completer();
-  LatLng position = const LatLng(36.800636, 10.180358);
+  LatLng position = const LatLng(11.258753, 75.780411);
 
   late final _future = _checkLocationStatus();
   final _positionStream = StreamController<LatLng>.broadcast();
@@ -51,10 +51,14 @@ class _QiblaMapsState extends State<QiblaMaps> {
             );
           }
 
-          if (snapshot.data != null) {
-            final loc =
-                LatLng(snapshot.data!.latitude, snapshot.data!.longitude);
-            position = loc;
+          if (snapshot.hasData) {
+            final userLocation = snapshot.data!;
+            if (userLocation.latitude != 0.0 && userLocation.longitude != 0.0) {
+              final loc = LatLng(userLocation.latitude, userLocation.longitude);
+              position = loc;
+            } else {
+              print('user location not fetched');
+            }
           } else {
             _positionStream.sink.add(position);
           }
@@ -72,43 +76,42 @@ class _QiblaMapsState extends State<QiblaMaps> {
                 zoom: 11,
               ),
               markers: <Marker>{
-                  QiblaMaps.meccaMarker,
-                  Marker(
-                    draggable: true,
-                    markerId: const MarkerId('Marker'),
-                    position: position,
-                    icon: BitmapDescriptor.defaultMarker,
-                    onTap: _updateCamera,
-                    onDragEnd: (LatLng value) {
-                      position = value;
-                      _positionStream.sink.add(value);
-                    },
-                    zIndex: 5,
-                  ),
-                },
+                QiblaMaps.meccaMarker,
+                Marker(
+                  draggable: true,
+                  markerId: const MarkerId('Marker'),
+                  position: position,
+                  icon: BitmapDescriptor.defaultMarker,
+                  onTap: _updateCamera,
+                  onDragEnd: (LatLng value) {
+                    position = value;
+                    _positionStream.sink.add(value);
+                  },
+                  zIndex: 5,
+                ),
+              },
               circles: <Circle>{
-                  Circle(
-                    circleId: const CircleId("Circle"),
-                    radius: 10,
-                    center: position,
-                    fillColor:
-                        Theme.of(context).primaryColorLight.withAlpha(100),
-                    strokeWidth: 1,
-                    strokeColor:
-                        Theme.of(context).primaryColorDark.withAlpha(100),
-                    zIndex: 3,
-                  )
-                },
+                Circle(
+                  circleId: const CircleId("Circle"),
+                  radius: 10,
+                  center: position,
+                  fillColor: Theme.of(context).primaryColorLight.withAlpha(100),
+                  strokeWidth: 1,
+                  strokeColor:
+                      Theme.of(context).primaryColorDark.withAlpha(100),
+                  zIndex: 3,
+                )
+              },
               polylines: <Polyline>{
-                  Polyline(
-                    polylineId: const PolylineId("Line"),
-                    points: [position, QiblaMaps.meccaLatLong],
-                    color: Theme.of(context).primaryColor,
-                    width: 5,
-                    zIndex: 4,
-                    geodesic: true,
-                  )
-                },
+                Polyline(
+                  polylineId: const PolylineId("Line"),
+                  points: [position, QiblaMaps.meccaLatLong],
+                  color: Theme.of(context).primaryColor,
+                  width: 5,
+                  zIndex: 4,
+                  geodesic: true,
+                )
+              },
               onMapCreated: (GoogleMapController controller) {
                 _controller.complete(controller);
               },
@@ -117,7 +120,6 @@ class _QiblaMapsState extends State<QiblaMaps> {
         },
       ),
     );
-
   }
 
   Future<Position?> _checkLocationStatus() async {

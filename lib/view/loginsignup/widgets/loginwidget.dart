@@ -129,7 +129,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           const SnackBar(content: Text('Sign in successfull!')),
                         );
                         GoRouter.of(context)
-                                .pushReplacementNamed(MyAppRouteConstants.profileRoute);
+                                .goNamed(MyAppRouteConstants.profileRoute);
                       // Navigator.push(context,
                       //     MaterialPageRoute(builder: (_) => ProfilePage()));
                     }
@@ -150,7 +150,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 GestureDetector(
                   onTap: () {
                     GoRouter.of(context)
-                                .pushReplacementNamed(MyAppRouteConstants.signup);
+                                .goNamed(MyAppRouteConstants.signup);
                     // controller.animateTo(1);
                   },
                   child: const Text(

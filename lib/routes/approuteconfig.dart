@@ -4,7 +4,6 @@ import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/view/dashboard/view/dashboardpage.dart';
 import 'package:hidhayah/view/loginsignup/view/login_page.dart';
-import 'package:hidhayah/view/loginsignup/view/loginpage.dart';
 import 'package:hidhayah/view/loginsignup/view/signup_page.dart';
 import 'package:hidhayah/view/profile/view/profilepage.dart';
 import 'package:hidhayah/view/qibladirection/view/qibladirectionpage.dart';
@@ -16,7 +15,7 @@ class MyAppRouter {
         name: MyAppRouteConstants.dashBoardRoute,
         path: '/',
         pageBuilder: (context, state) {
-          return MaterialPage(child: DashboardpageWrapper());
+          return const MaterialPage(child: DashboardpageWrapper());
         },
       ),
       GoRoute(
@@ -51,7 +50,7 @@ class MyAppRouter {
         name: MyAppRouteConstants.loginPopRoute,
         path: '/loginBack',
         pageBuilder: (context, state) {
-          return MaterialPage(child: DashboardpageWrapper());
+          return const MaterialPage(child: DashboardpageWrapper());
         },
       ),
       GoRoute(
