@@ -64,6 +64,7 @@ class DashBoardPage extends StatelessWidget {
                             if (state.status==Status.loggedIn) {
                               GoRouter.of(context).pushNamed(
                                   MyAppRouteConstants.profileRoute,
+                                  extra: user
                                   // pathParameters: {
                                   //   'name': 'hadiya',
                                   //   'email': 'hadiya@gmail.com',

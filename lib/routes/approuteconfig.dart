@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/view/dashboard/view/dashboardpage.dart';
 import 'package:hidhayah/view/loginsignup/view/login_page.dart';
@@ -57,9 +58,10 @@ class MyAppRouter {
         name: MyAppRouteConstants.profileRoute,
         path: '/profile',
         pageBuilder: (context, state) {
+          final userModel=state.extra as UserModel;
           // final name=state.pathParameters['name'];
           // final email=state.pathParameters['email'];
-          return MaterialPage(child: ProfilePageWrapper());
+          return MaterialPage(child: ProfilePageWrapper(userModel: userModel,));
         },
       ),
     ],

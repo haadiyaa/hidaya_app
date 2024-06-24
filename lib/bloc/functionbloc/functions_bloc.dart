@@ -24,7 +24,7 @@ class FunctionsBloc extends Bloc<FunctionsEvent, FunctionsState> {
       print('sp; ${isLoggedIn}');
       if (isLoggedIn.isNotEmpty) {
         print('sp notempt $isLoggedIn');
-        emit(state.copyWith(status: Status.loggedIn));
+        // emit(state.copyWith(status: Status.loggedIn));
         final Map<String, String>? header = {
           'Content-Type': 'application/json',
           'x-auth-token': isLoggedIn,
@@ -41,6 +41,7 @@ class FunctionsBloc extends Bloc<FunctionsEvent, FunctionsState> {
             print('user name: ${user.name}');
             emit(GetUserState(user: user));
             print('success');
+            emit(state.copyWith(status: Status.loggedIn));
           } else {
             emit(GetUserErrorState(msg: data['msg']));
             print('not success');

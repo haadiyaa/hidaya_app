@@ -10,18 +10,20 @@ import 'package:hidhayah/view/profile/widgets/customprofilebutton.dart';
 
 class ProfilePageWrapper extends StatelessWidget {
   const ProfilePageWrapper({
-    super.key,
+    super.key, required this.userModel,
     // this.name,
     // this.email,
   });
   // final String? name;
   // final String? email;
+  final UserModel userModel;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => FunctionsBloc(),
-      child: const ProfilePage(
+      child: ProfilePage(
+        userModel: userModel,
           // name: name,
           // email: email,
           ),
@@ -32,8 +34,9 @@ class ProfilePageWrapper extends StatelessWidget {
 class ProfilePage extends StatefulWidget {
   // final String? name;
   // final String? email;
+  final UserModel userModel;
   const ProfilePage({
-    super.key,
+    super.key, required this.userModel,
     // this.name,
     // this.email,
   });
@@ -48,6 +51,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
+    user=widget.userModel;
     // user = UserModel(
     //   name: widget.name,
     //   email: widget.email,
@@ -85,16 +89,16 @@ class _ProfilePageState extends State<ProfilePage> {
                 //   height: 100,
                 //   width: 100,
                 // ),
-                const Text(
-                   'name',
-                  style: TextStyle(
+                 Text(
+                   user.name??'no name',
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
                   ),
                 ),
-                const Text(
-                  'email',
-                  style: TextStyle(
+                 Text(
+                  user.email??'no email',
+                  style: const TextStyle(
                     fontSize: 14,
                   ),
                 ),
