@@ -2,13 +2,13 @@
 import 'dart:convert';
 
 class UserModel {
-  final String name;
-  final String email;
-  final String password;
+  String? name;
+  String? email;
+  String? password;
   UserModel({
-    required this.name,
-    required this.email,
-    required this.password,
+     this.name,
+     this.email,
+     this.password,
   });
 
   Map<String, dynamic> toMap() {
@@ -26,5 +26,4 @@ class UserModel {
       password: map['password'] as String,
     );
   }
-
 }

@@ -8,6 +8,7 @@ class Constants {
   static String url='https://quiz-world-ruddy.vercel.app';
   static String register='/api/users/register';
   static String login='/api/users/login';
+  static String getUser='/api/users/getUser';
   static String forgotPassword='/api/users/forgot-password';
 
   //=====================mediaquery=================

@@ -1,27 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hidhayah/bloc/functionbloc/functions_bloc.dart';
 import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
+import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
-import 'package:hidhayah/view/loginsignup/widgets/custombutton.dart';
-import 'package:hidhayah/view/loginsignup/widgets/customlightbutton.dart';
 import 'package:hidhayah/view/profile/widgets/customprofilebutton.dart';
 
 class ProfilePageWrapper extends StatelessWidget {
-  const ProfilePageWrapper({super.key});
+  const ProfilePageWrapper({
+    super.key,
+    // this.name,
+    // this.email,
+  });
+  // final String? name;
+  // final String? email;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginBloc(),
-      child: const ProfilePage(),
+      create: (context) => FunctionsBloc(),
+      child: const ProfilePage(
+          // name: name,
+          // email: email,
+          ),
     );
   }
 }
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class ProfilePage extends StatefulWidget {
+  // final String? name;
+  // final String? email;
+  const ProfilePage({
+    super.key,
+    // this.name,
+    // this.email,
+  });
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  late UserModel user;
+
+  @override
+  void initState() {
+    super.initState();
+    // user = UserModel(
+    //   name: widget.name,
+    //   email: widget.email,
+    // );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,22 +78,22 @@ class ProfilePage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Container(
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle, color: Colors.amber),
-                  clipBehavior: Clip.antiAlias,
-                  height: 100,
-                  width: 100,
-                ),
+                // Container(
+                //   decoration: const BoxDecoration(
+                //       shape: BoxShape.circle, color: Colors.amber),
+                //   clipBehavior: Clip.antiAlias,
+                //   height: 100,
+                //   width: 100,
+                // ),
                 const Text(
-                  'Name',
+                   'name',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
                   ),
                 ),
                 const Text(
-                  'email@gmail.com',
+                  'email',
                   style: TextStyle(
                     fontSize: 14,
                   ),
@@ -77,7 +108,7 @@ class ProfilePage extends StatelessWidget {
                   title: Text(
                     'About Us',
                     style: TextStyle(
-                    color: Constants.white,
+                      color: Constants.white,
                     ),
                   ),
                   trailing: Icon(
@@ -89,7 +120,7 @@ class ProfilePage extends StatelessWidget {
                   title: Text(
                     'Privacy Policy',
                     style: TextStyle(
-                    color: Constants.white,
+                      color: Constants.white,
                     ),
                   ),
                   trailing: Icon(
@@ -98,9 +129,9 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 Constants.height20,
-                BlocListener<LoginBloc, LoginState>(
+                BlocListener<FunctionsBloc, FunctionsState>(
                   listener: (context, state) {
-                    if (state.loginStatus == LoginStatus.initial) {
+                    if (state.status==Status.notLoggedIn) {
                       ScaffoldMessenger.of(context)
                         ..hideCurrentSnackBar()
                         ..showSnackBar(
@@ -115,7 +146,7 @@ class ProfilePage extends StatelessWidget {
                     bgcolor: Constants.greenLight,
                     text: 'Sign Out',
                     onPressed: () {
-                      context.read<LoginBloc>().add(const LogoutEvent());
+                      context.read<FunctionsBloc>().add(const LogoutEvent());
                     },
                   ),
                 ),

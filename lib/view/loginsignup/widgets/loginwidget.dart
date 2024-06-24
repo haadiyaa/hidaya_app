@@ -9,16 +9,28 @@ import 'package:hidhayah/view/loginsignup/widgets/custombutton.dart';
 import 'package:hidhayah/view/loginsignup/widgets/customtextfield.dart';
 import 'package:hidhayah/view/loginsignup/widgets/forgotpasswordwidget.dart';
 
-class LoginWidget extends StatelessWidget {
+class LoginWidget extends StatefulWidget {
   LoginWidget({
     super.key,
     // required this.controller,
   });
-  // final TabController controller;
 
+  @override
+  State<LoginWidget> createState() => _LoginWidgetState();
+}
+
+class _LoginWidgetState extends State<LoginWidget> {
+  // final TabController controller;
   final _key = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -137,6 +149,8 @@ class LoginWidget extends StatelessWidget {
                 Constants.height15,
                 GestureDetector(
                   onTap: () {
+                    GoRouter.of(context)
+                                .pushReplacementNamed(MyAppRouteConstants.signup);
                     // controller.animateTo(1);
                   },
                   child: const Text(

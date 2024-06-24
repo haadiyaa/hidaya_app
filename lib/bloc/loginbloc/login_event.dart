@@ -28,9 +28,14 @@ class SignUpApi extends LoginEvent {
   List<Object?> get props => [user];
 }
 
-class CheckStatusEvent extends LoginEvent {
-  const CheckStatusEvent();
-}
-class LogoutEvent extends LoginEvent {
-  const LogoutEvent();
-}
+// class CheckStatusEvent extends LoginEvent {
+//   const CheckStatusEvent();
+// }
+// class LogoutEvent extends LoginEvent {
+//   const LogoutEvent();
+// }
+
+// class GetUserEvent extends LoginEvent {
+
+//   const GetUserEvent();
+// }

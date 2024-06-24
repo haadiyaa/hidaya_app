@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hidhayah/bloc/functionbloc/functions_bloc.dart';
 import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
+import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/gradient.dart';
@@ -12,22 +14,23 @@ import 'package:hidhayah/view/dashboard/widgets/dashheadleft.dart';
 import 'package:hidhayah/view/dashboard/widgets/dashheadright.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontainer.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontent.dart';
-import 'package:hidhayah/view/loginsignup/widgets/customtextfield.dart';
 
 class DashboardpageWrapper extends StatelessWidget {
   const DashboardpageWrapper({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<LoginBloc>(
-      create: (context) => LoginBloc(),
+    return BlocProvider<FunctionsBloc>(
+      create: (context) => FunctionsBloc(),
       child: DashBoardPage(),
     );
   }
 }
+
 class DashBoardPage extends StatelessWidget {
   DashBoardPage({super.key});
   final userNameController = TextEditingController();
+  late UserModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -50,12 +53,26 @@ class DashBoardPage extends StatelessWidget {
                           text: 'Salaam,',
                           style: TextStyles.dashboardHeadStyle,
                         ),
-                        BlocListener<LoginBloc, LoginState>(
+                        BlocListener<FunctionsBloc, FunctionsState>(
                           listener: (context, state) {
-                            if (state.loginStatus == LoginStatus.loggedIn) {
+                            if (state is Loading) {
+                              print('loading');
+                            }
+                            if (state is GetUserState) {
+                              user=state.user;
+                            }
+                            if (state.status==Status.loggedIn) {
                               GoRouter.of(context).pushNamed(
-                                  MyAppRouteConstants.profileRoute);
-                            } else {
+                                  MyAppRouteConstants.profileRoute,
+                                  // pathParameters: {
+                                  //   'name': 'hadiya',
+                                  //   'email': 'hadiya@gmail.com',
+                                  // }
+                                  );
+                              // context
+                              //     .read<LoginBloc>()
+                              //     .add(const GetUserEvent());
+                            } if(state.status==Status.notLoggedIn) {
                               GoRouter.of(context)
                                   .pushNamed(MyAppRouteConstants.loginRoute2);
                             }
@@ -63,7 +80,7 @@ class DashBoardPage extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               context
-                                  .read<LoginBloc>()
+                                  .read<FunctionsBloc>()
                                   .add(const CheckStatusEvent());
                               // Navigator.push(context, MaterialPageRoute(builder: (_)=>SignIn()));
                               // GoRouter.of(context)
@@ -185,8 +202,7 @@ class DashBoardPage extends StatelessWidget {
                                 padding: EdgeInsets.all(5),
                               ),
                               DashboardIcons(
-                                  text: 'Calendar',
-                                  image: Constants.calendar),
+                                  text: 'Calendar', image: Constants.calendar),
                               DashboardIcons(
                                   text: 'Masgid Near Me',
                                   image: Constants.mapIcon),
@@ -196,28 +212,17 @@ class DashBoardPage extends StatelessWidget {
                       ),
                     ),
                     Constants.height20,
-                    Container(
-                      padding: Constants.duaBoxPadd,
-                      width: size.width,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Constants.lightGreen,
-                      ),
-                      child: const Text('data'),
-                    ),
+                    // Container(
+                    //   padding: Constants.duaBoxPadd,
+                    //   width: size.width,
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.circular(10),
+                    //     color: Constants.lightGreen,
+                    //   ),
+                    //   child: const Text('data'),
+                    // ),
                   ],
                 ),
-              ),
-              CusomTextField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Plase enter something';
-                  }
-                  return null;
-                },
-                label: 'User Name',
-                controller: userNameController,
-                textInputType: TextInputType.name,
               ),
             ],
           ),

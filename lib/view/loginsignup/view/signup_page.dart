@@ -4,10 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
-import 'package:hidhayah/view/loginsignup/widgets/loginwidget.dart';
+import 'package:hidhayah/view/loginsignup/widgets/signup_widget.dart';
 
-class LoginPagee extends StatelessWidget {
-  const LoginPagee({super.key});
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,21 +23,17 @@ class LoginPagee extends StatelessWidget {
             icon: const Icon(Icons.cancel_outlined),
           ),
         ],
-        title: const Text('Sign In'),
+        title: Text('Sign Up'),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Center(
-              child: BlocProvider<LoginBloc>(
-                create: (context) => LoginBloc(),
-                child: LoginWidget(
-                    // controller: tabController,
-                    ),
-              ),
-            )
-          ],
-        ),
+        child: Column(children: [
+          Center(child: BlocProvider<LoginBloc>(
+            create: (context) => LoginBloc(),
+            child: SignUpWidget(
+                  // controller: tabController,
+                ),
+          ),)
+        ],),
       ),
     );
   }

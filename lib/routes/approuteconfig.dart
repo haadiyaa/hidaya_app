@@ -4,6 +4,7 @@ import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/view/dashboard/view/dashboardpage.dart';
 import 'package:hidhayah/view/loginsignup/view/login_page.dart';
 import 'package:hidhayah/view/loginsignup/view/loginpage.dart';
+import 'package:hidhayah/view/loginsignup/view/signup_page.dart';
 import 'package:hidhayah/view/profile/view/profilepage.dart';
 import 'package:hidhayah/view/qibladirection/view/qibladirectionpage.dart';
 
@@ -24,18 +25,25 @@ class MyAppRouter {
           return const MaterialPage(child: QiblaDir());
         },
       ),
-      GoRoute(
-        name: MyAppRouteConstants.loginRoute,
-        path: '/login',
-        pageBuilder: (context, state) {
-          return const MaterialPage(child: LoginPage());
-        },
-      ),
+      // GoRoute(
+      //   name: MyAppRouteConstants.loginRoute,
+      //   path: '/login',
+      //   pageBuilder: (context, state) {
+      //     return const MaterialPage(child: LoginPage());
+      //   },
+      // ),
       GoRoute(
         name: MyAppRouteConstants.loginRoute2,
         path: '/login2',
         pageBuilder: (context, state) {
           return const MaterialPage(child: LoginPagee());
+        },
+      ),
+      GoRoute(
+        name: MyAppRouteConstants.signup,
+        path: '/signup',
+        pageBuilder: (context, state) {
+          return const MaterialPage(child: SignUpPage());
         },
       ),
       GoRoute(
@@ -49,7 +57,9 @@ class MyAppRouter {
         name: MyAppRouteConstants.profileRoute,
         path: '/profile',
         pageBuilder: (context, state) {
-          return const MaterialPage(child: ProfilePageWrapper());
+          // final name=state.pathParameters['name'];
+          // final email=state.pathParameters['email'];
+          return MaterialPage(child: ProfilePageWrapper());
         },
       ),
     ],

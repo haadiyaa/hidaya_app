@@ -1,25 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
 import 'package:hidhayah/model/usermodel.dart';
+import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/loginsignup/widgets/custombutton.dart';
 import 'package:hidhayah/view/loginsignup/widgets/customtextfield.dart';
-import 'package:hidhayah/view/profile/view/profilepage.dart';
 
-class SignUpWidget extends StatelessWidget {
+class SignUpWidget extends StatefulWidget {
   SignUpWidget({
     super.key,
-    required this.controller,
+    // required this.controller,
   });
 
-  final TabController controller;
+  @override
+  State<SignUpWidget> createState() => _SignUpWidgetState();
+}
+
+class _SignUpWidgetState extends State<SignUpWidget> {
+  // final TabController controller;
   final _key = GlobalKey<FormState>();
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
   final TextEditingController pass2Controller = TextEditingController();
+
+  @override
+  void dispose() {
+    userNameController.dispose();
+    emailController.dispose();
+    passController.dispose();
+    pass2Controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +126,9 @@ class SignUpWidget extends StatelessWidget {
                         ..showSnackBar(
                           const SnackBar(content: Text('Sign up successfull!')),
                         );
-                      controller.animateTo(0);
+                      GoRouter.of(context).pushReplacementNamed(
+                          MyAppRouteConstants.loginRoute2);
+                      // controller.animateTo(0);
                     }
                     // else {
                     //   ScaffoldMessenger.of(context)
@@ -125,16 +142,16 @@ class SignUpWidget extends StatelessWidget {
                     text: 'Sign Up',
                     onPressed: () {
                       if (_key.currentState!.validate()) {
-                      final user = UserModel(
-                        email: emailController.text.trim(),
-                        name: userNameController.text.trim(),
-                        password: passController.text.trim(),
-                      );
-                      context.read<LoginBloc>().add(
-                            SignUpApi(
-                              user: user,
-                            ),
-                          );
+                        final user = UserModel(
+                          email: emailController.text.trim(),
+                          name: userNameController.text.trim(),
+                          password: passController.text.trim(),
+                        );
+                        context.read<LoginBloc>().add(
+                              SignUpApi(
+                                user: user,
+                              ),
+                            );
                       }
                     },
                   ),
@@ -142,7 +159,9 @@ class SignUpWidget extends StatelessWidget {
                 Constants.height15,
                 GestureDetector(
                   onTap: () {
-                    controller.animateTo(0);
+                    // controller.animateTo(0);
+                    GoRouter.of(context)
+                        .pushReplacementNamed(MyAppRouteConstants.loginRoute2);
                   },
                   child: const Text(
                     'Already have an account?  Sign In!',

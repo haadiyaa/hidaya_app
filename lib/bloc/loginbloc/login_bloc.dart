@@ -15,8 +15,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginState()) {
     on<LoginApi>(_loginApi);
     on<SignUpApi>(_signApi);
-    on<CheckStatusEvent>(_checkStatus);
-    on<LogoutEvent>(_logout);
+    // on<CheckStatusEvent>(_checkStatus);
+    // on<LogoutEvent>(_logout);
+    // on<GetUserEvent>(_getUser);
   }
 
   FutureOr<void> _loginApi(LoginApi event, Emitter<LoginState> emit) async {
@@ -71,7 +72,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       loginStatus: LoginStatus.loading,
     ));
     Map data = {
-      'username': event.user.name,
       'email': event.user.email,
       'password': event.user.password,
       'name': event.user.name,
@@ -87,9 +87,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       final data1 = jsonDecode(response.body);
       if (response.statusCode == 201) {
         emit(LoginState(
-            email: event.user.email,
-            password: event.user.password,
-            name: event.user.name));
+            email: event.user.email!,
+            password: event.user.password!,
+            name: event.user.name!));
         emit(state.copyWith(
           message: 'Sign Up Successfull!',
           loginStatus: LoginStatus.success,
@@ -109,24 +109,64 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }
   }
 
-  Future<void> _checkStatus(
-      CheckStatusEvent event, Emitter<LoginState> emit) async {
-    var sharedPref = await SharedPreferences.getInstance();
-    var isLoggedIn = sharedPref.getString(Constants.LOGINTOKEN);
-    if (isLoggedIn != null) {
-      if (isLoggedIn.isNotEmpty) {
-        emit(state.copyWith(loginStatus: LoginStatus.loggedIn));
-      } else {
-        emit(state.copyWith(loginStatus: LoginStatus.initial));
-      }
-    } else {
-      emit(state.copyWith(loginStatus: LoginStatus.initial));
-    }
-  }
+  // Future<void> _checkStatus(
+  //     CheckStatusEvent event, Emitter<LoginState> emit) async {
+  //   var sharedPref = await SharedPreferences.getInstance();
+  //   var isLoggedIn = sharedPref.getString(Constants.LOGINTOKEN);
+  //   if (isLoggedIn != null) {
+  //     print('sp; ${isLoggedIn}');
+  //     if (isLoggedIn.isNotEmpty) {
+  //       print('sp notempt $isLoggedIn');
+  //       emit(state.copyWith(loginStatus: LoginStatus.loggedIn));
+  //     } else {
+  //       print('sp empt $isLoggedIn');
+  //       emit(state.copyWith(loginStatus: LoginStatus.initial));
+  //     }
+  //   } else {
+  //     emit(state.copyWith(loginStatus: LoginStatus.initial));
+  //   }
+  // }
 
-  Future<void> _logout(LogoutEvent event, Emitter<LoginState> emit) async {
-    var sharedPref = await SharedPreferences.getInstance();
-    await sharedPref.remove(Constants.LOGINTOKEN);
-    emit(state.copyWith(loginStatus: LoginStatus.initial));
-  }
+  // Future<void> _logout(LogoutEvent event, Emitter<LoginState> emit) async {
+  //   var sharedPref = await SharedPreferences.getInstance();
+  //   await sharedPref.remove(Constants.LOGINTOKEN);
+  //   emit(state.copyWith(loginStatus: LoginStatus.initial));
+  // }
+
+  // Future<void> _getUser(GetUserEvent event, Emitter<LoginState> emit) async {
+  //   emit(Loading());
+  //   var sharedPref = await SharedPreferences.getInstance();
+  //   var isLoggedInToken = sharedPref.getString(Constants.LOGINTOKEN);
+  //   UserModel user;
+  //   if (isLoggedInToken != null) {
+  //     print('isLoggedin !=null $isLoggedInToken');
+
+  //     final Map<String, String>? header = {
+  //       'Content-Type': 'application/json',
+  //       'x-auth-token': isLoggedInToken,
+  //     };
+  //     try {
+  //       final response = await http.get(
+  //         Uri.parse('${Constants.url}${Constants.getUser}'),
+  //         headers: header,
+  //       );
+  //       print(response.body);
+  //       final data = jsonDecode(response.body);
+  //       if (response.statusCode == 200) {
+  //         user = UserModel.fromMap(data);
+  //         print('user name: ${user.name}');
+  //         emit(GetUserState(user: user));
+  //         print('success');
+  //       } else {
+  //         emit(GetUserErrorState(msg: data['msg']));
+  //         print('not success');
+  //       }
+  //     } catch (e) {
+  //       print('excetion $e');
+  //       emit(GetUserErrorState(msg: e.toString()));
+  //     }
+  //   } else {
+  //     print('isloggedin null');
+  //   }
+  // }
 }
