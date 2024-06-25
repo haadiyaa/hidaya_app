@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
+import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
@@ -128,16 +129,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                         ..showSnackBar(
                           const SnackBar(content: Text('Sign in successfull!')),
                         );
+                        final user=UserModel(name: state.name,email: state.email);
                         GoRouter.of(context)
-                                .goNamed(MyAppRouteConstants.profileRoute);
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (_) => ProfilePage()));
+                                .pushReplacementNamed(MyAppRouteConstants.profileRoute,extra: user);
                     }
                   },
                   child: CustomButton(
                     size: size,
                     text: 'Sign In',
                     onPressed: () {
+                      FocusManager.instance.primaryFocus?.unfocus();
                       if (_key.currentState!.validate()) {
                         context.read<LoginBloc>().add(LoginApi(
                             email: emailController.text.trim(),
@@ -150,8 +151,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 GestureDetector(
                   onTap: () {
                     GoRouter.of(context)
-                                .goNamed(MyAppRouteConstants.signup);
-                    // controller.animateTo(1);
+                                .pushReplacementNamed(MyAppRouteConstants.signup);
                   },
                   child: const Text(
                     'Don\'t have an account?  Register Now!',

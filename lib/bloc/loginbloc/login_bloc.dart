@@ -24,6 +24,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(state.copyWith(
       loginStatus: LoginStatus.loading,
     ));
+    UserModel user;
     var sharedPref = await SharedPreferences.getInstance();
     Map data = {
       "email": event.email,
@@ -38,14 +39,33 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       print(response.body);
       final data1 = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        await sharedPref
-            .setString(Constants.LOGINTOKEN, data1['token'].toString())
-            .then(
-              (value) => emit(LoginState(
-                email: event.email,
-                password: event.password,
-              )),
-            );
+        await sharedPref.setString(
+            Constants.LOGINTOKEN, data1['token'].toString());
+        final Map<String, String>? header = {
+          'Content-Type': 'application/json',
+          'x-auth-token': data1['token'],
+        };
+        final response = await http.get(
+          Uri.parse('${Constants.url}${Constants.getUser}'),
+          headers: header,
+        );
+        print(response.body);
+        final data = jsonDecode(response.body);
+        if (response.statusCode == 200) {
+          user = UserModel.fromMap(data);
+          print('user name: ${user.name}');
+
+          // emit(GetUserState(user: user));
+          emit(state.copyWith(name: user.name, email: user.email));
+          emit(LoginState(
+            name: user.name!,
+            email: event.email,
+            password: event.password,
+          ));
+        } else {
+          print('error getting user data');
+          print('not success');
+        }
 
         emit(state.copyWith(
           message: 'Login Successfull!',
@@ -108,65 +128,4 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       ));
     }
   }
-
-  // Future<void> _checkStatus(
-  //     CheckStatusEvent event, Emitter<LoginState> emit) async {
-  //   var sharedPref = await SharedPreferences.getInstance();
-  //   var isLoggedIn = sharedPref.getString(Constants.LOGINTOKEN);
-  //   if (isLoggedIn != null) {
-  //     print('sp; ${isLoggedIn}');
-  //     if (isLoggedIn.isNotEmpty) {
-  //       print('sp notempt $isLoggedIn');
-  //       emit(state.copyWith(loginStatus: LoginStatus.loggedIn));
-  //     } else {
-  //       print('sp empt $isLoggedIn');
-  //       emit(state.copyWith(loginStatus: LoginStatus.initial));
-  //     }
-  //   } else {
-  //     emit(state.copyWith(loginStatus: LoginStatus.initial));
-  //   }
-  // }
-
-  // Future<void> _logout(LogoutEvent event, Emitter<LoginState> emit) async {
-  //   var sharedPref = await SharedPreferences.getInstance();
-  //   await sharedPref.remove(Constants.LOGINTOKEN);
-  //   emit(state.copyWith(loginStatus: LoginStatus.initial));
-  // }
-
-  // Future<void> _getUser(GetUserEvent event, Emitter<LoginState> emit) async {
-  //   emit(Loading());
-  //   var sharedPref = await SharedPreferences.getInstance();
-  //   var isLoggedInToken = sharedPref.getString(Constants.LOGINTOKEN);
-  //   UserModel user;
-  //   if (isLoggedInToken != null) {
-  //     print('isLoggedin !=null $isLoggedInToken');
-
-  //     final Map<String, String>? header = {
-  //       'Content-Type': 'application/json',
-  //       'x-auth-token': isLoggedInToken,
-  //     };
-  //     try {
-  //       final response = await http.get(
-  //         Uri.parse('${Constants.url}${Constants.getUser}'),
-  //         headers: header,
-  //       );
-  //       print(response.body);
-  //       final data = jsonDecode(response.body);
-  //       if (response.statusCode == 200) {
-  //         user = UserModel.fromMap(data);
-  //         print('user name: ${user.name}');
-  //         emit(GetUserState(user: user));
-  //         print('success');
-  //       } else {
-  //         emit(GetUserErrorState(msg: data['msg']));
-  //         print('not success');
-  //       }
-  //     } catch (e) {
-  //       print('excetion $e');
-  //       emit(GetUserErrorState(msg: e.toString()));
-  //     }
-  //   } else {
-  //     print('isloggedin null');
-  //   }
-  // }
 }

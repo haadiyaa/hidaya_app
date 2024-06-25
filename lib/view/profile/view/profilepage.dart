@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hidhayah/bloc/functionbloc/functions_bloc.dart';
-import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
 import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
@@ -11,11 +10,7 @@ import 'package:hidhayah/view/profile/widgets/customprofilebutton.dart';
 class ProfilePageWrapper extends StatelessWidget {
   const ProfilePageWrapper({
     super.key, required this.userModel,
-    // this.name,
-    // this.email,
   });
-  // final String? name;
-  // final String? email;
   final UserModel userModel;
 
   @override
@@ -24,21 +19,15 @@ class ProfilePageWrapper extends StatelessWidget {
       create: (context) => FunctionsBloc(),
       child: ProfilePage(
         userModel: userModel,
-          // name: name,
-          // email: email,
           ),
     );
   }
 }
 
 class ProfilePage extends StatefulWidget {
-  // final String? name;
-  // final String? email;
   final UserModel userModel;
   const ProfilePage({
     super.key, required this.userModel,
-    // this.name,
-    // this.email,
   });
 
   @override
@@ -52,10 +41,6 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     super.initState();
     user=widget.userModel;
-    // user = UserModel(
-    //   name: widget.name,
-    //   email: widget.email,
-    // );
   }
 
   @override
@@ -64,6 +49,15 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: Constants.greenDark,
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              GoRouter.of(context).pop();
+            },
+            icon: const Icon(Icons.cancel_outlined),
+          ),
+        ],
+        automaticallyImplyLeading: false,
         title: const Text('profile'),
       ),
       body: Column(
@@ -82,13 +76,6 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             child: Column(
               children: [
-                // Container(
-                //   decoration: const BoxDecoration(
-                //       shape: BoxShape.circle, color: Colors.amber),
-                //   clipBehavior: Clip.antiAlias,
-                //   height: 100,
-                //   width: 100,
-                // ),
                  Text(
                    user.name??'no name',
                   style: const TextStyle(
@@ -141,8 +128,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         ..showSnackBar(
                           const SnackBar(content: Text('Signed Out')),
                         );
-                      GoRouter.of(context).pushReplacementNamed(
-                          MyAppRouteConstants.loginRoute2);
+                      GoRouter.of(context).goNamed(
+                          MyAppRouteConstants.loginRoute);
                     }
                   },
                   child: CustomProfileButton(

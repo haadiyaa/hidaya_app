@@ -23,4 +23,8 @@ class TextStyles {
   static const TextStyle forgottextFieldStyle =  TextStyle(color: Constants.white,fontWeight: FontWeight.bold);
   static const TextStyle loginfooterStyle =  TextStyle(fontWeight: FontWeight.w300);
 
+  //================================tasbihpage=====================================
+  static const TextStyle tasbihButtonStyle =  TextStyle(fontWeight: FontWeight.bold);
+  static  TextStyle tasbihCounterStyle =  TextStyle(fontWeight: FontWeight.w600,fontSize: 40.sp);
+
 }

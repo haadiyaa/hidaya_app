@@ -126,21 +126,15 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         ..showSnackBar(
                           const SnackBar(content: Text('Sign up successfull!')),
                         );
-                      GoRouter.of(context).goNamed(
-                          MyAppRouteConstants.loginRoute2);
-                      // controller.animateTo(0);
+                      GoRouter.of(context).pushReplacementNamed(
+                          MyAppRouteConstants.loginRoute);
                     }
-                    // else {
-                    //   ScaffoldMessenger.of(context)
-                    //   ..hideCurrentSnackBar()
-                    //   ..showSnackBar(const SnackBar(
-                    //       content: Text('Sign up not successfull!')));
-                    // }
                   },
                   child: CustomButton(
                     size: size,
                     text: 'Sign Up',
                     onPressed: () {
+                      FocusManager.instance.primaryFocus?.unfocus();
                       if (_key.currentState!.validate()) {
                         final user = UserModel(
                           email: emailController.text.trim(),
@@ -159,9 +153,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                 Constants.height15,
                 GestureDetector(
                   onTap: () {
-                    // controller.animateTo(0);
                     GoRouter.of(context)
-                        .goNamed(MyAppRouteConstants.loginRoute2);
+                        .pushReplacementNamed(MyAppRouteConstants.loginRoute);
                   },
                   child: const Text(
                     'Already have an account?  Sign In!',

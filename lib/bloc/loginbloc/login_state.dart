@@ -35,3 +35,8 @@ class LoginState extends Equatable {
   List<Object?> get props => [email, password, message, loginStatus,name];
 }
 
+class GetUserState extends LoginState {
+  final UserModel user;
+
+  const GetUserState({required this.user});
+}
