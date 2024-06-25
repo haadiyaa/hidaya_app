@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hidhayah/bloc/tasbihbloc/tasbih_bloc.dart';
+import 'package:hidhayah/bloc/bloc/tasbih_bloc.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
-import 'package:hidhayah/view/tasbihpage/widgets/customtasbihbutton.dart';
+import 'package:hidhayah/view/tasbihpage.dart/widgets/customtasbihbutton.dart';
 
 class TasbihPageWrapper extends StatelessWidget {
   const TasbihPageWrapper({super.key});
@@ -26,6 +26,8 @@ class TasbihPage extends StatefulWidget {
 
 class _TasbihPageState extends State<TasbihPage> {
   String initialValue = '33';
+  String value = '0';
+  String loop = '0';
 
   final List<DropdownMenuItem<dynamic>> _items = [
     DropdownMenuItem(
@@ -55,48 +57,55 @@ class _TasbihPageState extends State<TasbihPage> {
       body: SizedBox(
         height: size.height,
         width: size.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Row(
+        child: BlocBuilder<TasbihBloc, TasbihState>(
+          builder: (context, state) {
+            if (state is TapState) {
+              width = state.width;
+              height = state.height;
+            }
+            if (state is IncrementState) {
+              value = state.value.toString();
+              loop = state.loop.toString();
+            }
+            if (state is DropdownChangeState) {
+              initialValue=state.value.toString();
+            }
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                DropdownButton(
-                  elevation: 10,
-                  borderRadius: BorderRadius.circular(20),
-                  dropdownColor: Constants.greenLight,
-                  value: initialValue,
-                  items: _items,
-                  onChanged: (value) {
-                    setState(() {
-                      initialValue = value;
-                    });
-                  },
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    DropdownButton(
+                      elevation: 10,
+                      borderRadius: BorderRadius.circular(20),
+                      dropdownColor: Constants.greenLight,
+                      value: initialValue,
+                      items: _items,
+                      onChanged: (value) {
+                        context.read<TasbihBloc>().add(DropdownChangedEvent(value: int.parse(value.toString())));
+                        
+                      },
+                    ),
+                    Text('Loop $loop'),
+                    CustomTasbihButton(
+                      onPressed: () {
+                        context.read<TasbihBloc>().add(ResetEvent());
+                      },
+                      text: 'Reset',
+                    ),
+                  ],
                 ),
-                const Text('Loop 0'),
-                CustomTasbihButton(
-                  onPressed: () {},
-                  text: 'Reset',
-                ),
-              ],
-            ),
-            Constants.height20,
-            BlocBuilder<TasbihBloc, TasbihState>(
-              buildWhen: (previous, current) {
-                return previous != current;
-              },
-              builder: (context, state) {
-                if (state is TapState) {
-                  width = state.width;
-                  height = state.height;
-                }
-                return GestureDetector(
+                Constants.height20,
+                GestureDetector(
                   onTap: () {
                     context.read<TasbihBloc>().add(TapEvent(ctx: context));
+                    context.read<TasbihBloc>().add(
+                        IncreaseCounterEvent(value: int.parse(initialValue)));
                   },
                   child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 500),
+                    duration: const Duration(milliseconds: 100),
                     curve: Curves.ease,
                     width: width,
                     height: height,
@@ -107,16 +116,16 @@ class _TasbihPageState extends State<TasbihPage> {
                     ),
                     child: Center(
                       child: Text(
-                        '0',
+                        value,
                         style: TextStyles.tasbihCounterStyle,
                       ),
                     ),
                   ),
-                );
-              },
-            ),
-            Constants.height20,
-          ],
+                ),
+                Constants.height20,
+              ],
+            );
+          },
         ),
       ),
     );

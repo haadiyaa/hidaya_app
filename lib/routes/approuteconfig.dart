@@ -7,7 +7,7 @@ import 'package:hidhayah/view/loginsignup/view/login_page.dart';
 import 'package:hidhayah/view/loginsignup/view/signup_page.dart';
 import 'package:hidhayah/view/profile/view/profilepage.dart';
 import 'package:hidhayah/view/qibladirection/view/qibladirectionpage.dart';
-import 'package:hidhayah/view/tasbihpage/view/tasbihpage.dart';
+import 'package:hidhayah/view/tasbihpage.dart/view/tasbihpage.dart';
 
 class MyAppRouter {
   GoRouter router = GoRouter(
