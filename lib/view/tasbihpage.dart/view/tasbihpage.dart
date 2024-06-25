@@ -70,6 +70,10 @@ class _TasbihPageState extends State<TasbihPage> {
             if (state is DropdownChangeState) {
               initialValue=state.value.toString();
             }
+            if (state is ResetState) {
+              loop=state.loop.toString();
+              value=state.value.toString();
+            }
             return Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

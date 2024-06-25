@@ -20,6 +20,14 @@ class IncrementState extends TasbihState {
      this.loop,
   });
 }
+class ResetState extends TasbihState {
+  int value;
+  int? loop;
+  ResetState({
+    required this.value,
+     this.loop,
+  });
+}
 class DropdownChangeState extends TasbihState {
   int value;
   DropdownChangeState({

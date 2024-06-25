@@ -44,8 +44,9 @@ class TasbihBloc extends Bloc<TasbihEvent, TasbihState> {
   }
 
   FutureOr<void> _reset(ResetEvent event, Emitter<TasbihState> emit) {
-    
-    emit(IncrementState(value: 0,loop: 0));
+    initial=0;
+    loop=0;
+    emit(ResetState(value: initial,loop: loop));
   }
 
   FutureOr<void> _dropdown(DropdownChangedEvent event, Emitter<TasbihState> emit) {
