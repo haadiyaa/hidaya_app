@@ -5,6 +5,7 @@ import 'package:hidhayah/bloc/functionbloc/functions_bloc.dart';
 import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
+import 'package:hidhayah/view/dashboard/view/dashboardpage.dart';
 import 'package:hidhayah/view/profile/widgets/customprofilebutton.dart';
 
 class ProfilePageWrapper extends StatelessWidget {
@@ -52,7 +53,8 @@ class _ProfilePageState extends State<ProfilePage> {
         actions: [
           IconButton(
             onPressed: () {
-              GoRouter.of(context).pop();
+              Navigator.pushReplacement(context,MaterialPageRoute(builder: (_)=>DashboardpageWrapper()));
+              // GoRouter.of(context).pop();
             },
             icon: const Icon(Icons.cancel_outlined),
           ),
@@ -128,8 +130,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         ..showSnackBar(
                           const SnackBar(content: Text('Signed Out')),
                         );
-                      GoRouter.of(context).goNamed(
-                          MyAppRouteConstants.loginRoute);
+                        Navigator.pop(context);
+                      // GoRouter.of(context).goNamed(
+                      //     MyAppRouteConstants.loginRoute);
                     }
                   },
                   child: CustomProfileButton(

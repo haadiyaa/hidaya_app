@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
 part 'tasbih_event.dart';
@@ -30,7 +30,7 @@ class TasbihBloc extends Bloc<TasbihEvent, TasbihState> {
 
   Future<void> _increase(
       IncreaseCounterEvent event, Emitter<TasbihState> emit) async {
-    if (event.value +1== initial) {
+    if (event.value + 1 == initial) {
       initial = 0;
       loop++;
     }
@@ -44,12 +44,13 @@ class TasbihBloc extends Bloc<TasbihEvent, TasbihState> {
   }
 
   FutureOr<void> _reset(ResetEvent event, Emitter<TasbihState> emit) {
-    initial=0;
-    loop=0;
-    emit(ResetState(value: initial,loop: loop));
+    initial = 0;
+    loop = 0;
+    emit(ResetState(value: initial, loop: loop));
   }
 
-  FutureOr<void> _dropdown(DropdownChangedEvent event, Emitter<TasbihState> emit) {
+  FutureOr<void> _dropdown(
+      DropdownChangedEvent event, Emitter<TasbihState> emit) {
     emit(DropdownChangeState(value: event.value));
   }
 }

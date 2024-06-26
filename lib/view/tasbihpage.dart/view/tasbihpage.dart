@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hidhayah/bloc/bloc/tasbih_bloc.dart';
+import 'package:hidhayah/bloc/tasbihbloc/tasbih_bloc.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/tasbihpage.dart/widgets/customtasbihbutton.dart';

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Constants {
-  //===================token====================
+  //===================sharedpref====================
   static const String LOGINTOKEN='loginToken';
+  static const String count='count';
   //======================API====================
   static String url='https://quiz-world-ruddy.vercel.app';
   static String register='/api/users/register';

@@ -6,14 +6,15 @@ import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
+import 'package:hidhayah/view/loginsignup/view/signup_page.dart';
 import 'package:hidhayah/view/loginsignup/widgets/custombutton.dart';
 import 'package:hidhayah/view/loginsignup/widgets/customtextfield.dart';
 import 'package:hidhayah/view/loginsignup/widgets/forgotpasswordwidget.dart';
+import 'package:hidhayah/view/profile/view/profilepage.dart';
 
 class LoginWidget extends StatefulWidget {
-  LoginWidget({
+  const LoginWidget({
     super.key,
-    // required this.controller,
   });
 
   @override
@@ -21,7 +22,6 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  // final TabController controller;
   final _key = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
@@ -130,8 +130,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                           const SnackBar(content: Text('Sign in successfull!')),
                         );
                         final user=UserModel(name: state.name,email: state.email);
-                        GoRouter.of(context)
-                                .pushReplacementNamed(MyAppRouteConstants.profileRoute,extra: user);
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>ProfilePageWrapper(userModel: user)));
+                        // GoRouter.of(context)
+                        //         .pushReplacementNamed(MyAppRouteConstants.profileRoute,extra: user);
                     }
                   },
                   child: CustomButton(
@@ -150,8 +151,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                 Constants.height15,
                 GestureDetector(
                   onTap: () {
-                    GoRouter.of(context)
-                                .pushReplacementNamed(MyAppRouteConstants.signup);
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>SignUpPage()));
+                    // GoRouter.of(context)
+                    //             .pushReplacementNamed(MyAppRouteConstants.signup);
                   },
                   child: const Text(
                     'Don\'t have an account?  Register Now!',

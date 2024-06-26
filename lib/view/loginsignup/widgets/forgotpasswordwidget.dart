@@ -53,7 +53,6 @@ class ForgotPasswordWidget extends StatelessWidget {
             text: 'Send Mail',
             onPressed: () {
               if (_key.currentState!.validate()) {
-                // GoRouter.of(context).pop();
               }
             },
           ),

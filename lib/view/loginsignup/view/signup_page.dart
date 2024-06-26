@@ -17,7 +17,8 @@ class SignUpPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              GoRouter.of(context).pop();
+              Navigator.pop(context);
+              // GoRouter.of(context).pop();
             },
             icon: const Icon(Icons.cancel_outlined),
           ),

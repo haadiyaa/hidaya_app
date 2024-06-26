@@ -13,10 +13,10 @@ class FunctionsBloc extends Bloc<FunctionsEvent, FunctionsState> {
   FunctionsBloc() : super(FunctionsInitial()) {
     on<CheckStatusEvent>(_checkStatus);
     on<LogoutEvent>(_logout);
-    // on<GetUserEvent>(_getUser);
   }
   Future<void> _checkStatus(
       CheckStatusEvent event, Emitter<FunctionsState> emit) async {
+        emit(state.copyWith(status: Status.loading));
     var sharedPref = await SharedPreferences.getInstance();
     var isLoggedIn = sharedPref.getString(Constants.LOGINTOKEN);
     UserModel user;
@@ -39,16 +39,20 @@ class FunctionsBloc extends Bloc<FunctionsEvent, FunctionsState> {
           if (response.statusCode == 200) {
             user = UserModel.fromMap(data);
             print('user name: ${user.name}');
-            emit(GetUserState(user: user));
+            // emit(GetUserState(user: user));
+            // emit(state.copyWith(user:user));
             print('success');
-            emit(state.copyWith(status: Status.loggedIn));
+            emit(state.copyWith(status: Status.loggedIn,user: user));
           } else {
+
             emit(GetUserErrorState(msg: data['msg']));
+            emit(state.copyWith(status: Status.notLoggedIn));
             print('not success');
           }
         } catch (e) {
           print('excetion $e');
           emit(GetUserErrorState(msg: e.toString()));
+          emit(state.copyWith(status: Status.notLoggedIn));
         }
       } else {
         print('sp empt $isLoggedIn');
@@ -60,47 +64,9 @@ class FunctionsBloc extends Bloc<FunctionsEvent, FunctionsState> {
   }
 
   Future<void> _logout(LogoutEvent event, Emitter<FunctionsState> emit) async {
+    emit(state.copyWith(status: Status.loading));
     var sharedPref = await SharedPreferences.getInstance();
     await sharedPref.remove(Constants.LOGINTOKEN);
     emit(state.copyWith(status: Status.notLoggedIn));
   }
-
-  // Future<void> _getUser(
-  //     GetUserEvent event, Emitter<FunctionsState> emit) async {
-  //   emit(const Loading());
-
-  //   var sharedPref = await SharedPreferences.getInstance();
-  //   var isLoggedInToken = sharedPref.getString(Constants.LOGINTOKEN);
-  //   UserModel user;
-
-  //   if (isLoggedInToken != null) {
-  //     print('isLoggedin !=null $isLoggedInToken');
-  //     final Map<String, String>? header = {
-  //       'Content-Type': 'application/json',
-  //       'x-auth-token': isLoggedInToken,
-  //     };
-  //     try {
-  //       final response = await http.get(
-  //         Uri.parse('${Constants.url}${Constants.getUser}'),
-  //         headers: header,
-  //       );
-  //       print(response.body);
-  //       final data = jsonDecode(response.body);
-  //       if (response.statusCode == 200) {
-  //         user = UserModel.fromMap(data);
-  //         print('user name: ${user.name}');
-  //         emit(GetUserState(user: user));
-  //         print('success');
-  //       } else {
-  //         emit(GetUserErrorState(msg: data['msg']));
-  //         print('not success');
-  //       }
-  //     } catch (e) {
-  //       print('excetion $e');
-  //       emit(GetUserErrorState(msg: e.toString()));
-  //     }
-  //   } else {
-  //     print('isloggedin null');
-  //   }
-  // }
 }

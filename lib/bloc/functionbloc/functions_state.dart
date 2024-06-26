@@ -1,26 +1,23 @@
 part of 'functions_bloc.dart';
 
-enum Status{notLoggedIn,loggedIn,loading}
+enum Status { notLoggedIn, loggedIn, loading }
 
- class FunctionsState {
-  const FunctionsState({this.status=Status.notLoggedIn});
+class FunctionsState {
+  const FunctionsState(
+      {this.user ,
+      this.status = Status.notLoggedIn});
   final Status status;
-
+  final UserModel? user;
   FunctionsState copyWith({
     Status? status,
+    UserModel? user
   }) {
-    return FunctionsState(status: status??this.status,);
+    return FunctionsState(
+        status: status ?? this.status, user: user ?? this.user);
   }
 }
 
 final class FunctionsInitial extends FunctionsState {}
-
-class CheckstatusState extends FunctionsState {
-  
-  
-
-  CheckstatusState();
-}
 
 class Loading extends FunctionsState {
   const Loading();

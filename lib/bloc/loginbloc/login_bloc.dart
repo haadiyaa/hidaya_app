@@ -15,9 +15,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc() : super(LoginState()) {
     on<LoginApi>(_loginApi);
     on<SignUpApi>(_signApi);
-    // on<CheckStatusEvent>(_checkStatus);
-    // on<LogoutEvent>(_logout);
-    // on<GetUserEvent>(_getUser);
+    on<ForgotPasswordEvent>(_forgotPass);
   }
 
   FutureOr<void> _loginApi(LoginApi event, Emitter<LoginState> emit) async {
@@ -127,5 +125,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         loginStatus: LoginStatus.error,
       ));
     }
+  }
+
+  FutureOr<void> _forgotPass(ForgotPasswordEvent event, Emitter<LoginState> emit) {
+    
   }
 }

@@ -6,6 +6,7 @@ import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
+import 'package:hidhayah/view/loginsignup/view/login_page.dart';
 import 'package:hidhayah/view/loginsignup/widgets/custombutton.dart';
 import 'package:hidhayah/view/loginsignup/widgets/customtextfield.dart';
 
@@ -126,8 +127,9 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         ..showSnackBar(
                           const SnackBar(content: Text('Sign up successfull!')),
                         );
-                      GoRouter.of(context).pushReplacementNamed(
-                          MyAppRouteConstants.loginRoute);
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>LoginPagee()));
+                      // GoRouter.of(context).pushReplacementNamed(
+                      //     MyAppRouteConstants.loginRoute);
                     }
                   },
                   child: CustomButton(
@@ -153,8 +155,9 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                 Constants.height15,
                 GestureDetector(
                   onTap: () {
-                    GoRouter.of(context)
-                        .pushReplacementNamed(MyAppRouteConstants.loginRoute);
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>LoginPagee()));
+                    // GoRouter.of(context)
+                    //     .pushReplacementNamed(MyAppRouteConstants.loginRoute);
                   },
                   child: const Text(
                     'Already have an account?  Sign In!',

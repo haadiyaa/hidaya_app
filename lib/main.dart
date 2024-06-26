@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hidhayah/routes/approuteconfig.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
+import 'package:hidhayah/view/dashboard/view/dashboardpage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,16 +13,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final size=MediaQuery.of(context).size;
-    final MyAppRouter myAppRouter = MyAppRouter();
+    final size=MediaQuery.of(context).size;
     return ScreenUtilInit(
       // designSize: const Size(360,690),
       // minTextAdapt: true,
       // splitScreenMode: true,
-      builder: (context, child) => MaterialApp.router(
-        routerConfig: myAppRouter.router,
-        // routeInformationParser: myAppRouter.router.routeInformationParser,
-        // routerDelegate: myAppRouter.router.routerDelegate,
+      builder: (context, child) => MaterialApp(
         theme: ThemeData(
           textTheme: Typography.whiteCupertino,
           appBarTheme: const AppBarTheme(
@@ -34,9 +31,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        // home: child,
+        home: child,
       ),
-      // child:const DashBoardPage(),
+      child:const DashboardpageWrapper(),
     );
   }
 }
