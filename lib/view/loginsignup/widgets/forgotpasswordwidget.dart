@@ -1,5 +1,6 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/view/loginsignup/widgets/customlightbutton.dart';
 import 'package:hidhayah/view/loginsignup/widgets/forgottextfield.dart';
@@ -31,6 +32,7 @@ class ForgotPasswordWidget extends StatelessWidget {
         ],
       ),
       child: Form(
+        key: _key,
           child: Column(
         children: [
           const Text('Reset your password to regain access to your account.'),
@@ -48,13 +50,26 @@ class ForgotPasswordWidget extends StatelessWidget {
             textInputType: TextInputType.name,
           ),
           Constants.height10,
-          CustomLightButton(
-            size: size,
-            text: 'Send Mail',
-            onPressed: () {
-              if (_key.currentState!.validate()) {
-              }
+          BlocListener<LoginBloc, LoginState>(
+            listener: (context, state) {
+              ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar()
+                ..showSnackBar(
+                  SnackBar(content: Text(state.message.toString())),
+                );
             },
+            child: CustomLightButton(
+              size: size,
+              text: 'Send Mail',
+              onPressed: () {
+                FocusManager.instance.primaryFocus?.unfocus();
+                if (_key.currentState!.validate()) {
+                  context.read<LoginBloc>().add(
+                      ForgotPasswordEvent(email: emailController.text.trim()));
+                  Navigator.pop(context);
+                }
+              },
+            ),
           ),
         ],
       )),

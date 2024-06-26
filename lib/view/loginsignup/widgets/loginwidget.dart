@@ -90,7 +90,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 backgroundColor: Constants.greenLight,
                                 onClosing: () {},
                                 builder: (context) {
-                                  return ForgotPasswordWidget(size: size);
+                                  return BlocProvider(
+                                    create: (context) => LoginBloc(),
+                                    child: ForgotPasswordWidget(size: size),
+                                  );
                                 },
                               ),
                             );
@@ -129,10 +132,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                         ..showSnackBar(
                           const SnackBar(content: Text('Sign in successfull!')),
                         );
-                        final user=UserModel(name: state.name,email: state.email);
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>ProfilePageWrapper(userModel: user)));
-                        // GoRouter.of(context)
-                        //         .pushReplacementNamed(MyAppRouteConstants.profileRoute,extra: user);
+                      final user =
+                          UserModel(name: state.name, email: state.email);
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) =>
+                                  ProfilePageWrapper(userModel: user)));
+                      // GoRouter.of(context)
+                      //         .pushReplacementNamed(MyAppRouteConstants.profileRoute,extra: user);
                     }
                   },
                   child: CustomButton(
@@ -151,7 +159,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                 Constants.height15,
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>SignUpPage()));
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (_) => SignUpPage()));
                     // GoRouter.of(context)
                     //             .pushReplacementNamed(MyAppRouteConstants.signup);
                   },

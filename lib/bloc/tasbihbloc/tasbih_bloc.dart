@@ -2,12 +2,15 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:hidhayah/utils/constants/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'tasbih_event.dart';
 part 'tasbih_state.dart';
 
 class TasbihBloc extends Bloc<TasbihEvent, TasbihState> {
   int initial = 0;
+
   int loop = 0;
   TasbihBloc() : super(TasbihInitial()) {
     on<TapEvent>(_tap);
@@ -30,9 +33,14 @@ class TasbihBloc extends Bloc<TasbihEvent, TasbihState> {
 
   Future<void> _increase(
       IncreaseCounterEvent event, Emitter<TasbihState> emit) async {
+    var sharedPref = await SharedPreferences.getInstance();
     if (event.value + 1 == initial) {
       initial = 0;
       loop++;
+    }
+    var count = sharedPref.getInt(Constants.count);
+    if (count != null) {
+      initial = count;
     }
     await Future.delayed(
       const Duration(milliseconds: 200),
@@ -41,11 +49,15 @@ class TasbihBloc extends Bloc<TasbihEvent, TasbihState> {
         loop: loop,
       )),
     );
+    sharedPref.setInt(Constants.count, initial);
   }
 
-  FutureOr<void> _reset(ResetEvent event, Emitter<TasbihState> emit) {
+  Future<void> _reset(ResetEvent event, Emitter<TasbihState> emit) async {
+    var sharedPref = await SharedPreferences.getInstance();
+
     initial = 0;
     loop = 0;
+    sharedPref.setInt(Constants.count, initial);
     emit(ResetState(value: initial, loop: loop));
   }
 
