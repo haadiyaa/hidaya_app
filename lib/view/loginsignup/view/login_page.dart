@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/view/loginsignup/widgets/loginwidget.dart';
@@ -18,7 +17,6 @@ class LoginPagee extends StatelessWidget {
           IconButton(
             onPressed: () {
               Navigator.pop(context);
-              // GoRouter.of(context).pop();
             },
             icon: const Icon(Icons.cancel_outlined),
           ),
@@ -31,7 +29,7 @@ class LoginPagee extends StatelessWidget {
             Center(
               child: BlocProvider<LoginBloc>(
                 create: (context) => LoginBloc(),
-                child: LoginWidget(),
+                child: const LoginWidget(),
               ),
             )
           ],

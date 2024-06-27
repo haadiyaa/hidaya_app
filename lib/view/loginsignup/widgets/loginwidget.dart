@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
 import 'package:hidhayah/model/usermodel.dart';
-import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/loginsignup/view/signup_page.dart';
@@ -157,7 +155,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 GestureDetector(
                   onTap: () {
                     Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (_) => SignUpPage()));
+                        MaterialPageRoute(builder: (_) => const SignUpPage()));
                     // GoRouter.of(context)
                     //             .pushReplacementNamed(MyAppRouteConstants.signup);
                   },

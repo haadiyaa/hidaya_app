@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
 import 'package:hidhayah/model/usermodel.dart';
-import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/loginsignup/view/login_page.dart';
@@ -11,9 +9,8 @@ import 'package:hidhayah/view/loginsignup/widgets/custombutton.dart';
 import 'package:hidhayah/view/loginsignup/widgets/customtextfield.dart';
 
 class SignUpWidget extends StatefulWidget {
-  SignUpWidget({
+  const SignUpWidget({
     super.key,
-    // required this.controller,
   });
 
   @override
@@ -21,7 +18,6 @@ class SignUpWidget extends StatefulWidget {
 }
 
 class _SignUpWidgetState extends State<SignUpWidget> {
-  // final TabController controller;
   final _key = GlobalKey<FormState>();
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -127,7 +123,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         ..showSnackBar(
                           const SnackBar(content: Text('Sign up successfull!')),
                         );
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>LoginPagee()));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>const LoginPagee()));
                       // GoRouter.of(context).pushReplacementNamed(
                       //     MyAppRouteConstants.loginRoute);
                     }
@@ -155,7 +151,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                 Constants.height15,
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>LoginPagee()));
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>const LoginPagee()));
                     // GoRouter.of(context)
                     //     .pushReplacementNamed(MyAppRouteConstants.loginRoute);
                   },

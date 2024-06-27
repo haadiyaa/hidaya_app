@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hidhayah/bloc/functionbloc/functions_bloc.dart';
 import 'package:hidhayah/model/usermodel.dart';
-import 'package:hidhayah/routes/approuteconst.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/view/dashboard/view/dashboardpage.dart';
 import 'package:hidhayah/view/profile/widgets/customprofilebutton.dart';
@@ -53,8 +51,7 @@ class _ProfilePageState extends State<ProfilePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushReplacement(context,MaterialPageRoute(builder: (_)=>DashboardpageWrapper()));
-              // GoRouter.of(context).pop();
+              Navigator.pushReplacement(context,MaterialPageRoute(builder: (_)=>const DashboardpageWrapper()));
             },
             icon: const Icon(Icons.cancel_outlined),
           ),

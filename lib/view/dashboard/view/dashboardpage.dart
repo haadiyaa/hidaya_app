@@ -16,7 +16,6 @@ import 'package:hidhayah/view/profile/view/profilepage.dart';
 import 'package:hidhayah/view/qibladirection/view/qibladirectionpage.dart';
 import 'package:hidhayah/view/tasbihpage.dart/view/tasbihpage.dart';
 import 'package:intl/intl.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class DashboardpageWrapper extends StatelessWidget {
   const DashboardpageWrapper({super.key});
@@ -79,7 +78,7 @@ class DashBoardPage extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (_) => LoginPagee()));
+                                        builder: (_) => const LoginPagee()));
                                 // GoRouter.of(context)
                                 //     .pushNamed(MyAppRouteConstants.loginRoute);
                               }
@@ -190,7 +189,8 @@ class DashBoardPage extends StatelessWidget {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (_) => QiblaDir()));
+                                              builder: (_) =>
+                                                  const QiblaDir()));
                                       // GoRouter.of(context).pushNamed(
                                       //     MyAppRouteConstants.qiblaDirRoute);
                                     },
@@ -206,7 +206,7 @@ class DashBoardPage extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                               builder: (_) =>
-                                                  TasbihPageWrapper()));
+                                                  const TasbihPageWrapper()));
                                       // GoRouter.of(context).pushNamed(
                                       //     MyAppRouteConstants.tasbihRoute);
                                     },

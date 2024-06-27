@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/view/loginsignup/widgets/signup_widget.dart';
@@ -18,12 +17,11 @@ class SignUpPage extends StatelessWidget {
           IconButton(
             onPressed: () {
               Navigator.pop(context);
-              // GoRouter.of(context).pop();
             },
             icon: const Icon(Icons.cancel_outlined),
           ),
         ],
-        title: Text('Sign Up'),
+        title: const Text('Sign Up'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -31,9 +29,7 @@ class SignUpPage extends StatelessWidget {
             Center(
               child: BlocProvider<LoginBloc>(
                 create: (context) => LoginBloc(),
-                child: SignUpWidget(
-                    // controller: tabController,
-                    ),
+                child: const SignUpWidget(),
               ),
             ),
           ],
