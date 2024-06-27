@@ -27,4 +27,7 @@ class TextStyles {
   static const TextStyle tasbihButtonStyle =  TextStyle(fontWeight: FontWeight.bold);
   static  TextStyle tasbihCounterStyle =  TextStyle(fontWeight: FontWeight.w600,fontSize: 40.sp);
 
+  //=====================================prayertime=====================================
+  static TextStyle prayerTodayStyle = TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500, );
+
 }

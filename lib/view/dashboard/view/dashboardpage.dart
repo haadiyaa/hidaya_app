@@ -12,6 +12,7 @@ import 'package:hidhayah/view/dashboard/widgets/dashheadright.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontainer.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontent.dart';
 import 'package:hidhayah/view/loginsignup/view/login_page.dart';
+import 'package:hidhayah/view/prayertime/view/prayertime.dart';
 import 'package:hidhayah/view/profile/view/profilepage.dart';
 import 'package:hidhayah/view/qibladirection/view/qibladirectionpage.dart';
 import 'package:hidhayah/view/tasbihpage.dart/view/tasbihpage.dart';
@@ -71,16 +72,11 @@ class DashBoardPage extends StatelessWidget {
                                     MaterialPageRoute(
                                         builder: (_) => ProfilePageWrapper(
                                             userModel: user)));
-                                // GoRouter.of(context).pushNamed(
-                                //     MyAppRouteConstants.profileRoute,
-                                //     extra: user);
                               } else {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (_) => const LoginPagee()));
-                                // GoRouter.of(context)
-                                //     .pushNamed(MyAppRouteConstants.loginRoute);
                               }
                             },
                             child: GestureDetector(
@@ -115,10 +111,6 @@ class DashBoardPage extends StatelessWidget {
                   ),
                 ),
                 Constants.height8,
-                // LoadingAnimationWidget.inkDrop(
-                //   color: Colors.white,
-                //   size: 10,
-                // ),
                 Expanded(
                   child: Container(
                     padding: Constants.mainContainPadd,
@@ -144,6 +136,9 @@ class DashBoardPage extends StatelessWidget {
                               ),
                             ),
                             GradientContainer(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (_)=>const PrayerTimeWrapper()));
+                              },
                               size: size,
                               gradient: Gradients.gradientBox2,
                               child: GradientContainerContent(
@@ -191,8 +186,6 @@ class DashBoardPage extends StatelessWidget {
                                           MaterialPageRoute(
                                               builder: (_) =>
                                                   const QiblaDir()));
-                                      // GoRouter.of(context).pushNamed(
-                                      //     MyAppRouteConstants.qiblaDirRoute);
                                     },
                                     text: 'Qibla',
                                     image: Constants.qiblaDirIcon,
@@ -207,8 +200,6 @@ class DashBoardPage extends StatelessWidget {
                                           MaterialPageRoute(
                                               builder: (_) =>
                                                   const TasbihPageWrapper()));
-                                      // GoRouter.of(context).pushNamed(
-                                      //     MyAppRouteConstants.tasbihRoute);
                                     },
                                     text: 'Tasbih',
                                     image: Constants.tasbih2,
