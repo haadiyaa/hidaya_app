@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hidhayah/model/usermodel.dart';
+import 'package:hidhayah/secrets/secrets.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -31,7 +32,7 @@ class FunctionsBloc extends Bloc<FunctionsEvent, FunctionsState> {
         };
         try {
           final response = await http.get(
-            Uri.parse('${Constants.url}${Constants.getUser}'),
+            Uri.parse('${Secrets.authUrl}${Secrets.getUser}'),
             headers: header,
           );
           print(response.body);

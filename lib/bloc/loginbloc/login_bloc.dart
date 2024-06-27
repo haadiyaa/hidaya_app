@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hidhayah/model/usermodel.dart';
+import 'package:hidhayah/secrets/secrets.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,7 +31,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     };
     try {
       final response = await http.post(
-        Uri.parse('${Constants.url}${Constants.login}'),
+        Uri.parse('${Secrets.authUrl}${Secrets.login}'),
         body: jsonEncode(data),
         headers: {'Content-Type': 'application/json'},
       );
@@ -44,7 +45,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           'x-auth-token': data1['token'],
         };
         final response = await http.get(
-          Uri.parse('${Constants.url}${Constants.getUser}'),
+          Uri.parse('${Secrets.authUrl}${Secrets.getUser}'),
           headers: header,
         );
         print(response.body);
@@ -96,7 +97,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     };
     try {
       final response = await http.post(
-        Uri.parse('${Constants.url}${Constants.register}'),
+        Uri.parse('${Secrets.authUrl}${Secrets.register}'),
         body: jsonEncode(data),
         headers: {'Content-Type': 'application/json'},
       );
@@ -134,7 +135,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     };
     try {
       final response = await http.post(
-        Uri.parse('${Constants.url}${Constants.forgotPassword}'),
+        Uri.parse('${Secrets.authUrl}${Secrets.forgotPassword}'),
         body: jsonEncode(body),
         headers: {
           'Content-Type': 'application/json',
