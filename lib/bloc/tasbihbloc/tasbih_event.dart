@@ -16,6 +16,10 @@ class IncreaseCounterEvent extends TasbihEvent{
   IncreaseCounterEvent({required this.value});
 
 }
+class LoadEvent extends TasbihEvent{
+  LoadEvent();
+
+}
 
 class DropdownChangedEvent extends TasbihEvent {
   int value;

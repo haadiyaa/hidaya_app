@@ -5,6 +5,20 @@ import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/view/loginsignup/widgets/customlightbutton.dart';
 import 'package:hidhayah/view/loginsignup/widgets/forgottextfield.dart';
 
+class ForgotPasseordWrapper extends StatelessWidget {
+  const ForgotPasseordWrapper({super.key, required this.size});
+  final Size size;
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => LoginBloc(),
+      child: ForgotPasswordWidget(
+        size: size,
+      ),
+    );
+  }
+}
+
 class ForgotPasswordWidget extends StatelessWidget {
   ForgotPasswordWidget({
     super.key,
@@ -32,47 +46,47 @@ class ForgotPasswordWidget extends StatelessWidget {
         ],
       ),
       child: Form(
-        key: _key,
+          key: _key,
           child: Column(
-        children: [
-          const Text('Reset your password to regain access to your account.'),
-          Constants.height10,
-          ForgotTextField(
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Plase enter something';
-              }
-              return null;
-            },
-            label: 'Email',
-            controller: emailController,
-            focusNode: emailFocusNode,
-            textInputType: TextInputType.name,
-          ),
-          Constants.height10,
-          BlocListener<LoginBloc, LoginState>(
-            listener: (context, state) {
-              ScaffoldMessenger.of(context)
-                ..hideCurrentSnackBar()
-                ..showSnackBar(
-                  SnackBar(content: Text(state.message.toString())),
-                );
-            },
-            child: CustomLightButton(
-              size: size,
-              text: 'Send Mail',
-              onPressed: () {
-                FocusManager.instance.primaryFocus?.unfocus();
-                if (_key.currentState!.validate()) {
-                  context.read<LoginBloc>().add(
-                      ForgotPasswordEvent(email: emailController.text.trim()));
-                  Navigator.pop(context);
-                }
-              },
-            ),
-          ),
-        ],
-      )),
+            children: [
+              const Text(
+                  'Reset your password to regain access to your account.'),
+              Constants.height10,
+              ForgotTextField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Plase enter something';
+                  }
+                  return null;
+                },
+                label: 'Email',
+                controller: emailController,
+                focusNode: emailFocusNode,
+                textInputType: TextInputType.name,
+              ),
+              Constants.height10,
+              BlocListener<LoginBloc, LoginState>(
+                listener: (context, state) {
+                  ScaffoldMessenger.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(
+                        SnackBar(content: Text(state.message.toString())));
+                },
+                child: CustomLightButton(
+                  size: size,
+                  text: 'Send Mail',
+                  onPressed: () {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                    if (_key.currentState!.validate()) {
+                      context.read<LoginBloc>().add(ForgotPasswordEvent(
+                          email: emailController.text.trim()));
+                      Navigator.pop(context);
+                    }
+                  },
+                ),
+              ),
+            ],
+          )),
     );
   }
 }

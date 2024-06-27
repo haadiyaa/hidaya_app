@@ -4,7 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class Constants {
   //===================sharedpref====================
   static const String LOGINTOKEN='loginToken';
-  static const String count='count';
+  static const String countKey = 'tasbih_count';
+  static const String loopKey = 'tasbih_loop';
   //======================API====================
   static String url='https://quiz-world-ruddy.vercel.app';
   static String register='/api/users/register';

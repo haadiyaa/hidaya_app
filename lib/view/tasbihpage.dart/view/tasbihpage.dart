@@ -12,7 +12,7 @@ class TasbihPageWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => TasbihBloc(),
-      child: TasbihPage(),
+      child: const TasbihPage(),
     );
   }
 }
@@ -30,19 +30,24 @@ class _TasbihPageState extends State<TasbihPage> {
   String loop = '0';
 
   final List<DropdownMenuItem<dynamic>> _items = [
-    DropdownMenuItem(
-      child: Text('33'),
+    const DropdownMenuItem(
       value: '33',
+      child: Text('33'),
     ),
-    DropdownMenuItem(
-      child: Text('66'),
+    const DropdownMenuItem(
       value: '66',
+      child: Text('66'),
     ),
-    DropdownMenuItem(
-      child: Text('99'),
+    const DropdownMenuItem(
       value: '99',
+      child: Text('99'),
     ),
   ];
+  @override
+  void initState() {
+    super.initState();
+    context.read<TasbihBloc>().add(LoadEvent());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,11 +73,11 @@ class _TasbihPageState extends State<TasbihPage> {
               loop = state.loop.toString();
             }
             if (state is DropdownChangeState) {
-              initialValue=state.value.toString();
+              initialValue = state.value.toString();
             }
             if (state is ResetState) {
-              loop=state.loop.toString();
-              value=state.value.toString();
+              loop = state.loop.toString();
+              value = state.value.toString();
             }
             return Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -88,8 +93,8 @@ class _TasbihPageState extends State<TasbihPage> {
                       value: initialValue,
                       items: _items,
                       onChanged: (value) {
-                        context.read<TasbihBloc>().add(DropdownChangedEvent(value: int.parse(value.toString())));
-                        
+                        context.read<TasbihBloc>().add(DropdownChangedEvent(
+                            value: int.parse(value.toString())));
                       },
                     ),
                     Text('Loop $loop'),
@@ -114,7 +119,7 @@ class _TasbihPageState extends State<TasbihPage> {
                     width: width,
                     height: height,
                     decoration: BoxDecoration(
-                      shape: BoxShape.circle,
+                      borderRadius: BorderRadius.circular(10),
                       color: Constants.transparent,
                       border: Border.all(color: Constants.greenLight),
                     ),

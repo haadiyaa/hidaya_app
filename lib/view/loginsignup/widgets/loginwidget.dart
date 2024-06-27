@@ -90,10 +90,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 backgroundColor: Constants.greenLight,
                                 onClosing: () {},
                                 builder: (context) {
-                                  return BlocProvider(
-                                    create: (context) => LoginBloc(),
-                                    child: ForgotPasswordWidget(size: size),
-                                  );
+                                  return ForgotPasseordWrapper(size: size);
                                 },
                               ),
                             );

@@ -17,6 +17,7 @@ class TasbihBloc extends Bloc<TasbihEvent, TasbihState> {
     on<IncreaseCounterEvent>(_increase);
     on<ResetEvent>(_reset);
     on<DropdownChangedEvent>(_dropdown);
+    on<LoadEvent>(_loadValues);
   }
 
   Future<void> _tap(TapEvent event, Emitter<TasbihState> emit) async {
@@ -33,36 +34,45 @@ class TasbihBloc extends Bloc<TasbihEvent, TasbihState> {
 
   Future<void> _increase(
       IncreaseCounterEvent event, Emitter<TasbihState> emit) async {
-    var sharedPref = await SharedPreferences.getInstance();
     if (event.value + 1 == initial) {
       initial = 0;
-      loop++;
+      loop=loop+1;
     }
-    var count = sharedPref.getInt(Constants.count);
-    if (count != null) {
-      initial = count;
-    }
+    initial=initial+1;
     await Future.delayed(
       const Duration(milliseconds: 200),
       () => emit(IncrementState(
-        value: initial++,
+        value: initial,
         loop: loop,
       )),
     );
-    sharedPref.setInt(Constants.count, initial);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(Constants.countKey, initial);
+    await prefs.setInt(Constants.loopKey, loop);
   }
 
   Future<void> _reset(ResetEvent event, Emitter<TasbihState> emit) async {
-    var sharedPref = await SharedPreferences.getInstance();
-
     initial = 0;
     loop = 0;
-    sharedPref.setInt(Constants.count, initial);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(Constants.countKey, initial);
+    await prefs.setInt(Constants.loopKey, loop);
     emit(ResetState(value: initial, loop: loop));
   }
 
   FutureOr<void> _dropdown(
       DropdownChangedEvent event, Emitter<TasbihState> emit) {
     emit(DropdownChangeState(value: event.value));
+  }
+
+  Future<void> _loadValues(LoadEvent event, Emitter<TasbihState> emit) async {
+    final prefs = await SharedPreferences.getInstance();
+    final count = prefs.getInt(Constants.countKey);
+    final loop = prefs.getInt(Constants.loopKey);
+    if (count != null && loop != null) {
+      initial = count;
+      this.loop = loop;
+      emit(IncrementState(value: initial, loop: this.loop));
+    }
   }
 }
