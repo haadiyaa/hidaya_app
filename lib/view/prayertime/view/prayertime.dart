@@ -34,11 +34,16 @@ class PrayerTime extends StatefulWidget {
 
 class _PrayerTimeState extends State<PrayerTime> {
   final PrayertimeBloc prayertimeBloc = PrayertimeBloc();
+  
+  bool checkTime = false;
+  String _time =
+      Functions.convertTime('${DateFormat('HH:mm').format(DateTime.now())}:00');
   @override
   void initState() {
     super.initState();
     prayertimeBloc
         .add(FetchPrayerTimeEvent(city: widget.city, country: widget.country));
+    print(_time);
   }
 
   @override
@@ -78,27 +83,51 @@ class _PrayerTimeState extends State<PrayerTime> {
                             itemCount: Constants.prayer.length,
                             itemBuilder: (BuildContext context, int index) {
                               final prayer = Constants.prayer[index];
-                              String prayerTime="";
+                              String prayerTime = "";
                               switch (prayer) {
                                 case "Fajr":
-                                  prayerTime = '${time.data[0].timings.Fajr.split(' ')[0]}:00';
+                                  prayerTime =
+                                      '${time.data[0].timings.Fajr.split(' ')[0]}:00';
                                   break;
                                 case "Dhuhr":
-                                  prayerTime = '${time.data[0].timings.Dhuhr.split(' ')[0]}:00';
+                                  prayerTime =
+                                      '${time.data[0].timings.Dhuhr.split(' ')[0]}:00';
                                   break;
                                 case "Asr":
-                                  prayerTime = '${time.data[0].timings.Asr.split(' ')[0]}:00';
+                                  prayerTime =
+                                      '${time.data[0].timings.Asr.split(' ')[0]}:00';
                                   break;
                                 case "Maghrib":
-                                  prayerTime = '${time.data[0].timings.Maghrib.split(' ')[0]}:00';
+                                  prayerTime =
+                                      '${time.data[0].timings.Maghrib.split(' ')[0]}:00';
                                   break;
                                 case "Isha":
-                                  prayerTime = '${time.data[0].timings.Isha.split(' ')[0]}:00';
+                                  prayerTime =
+                                      '${time.data[0].timings.Isha.split(' ')[0]}:00';
                                   break;
                                 default:
                                   prayerTime = "N/A";
                               }
                               return ListTile(
+                                leading: Container(
+                                  padding: const EdgeInsets.all(3),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Constants.white),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  height: 20,
+                                  width: 20,
+                                  child: Functions
+                                          .isCurrentTimeGreaterThanPrayerTime(
+                                              _time,
+                                              Functions.convertTime(prayerTime))
+                                      ? const Icon(
+                                          Icons.done,
+                                          size: 10,
+                                          color: Constants.white,
+                                        )
+                                      : const SizedBox(),
+                                ),
                                 title: Text(
                                   prayer,
                                   style: TextStyles.forgotLabelStyle,
@@ -126,7 +155,7 @@ class _PrayerTimeState extends State<PrayerTime> {
             ),
           );
         }
-        return Scaffold(
+        return const Scaffold(
           body: Center(
             child: CircularProgressIndicator(),
           ),
