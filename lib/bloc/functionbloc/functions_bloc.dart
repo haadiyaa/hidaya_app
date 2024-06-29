@@ -46,13 +46,13 @@ class FunctionsBloc extends Bloc<FunctionsEvent, FunctionsState> {
             emit(state.copyWith(status: Status.loggedIn,user: user));
           } else {
 
-            emit(GetUserErrorState(msg: data['msg']));
+            // emit(GetUserErrorState(msg: data['msg']));
             emit(state.copyWith(status: Status.notLoggedIn));
             print('not success');
           }
         } catch (e) {
           print('excetion $e');
-          emit(GetUserErrorState(msg: e.toString()));
+          // emit(GetUserErrorState(msg: e.toString()));
           emit(state.copyWith(status: Status.notLoggedIn));
         }
       } else {

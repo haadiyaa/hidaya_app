@@ -78,13 +78,33 @@ class _PrayerTimeState extends State<PrayerTime> {
                             itemCount: Constants.prayer.length,
                             itemBuilder: (BuildContext context, int index) {
                               final prayer = Constants.prayer[index];
+                              String prayerTime="";
+                              switch (prayer) {
+                                case "Fajr":
+                                  prayerTime = '${time.data[0].timings.Fajr.split(' ')[0]}:00';
+                                  break;
+                                case "Dhuhr":
+                                  prayerTime = '${time.data[0].timings.Dhuhr.split(' ')[0]}:00';
+                                  break;
+                                case "Asr":
+                                  prayerTime = '${time.data[0].timings.Asr.split(' ')[0]}:00';
+                                  break;
+                                case "Maghrib":
+                                  prayerTime = '${time.data[0].timings.Maghrib.split(' ')[0]}:00';
+                                  break;
+                                case "Isha":
+                                  prayerTime = '${time.data[0].timings.Isha.split(' ')[0]}:00';
+                                  break;
+                                default:
+                                  prayerTime = "N/A";
+                              }
                               return ListTile(
                                 title: Text(
                                   prayer,
                                   style: TextStyles.forgotLabelStyle,
                                 ),
                                 trailing: Text(
-                                  Functions.convertTime('${time.data[0].timings.Asr.split(' ')[0]}:00'),
+                                  Functions.convertTime(prayerTime),
                                   style: TextStyles.forgotLabelStyle,
                                 ),
                               );

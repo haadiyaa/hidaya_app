@@ -95,7 +95,8 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                   MaterialPageRoute(
                                       builder: (_) =>
                                           ProfilePageWrapper(userModel: user)));
-                            } else {
+                            }
+                            if (state.status == Status.notLoggedIn) {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -128,7 +129,6 @@ class _DashBoardPageState extends State<DashBoardPage> {
                             if (state is LocationFetchState) {
                               city = state.city;
                               country = state.country;
-
                               return DashHeadRight(
                                 date: DateFormat('dd MMM yyyy')
                                     .format(DateTime.now()),
