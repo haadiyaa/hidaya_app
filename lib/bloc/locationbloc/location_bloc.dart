@@ -1,0 +1,56 @@
+import 'dart:async';
+
+import 'package:bloc/bloc.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:hidhayah/utils/functions/functions.dart';
+
+part 'location_event.dart';
+part 'location_state.dart';
+
+class LocationBloc extends Bloc<LocationEvent, LocationState> {
+  Position? _currentPosition;
+  LocationBloc() : super(LocationInitial()) {
+    on<LocationFetchEvent>(_fetchLocation);
+  }
+
+  Future<void> _fetchLocation(
+      LocationFetchEvent event, Emitter<LocationState> emit) async {
+    print('dcdwdsassssssdddddddddddddd');
+    bool serviceEnabled;
+    LocationPermission permission;
+    Placemark? _currenLocationName;
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      _currentPosition = null;
+      print('service enabled');
+    } else {
+      print('servicw enabled true');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+
+      if (permission == LocationPermission.denied) {
+        _currentPosition == null;
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      _currentPosition = null;
+    }
+    _currentPosition = await Geolocator.getCurrentPosition();
+    print('CURRENT POSITION : $_currentPosition');
+
+    _currenLocationName = await Functions.getLocationName(_currentPosition);
+    print('CURRENT LOCATION NAME: $_currenLocationName');
+    if (_currenLocationName != null) {
+      emit(LocationFetchState(
+          city: _currenLocationName.locality,
+          country: _currenLocationName.country));
+    } else {
+      print('$_currenLocationName null');
+    }
+  }
+}
