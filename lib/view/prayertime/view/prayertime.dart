@@ -118,9 +118,7 @@ class _PrayerTimeState extends State<PrayerTime> {
                                   height: 20,
                                   width: 20,
                                   child: Functions
-                                          .isCurrentTimeGreaterThanPrayerTime(
-                                              _time,
-                                              Functions.convertTime(prayerTime))
+                                          .checkTime(prayerTime)
                                       ? const Icon(
                                           Icons.done,
                                           size: 10,

@@ -35,35 +35,16 @@ class Functions {
     return null;
   }
 
-  static bool isCurrentTimeGreaterThanPrayerTime(String currentTime, String prayerTime) {
-  final allowedFormats = [DateFormat("HH:mm"),DateFormat("HH:mm a")];
-  final now = DateTime.now();
+  static bool checkTime(String prayerTime) {
+    print(prayerTime);
+    final DateTime currentTime = DateTime.now();
+    final date = DateFormat('yyyy-MM-dd');
+    final String formattedDateTime = '${date.format(currentTime)} $prayerTime';
+    final DateTime prayerTimeObject = DateTime.parse(formattedDateTime);
 
-  for (final format in allowedFormats) {
-    try {
-      final currentDateTime = format.parse(currentTime);
-      final prayerDateTime = format.parse(prayerTime);
-
-      // Create DateTime objects for the current time and prayer time on today's date
-      final todayCurrentDateTime = DateTime(
-        now.year, now.month, now.day,
-        currentDateTime.hour, currentDateTime.minute
-      );
-      final todayPrayerDateTime = DateTime(
-        now.year, now.month, now.day,
-        prayerDateTime.hour, prayerDateTime.minute
-      );
-
-      return todayCurrentDateTime.isAfter(todayPrayerDateTime);
-    } on FormatException catch (e) {
-      // Handle parsing exceptions
-      print("Invalid time format. Please use HH:mm format.");
+    if (prayerTimeObject.compareTo(currentTime) < 0) {
+      return true;
+    } else
       return false;
-    }
   }
-
-  // If parsing fails with all formats, consider it an error (optional)
-  print("Error parsing time formats.");
-  return false;
-}
 }
