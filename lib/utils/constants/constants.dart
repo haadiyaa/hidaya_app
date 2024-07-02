@@ -15,6 +15,8 @@ class Constants {
   static const String LOGINTOKEN = 'loginToken';
   static const String countKey = 'tasbih_count';
   static const String loopKey = 'tasbih_loop';
+  static const String userLatitude = 'lat';
+  static const String userLongitide = 'long';
   //======================API====================
 
   //=====================mediaquery=================

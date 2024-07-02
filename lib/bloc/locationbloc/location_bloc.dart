@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/functions/functions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'location_event.dart';
 part 'location_state.dart';
@@ -16,6 +18,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
 
   Future<void> _fetchLocation(
       LocationFetchEvent event, Emitter<LocationState> emit) async {
+    var sharedPref = await SharedPreferences.getInstance();
     print('dcdwdsassssssdddddddddddddd');
     bool serviceEnabled;
     LocationPermission permission;
@@ -47,6 +50,8 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     print('CURRENT LOCATION NAME: $_currenLocationName');
     if (_currenLocationName != null) {
       emit(LocationFetchState(
+          latitude: _currentPosition!.latitude,
+          longitude: _currentPosition!.longitude,
           city: _currenLocationName.locality,
           country: _currenLocationName.country));
     } else {

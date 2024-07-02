@@ -13,9 +13,11 @@ import 'package:hidhayah/view/dashboard/widgets/dashheadright.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontainer.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontent.dart';
 import 'package:hidhayah/view/loginsignup/view/login_page.dart';
+import 'package:hidhayah/view/nearbymasjid/view/nearbymasjid.dart';
 import 'package:hidhayah/view/prayertime/view/prayertime.dart';
 import 'package:hidhayah/view/profile/view/profilepage.dart';
 import 'package:hidhayah/view/qibladirection/view/qibladirectionpage.dart';
+import 'package:hidhayah/view/readquran/view/readquran.dart';
 import 'package:hidhayah/view/tasbihpage.dart/view/tasbihpage.dart';
 import 'package:intl/intl.dart';
 
@@ -50,11 +52,12 @@ class _DashBoardPageState extends State<DashBoardPage> {
   late UserModel user;
   String? city;
   String? country;
+  double? latitude;
+  double? longitude;
 
   @override
   void initState() {
     super.initState();
-    // BlocProvider.of<LocationBloc>(context).add(LocationFetchEvent());
   }
 
   @override
@@ -127,6 +130,8 @@ class _DashBoardPageState extends State<DashBoardPage> {
                         BlocBuilder<LocationBloc, LocationState>(
                           builder: (context, state) {
                             if (state is LocationFetchState) {
+                              latitude=state.latitude;
+                              longitude=state.longitude;
                               city = state.city;
                               country = state.country;
                               return DashHeadRight(
@@ -161,6 +166,13 @@ class _DashBoardPageState extends State<DashBoardPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GradientContainer(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) =>
+                                          const ReadQuranWrapper()));
+                            },
                             size: size,
                             gradient: Gradients.gradientBox1,
                             child: GradientContainerContent(
@@ -207,7 +219,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                             size: size,
                             gradient: Gradients.gradientBox4,
                             child: const GradientContainerContent(
-                              title: 'Islamic ',
+                              title: 'Islamic Videos',
                               subtitle: 'Watch',
                             ),
                           ),
@@ -248,19 +260,27 @@ class _DashBoardPageState extends State<DashBoardPage> {
                               ],
                             ),
                             Constants.height20,
-                            const Row(
+                            Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                DashboardIcons(
+                                const DashboardIcons(
                                   text: 'Quiz',
                                   image: Constants.quiz,
                                   padding: EdgeInsets.all(5),
                                 ),
-                                DashboardIcons(
+                                const DashboardIcons(
                                     text: 'Calendar',
                                     image: Constants.calendar),
                                 DashboardIcons(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) =>  NearByMasjid(latitude: latitude!,longitude: longitude!,),
+                                        ),
+                                      );
+                                    },
                                     text: 'Masgid Near Me',
                                     image: Constants.mapIcon),
                               ],
