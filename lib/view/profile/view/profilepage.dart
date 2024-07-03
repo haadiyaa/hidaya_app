@@ -89,10 +89,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 Constants.height20,
-                CustomProfileButton(
-                  onPressed: () {},
-                  text: 'Edit Profile',
-                ),
                 Constants.height10,
                 const ListTile(
                   title: Text(
@@ -106,6 +102,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     color: Constants.white,
                   ),
                 ),
+                Divider(),
                 const ListTile(
                   title: Text(
                     'Privacy Policy',

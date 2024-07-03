@@ -73,7 +73,7 @@ class _QiblaMapsState extends State<QiblaMaps> {
               myLocationButtonEnabled: true,
               initialCameraPosition: CameraPosition(
                 target: position,
-                zoom: 11,
+                zoom: 3,
               ),
               markers: <Marker>{
                 QiblaMaps.meccaMarker,

@@ -1,0 +1,357 @@
+{
+    "places": [
+        {
+            "name": "places/ChIJgwH99SpZpjsRE7hsb0QLenk",
+            "id": "ChIJgwH99SpZpjsRE7hsb0QLenk",
+            "types": [
+                "mosque",
+                "place_of_worship",
+                "point_of_interest",
+                "establishment"
+            ],
+            "formattedAddress": "7Q5J+F5V, Polpaya Mana, Tazhekkod, Kozhikode, Kerala 673004, India",
+            "addressComponents": [
+                {
+                    "longText": "7Q5J+F5V",
+                    "shortText": "7Q5J+F5V",
+                    "types": [
+                        "plus_code"
+                    ],
+                    "languageCode": "en-GB"
+                },
+                {
+                    "longText": "Polpaya Mana",
+                    "shortText": "Polpaya Mana",
+                    "types": [
+                        "neighborhood",
+                        "political"
+                    ],
+                    "languageCode": "en"
+                },
+                {
+                    "longText": "Tazhekkod",
+                    "shortText": "Tazhekkod",
+                    "types": [
+                        "sublocality_level_1",
+                        "sublocality",
+                        "political"
+                    ],
+                    "languageCode": "en"
+                },
+                {
+                    "longText": "Kozhikode",
+                    "shortText": "Kozhikode",
+                    "types": [
+                        "locality",
+                        "political"
+                    ],
+                    "languageCode": "en"
+                },
+                {
+                    "longText": "Kozhikode",
+                    "shortText": "Kozhikode",
+                    "types": [
+                        "administrative_area_level_3",
+                        "political"
+                    ],
+                    "languageCode": "en"
+                },
+                {
+                    "longText": "Kerala",
+                    "shortText": "KL",
+                    "types": [
+                        "administrative_area_level_1",
+                        "political"
+                    ],
+                    "languageCode": "en"
+                },
+                {
+                    "longText": "India",
+                    "shortText": "IN",
+                    "types": [
+                        "country",
+                        "political"
+                    ],
+                    "languageCode": "en"
+                },
+                {
+                    "longText": "673004",
+                    "shortText": "673004",
+                    "types": [
+                        "postal_code"
+                    ],
+                    "languageCode": "en-GB"
+                }
+            ],
+            "location": {
+                "latitude": 11.2587271,
+                "longitude": 75.7804086
+            },
+            "viewport": {
+                "low": {
+                    "latitude": 11.257381619708497,
+                    "longitude": 75.779097519708486
+                },
+                "high": {
+                    "latitude": 11.260079580291501,
+                    "longitude": 75.781795480291493
+                }
+            },
+            "googleMapsUri": "https://maps.google.com/?cid=8753321214303057939",
+            "utcOffsetMinutes": 330,
+            "adrFormatAddress": "7Q5J+F5V, \u003cspan class=\"extended-address\"\u003ePolpaya Mana, Tazhekkod\u003c/span\u003e, \u003cspan class=\"locality\"\u003eKozhikode\u003c/span\u003e, \u003cspan class=\"region\"\u003eKerala\u003c/span\u003e \u003cspan class=\"postal-code\"\u003e673004\u003c/span\u003e, \u003cspan class=\"country-name\"\u003eIndia\u003c/span\u003e",
+            "businessStatus": "OPERATIONAL",
+            "iconMaskBaseUri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/worship_islam_pinlet",
+            "iconBackgroundColor": "#7B9EB0",
+            "displayName": {
+                "text": "East kommeri juma masjid",
+                "languageCode": "en"
+            },
+            "primaryTypeDisplayName": {
+                "text": "Mosque",
+                "languageCode": "en-GB"
+            },
+            "primaryType": "mosque",
+            "shortFormattedAddress": "7Q5J+F5V, Mavoor Road Junction, Tazhekkod, Kozhikode",
+            "photos": [
+                {
+                    "name": "places/ChIJgwH99SpZpjsRE7hsb0QLenk/photos/AUc7tXU9xvF4zxAkxfd2mffylFWrbrT1nMgHnFTP7qcGQqzJOKH9ApB-OAybcnAkiucWxY_tKDihbXeTrcLkSK5uAvG7ld4B-q8sj6KFk9JhSnO24E3qUoGjkkvW5lujs3zrD-2_9bKPV13k722LftY4z0rOTH_If41q7YrI",
+                    "widthPx": 4000,
+                    "heightPx": 3000,
+                    "authorAttributions": [
+                        {
+                            "displayName": "Muhammed Swalih A",
+                            "uri": "//maps.google.com/maps/contrib/116281044516058114960",
+                            "photoUri": "//lh3.googleusercontent.com/a-/ALV-UjWMz2b7ybN0DxaqSXij27e8KA4mZAaFQkREz8LLhPs3PaVv_zvA=s100-p-k-no-mo"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "places/ChIJvcATfzdZpjsRMmFl4f6LBVQ",
+            "id": "ChIJvcATfzdZpjsRMmFl4f6LBVQ",
+            "types": [
+                "mosque",
+                "place_of_worship",
+                "point_of_interest",
+                "establishment"
+            ],
+            "formattedAddress": "Mavoor Rd Jn., Mavoor Rd, 4 In Bazar, Tazhekkod, Kozhikode, Kerala 673004, India",
+            "addressComponents": [
+                {
+                    "longText": "Mavoor Rd Jn.",
+                    "shortText": "Mavoor Rd Jn.",
+                    "types": [
+                        "street_number"
+                    ],
+                    "languageCode": "en-GB"
+                },
+                {
+                    "longText": "Mavoor Road",
+                    "shortText": "Mavoor Rd",
+                    "types": [
+                        "route"
+                    ],
+                    "languageCode": "en"
+                },
+                {
+                    "longText": "4 In Bazar",
+                    "shortText": "4 In Bazar",
+                    "types": [
+                        "neighborhood",
+                        "political"
+                    ],
+                    "languageCode": "en"
+                },
+                {
+                    "longText": "Tazhekkod",
+                    "shortText": "Tazhekkod",
+                    "types": [
+                        "sublocality_level_1",
+                        "sublocality",
+                        "political"
+                    ],
+                    "languageCode": "en"
+                },
+                {
+                    "longText": "Kozhikode",
+                    "shortText": "Kozhikode",
+                    "types": [
+                        "locality",
+                        "political"
+                    ],
+                    "languageCode": "en"
+                },
+                {
+                    "longText": "Kozhikode",
+                    "shortText": "Kozhikode",
+                    "types": [
+                        "administrative_area_level_3",
+                        "political"
+                    ],
+                    "languageCode": "en"
+                },
+                {
+                    "longText": "Kerala",
+                    "shortText": "KL",
+                    "types": [
+                        "administrative_area_level_1",
+                        "political"
+                    ],
+                    "languageCode": "en"
+                },
+                {
+                    "longText": "India",
+                    "shortText": "IN",
+                    "types": [
+                        "country",
+                        "political"
+                    ],
+                    "languageCode": "en"
+                },
+                {
+                    "longText": "673004",
+                    "shortText": "673004",
+                    "types": [
+                        "postal_code"
+                    ],
+                    "languageCode": "en-GB"
+                }
+            ],
+            "plusCode": {
+                "globalCode": "7J3Q7Q5J+97",
+                "compoundCode": "7Q5J+97 Kozhikode, Kerala, India"
+            },
+            "location": {
+                "latitude": 11.2584805,
+                "longitude": 75.7807071
+            },
+            "viewport": {
+                "low": {
+                    "latitude": 11.257287469708496,
+                    "longitude": 75.7793535197085
+                },
+                "high": {
+                    "latitude": 11.2599854302915,
+                    "longitude": 75.7820514802915
+                }
+            },
+            "rating": 4.4,
+            "googleMapsUri": "https://maps.google.com/?cid=6054399200888971570",
+            "utcOffsetMinutes": 330,
+            "adrFormatAddress": "\u003cspan class=\"street-address\"\u003eMavoor Rd Jn., Mavoor Rd\u003c/span\u003e, \u003cspan class=\"extended-address\"\u003e4 In Bazar, Tazhekkod\u003c/span\u003e, \u003cspan class=\"locality\"\u003eKozhikode\u003c/span\u003e, \u003cspan class=\"region\"\u003eKerala\u003c/span\u003e \u003cspan class=\"postal-code\"\u003e673004\u003c/span\u003e, \u003cspan class=\"country-name\"\u003eIndia\u003c/span\u003e",
+            "businessStatus": "OPERATIONAL",
+            "userRatingCount": 19,
+            "iconMaskBaseUri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/worship_islam_pinlet",
+            "iconBackgroundColor": "#7B9EB0",
+            "displayName": {
+                "text": "Prayer Room",
+                "languageCode": "en"
+            },
+            "primaryTypeDisplayName": {
+                "text": "Mosque",
+                "languageCode": "en-GB"
+            },
+            "primaryType": "mosque",
+            "shortFormattedAddress": "Mavoor Rd Jn., Mavoor Rd, Mavoor Road Junction, Tazhekkod, Kozhikode",
+            "reviews": [
+                {
+                    "name": "places/ChIJvcATfzdZpjsRMmFl4f6LBVQ/reviews/ChdDSUhNMG9nS0VJQ0FnSUQwbnIzOHJRRRAB",
+                    "relativePublishTimeDescription": "4 years ago",
+                    "rating": 5,
+                    "text": {
+                        "text": "Its very helpful for travellers.\nHelps to pray in correct time..\nLess place but neet and clean..",
+                        "languageCode": "en"
+                    },
+                    "originalText": {
+                        "text": "Its very helpful for travellers.\nHelps to pray in correct time..\nLess place but neet and clean..",
+                        "languageCode": "en"
+                    },
+                    "authorAttribution": {
+                        "displayName": "muhammed faizal",
+                        "uri": "https://www.google.com/maps/contrib/109823141691250330897/reviews",
+                        "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXF_t1auxyLhdSO5FS1SkEE4xtCIqTXTspmuAvwTy-jti15NvJP=s128-c0x00000000-cc-rp-mo-ba3"
+                    },
+                    "publishTime": "2019-11-06T09:09:17Z"
+                },
+                {
+                    "name": "places/ChIJvcATfzdZpjsRMmFl4f6LBVQ/reviews/ChdDSUhNMG9nS0VJQ0FnSUNvcjluSzBnRRAB",
+                    "relativePublishTimeDescription": "5 years ago",
+                    "rating": 5,
+                    "text": {
+                        "text": "Good",
+                        "languageCode": "en"
+                    },
+                    "originalText": {
+                        "text": "Good",
+                        "languageCode": "en"
+                    },
+                    "authorAttribution": {
+                        "displayName": "INZI 7117",
+                        "uri": "https://www.google.com/maps/contrib/116904893662107476419/reviews",
+                        "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXtD38KZ88w9lWgXH_hWZ_TwhUavyM0eMKFWTXxJNbSDB6ngt-V6Q=s128-c0x00000000-cc-rp-mo-ba4"
+                    },
+                    "publishTime": "2019-03-06T05:17:17Z"
+                },
+                {
+                    "name": "places/ChIJvcATfzdZpjsRMmFl4f6LBVQ/reviews/ChZDSUhNMG9nS0VJQ0FnSURzOEkySlZBEAE",
+                    "relativePublishTimeDescription": "4 years ago",
+                    "rating": 3,
+                    "text": {
+                        "text": "not",
+                        "languageCode": "en"
+                    },
+                    "originalText": {
+                        "text": "not",
+                        "languageCode": "en"
+                    },
+                    "authorAttribution": {
+                        "displayName": "Farhan TM",
+                        "uri": "https://www.google.com/maps/contrib/113677875065129320842/reviews",
+                        "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjX511bQLR0kFA78nb4W_p2Xnq_PS8UI9iyHLb2ItwH4gVEOeNO7=s128-c0x00000000-cc-rp-mo-ba4"
+                    },
+                    "publishTime": "2020-02-21T17:38:28Z"
+                },
+                {
+                    "name": "places/ChIJvcATfzdZpjsRMmFl4f6LBVQ/reviews/ChZDSUhNMG9nS0VJQ0FnSUNvNTkzd2ZBEAE",
+                    "relativePublishTimeDescription": "5 years ago",
+                    "rating": 5,
+                    "text": {
+                        "text": "Good",
+                        "languageCode": "en"
+                    },
+                    "originalText": {
+                        "text": "Good",
+                        "languageCode": "en"
+                    },
+                    "authorAttribution": {
+                        "displayName": "Ajmal shain",
+                        "uri": "https://www.google.com/maps/contrib/110294566309334750044/reviews",
+                        "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocJUaumRnqTVm29J3egE_SCDKWZ4ye9JdbX8gT1KIjGPGNZlW1LW=s128-c0x00000000-cc-rp-mo-ba3"
+                    },
+                    "publishTime": "2019-03-04T07:09:35Z"
+                },
+                {
+                    "name": "places/ChIJvcATfzdZpjsRMmFl4f6LBVQ/reviews/ChZDSUhNMG9nS0VJQ0FnSUNZaDkydGV3EAE",
+                    "relativePublishTimeDescription": "5 years ago",
+                    "rating": 5,
+                    "text": {
+                        "text": "Good",
+                        "languageCode": "en"
+                    },
+                    "originalText": {
+                        "text": "Good",
+                        "languageCode": "en"
+                    },
+                    "authorAttribution": {
+                        "displayName": "suhail velom",
+                        "uri": "https://www.google.com/maps/contrib/111735151839348620026/reviews",
+                        "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjU43AuOZ_CPNqawVtR4I6dY07jFAQbudbcii6v6_o2kaC0jeeaNiA=s128-c0x00000000-cc-rp-mo-ba5"
+                    },
+                    "publishTime": "2019-04-22T09:06:49Z"
+                }
+            ]
+        }
+    ]
+}

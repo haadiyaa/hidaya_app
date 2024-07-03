@@ -1,8 +1,27 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hidhayah/bloc/locationbloc/location_bloc.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
+
+class NearbyWrapper extends StatelessWidget {
+  const NearbyWrapper(
+      {super.key, required this.latitude, required this.longitude});
+  final double latitude;
+  final double longitude;
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => LocationBloc(),
+      child: NearByMasjid(
+        latitude: latitude,
+        longitude: longitude,
+      ),
+    );
+  }
+}
 
 class NearByMasjid extends StatefulWidget {
   const NearByMasjid({
@@ -18,9 +37,16 @@ class NearByMasjid extends StatefulWidget {
 }
 
 class _NearByMasjidState extends State<NearByMasjid> {
-  Completer<GoogleMapController> _controller=Completer();
+  final Completer<GoogleMapController> _controller = Completer();
+
   @override
-  
+  void initState() {
+    super.initState();
+    BlocProvider.of<LocationBloc>(context).add(
+        FetchNearbyMasjidEvent(lat: widget.latitude, long: widget.longitude));
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Constants.greenDark,
@@ -32,7 +58,7 @@ class _NearByMasjidState extends State<NearByMasjid> {
           target: LatLng(widget.latitude, widget.longitude),
           zoom: 15,
         ),
-        mapType: MapType.hybrid,
+        compassEnabled: true,
         markers: {
           Marker(
             markerId: const MarkerId('myLocation'),

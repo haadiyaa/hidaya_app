@@ -36,7 +36,7 @@ class _PrayerTimeState extends State<PrayerTime> {
   final PrayertimeBloc prayertimeBloc = PrayertimeBloc();
   
   bool checkTime = false;
-  String _time =
+  final String _time =
       Functions.convertTime('${DateFormat('HH:mm').format(DateTime.now())}:00');
   @override
   void initState() {

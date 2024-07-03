@@ -19,3 +19,19 @@ class LocationFetchState extends LocationState {
     required this.longitude,
   });
 }
+class LocationFetchErrorState extends LocationState{
+  final String msg;
+
+  LocationFetchErrorState({required this.msg});
+}
+
+class FetchNearbyMasjidState extends LocationState {
+  final NearbyPlace places;
+
+  FetchNearbyMasjidState({required this.places});
+}
+class FetchNearbyMasjidErrorState extends LocationState{
+  final String msg;
+
+  FetchNearbyMasjidErrorState({required this.msg});
+}

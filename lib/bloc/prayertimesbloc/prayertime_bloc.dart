@@ -17,9 +17,11 @@ class PrayertimeBloc extends Bloc<PrayertimeEvent, PrayertimeState> {
 
   Future<void> _fetchPrayertime(
       FetchPrayerTimeEvent event, Emitter<PrayertimeState> emit) async {
+        emit(FetchPrayerTimeInitial());
     final year = DateFormat('yyyy').format(DateTime.now());
     final month = DateFormat('MM').format(DateTime.now());
     print('month $month');
+    print('fetching prayer time');
     PrayerTimeModel prayerTimeModel;
     try {
       final response = await http.get(Uri.parse(
@@ -33,6 +35,7 @@ class PrayertimeBloc extends Bloc<PrayertimeEvent, PrayertimeState> {
         print('prayerTimeModel: $prayerTimeModel');
         print(prayerTimeModel.data[1].timings.Fajr);
         emit(FetchPrayerTimeState(prayerTimeModel: prayerTimeModel));
+        print('emittedddssssssssssssssssssssssssssssssssssssssss');
       } else {
         print('error fetch');
       }

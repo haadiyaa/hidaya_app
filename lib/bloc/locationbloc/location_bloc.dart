@@ -1,11 +1,15 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:hidhayah/model/markermodel.dart';
+import 'package:hidhayah/secrets/secrets.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/functions/functions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 part 'location_event.dart';
 part 'location_state.dart';
@@ -14,12 +18,13 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   Position? _currentPosition;
   LocationBloc() : super(LocationInitial()) {
     on<LocationFetchEvent>(_fetchLocation);
+    on<FetchNearbyMasjidEvent>(_fetchNearbyMasjid);
   }
 
   Future<void> _fetchLocation(
       LocationFetchEvent event, Emitter<LocationState> emit) async {
     var sharedPref = await SharedPreferences.getInstance();
-    print('dcdwdsassssssdddddddddddddd');
+    print('dcdwdsassssrrrdddddddd');
     bool serviceEnabled;
     LocationPermission permission;
     Placemark? _currenLocationName;
@@ -56,6 +61,48 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
           country: _currenLocationName.country));
     } else {
       print('$_currenLocationName null');
+      emit(LocationFetchErrorState(msg: 'Can\'t fetch location! try again'));
+    }
+  }
+
+  Future<void> _fetchNearbyMasjid(
+      FetchNearbyMasjidEvent event, Emitter<LocationState> emit) async {
+    NearbyPlace nearbyPlace;
+    final data = {
+      "includedTypes": ["mosque"],
+      "maxResultCount": 10,
+      "locationRestriction": {
+        "circle": {
+          "center": {
+            "latitude": event.lat,
+            "longitude": event.long,
+          },
+          "radius": 500,
+        }
+      }
+    };
+    try {
+      final response = await http.post(
+        Uri.parse(Secrets.nearbyPlaceUrl),
+        headers: {
+          "Content-Type": "application/json",
+          "X-Goog-Api-Key": Secrets.apiKey,
+        },
+        body: jsonEncode(data),
+      );
+      final data1 = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        print(response.body);
+        nearbyPlace = NearbyPlace.fromJson(data1);
+        emit(FetchNearbyMasjidState(places: nearbyPlace));
+      } else {
+        print('error');
+        emit(FetchNearbyMasjidErrorState(
+            msg: data1['error']['message'].toString()));
+        print(data1['error']['message'].toString());
+      }
+    } catch (e) {
+      print(e.toString());
     }
   }
 }

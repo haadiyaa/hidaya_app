@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hidhayah/bloc/functionbloc/functions_bloc.dart';
 import 'package:hidhayah/bloc/locationbloc/location_bloc.dart';
+import 'package:hidhayah/bloc/prayertimesbloc/prayertime_bloc.dart';
 import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
+import 'package:hidhayah/utils/functions/functions.dart';
 import 'package:hidhayah/utils/styles/gradient.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/common/widgets/customtext.dart';
@@ -17,7 +19,6 @@ import 'package:hidhayah/view/nearbymasjid/view/nearbymasjid.dart';
 import 'package:hidhayah/view/prayertime/view/prayertime.dart';
 import 'package:hidhayah/view/profile/view/profilepage.dart';
 import 'package:hidhayah/view/qibladirection/view/qibladirectionpage.dart';
-import 'package:hidhayah/view/readquran/view/readquran.dart';
 import 'package:hidhayah/view/tasbihpage.dart/view/tasbihpage.dart';
 import 'package:intl/intl.dart';
 
@@ -48,7 +49,6 @@ class DashBoardPage extends StatefulWidget {
 }
 
 class _DashBoardPageState extends State<DashBoardPage> {
-  final LocationBloc locationBloc = LocationBloc();
   late UserModel user;
   String? city;
   String? country;
@@ -124,14 +124,30 @@ class _DashBoardPageState extends State<DashBoardPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const DashHeadLeft(
-                          salah: 'Asr',
+                        GestureDetector(
+                          onTap: () {
+                            if (city != null && country != null) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => PrayerTimeWrapper(
+                                            city: city!,
+                                            country: country!,
+                                          )));
+                            } else {
+                              print('retry');
+                            }
+                          },
+                          child: DashHeadLeft(
+                            salah:
+                                "${DateFormat('hh:mm a').format(DateTime.now())}",
+                          ),
                         ),
                         BlocBuilder<LocationBloc, LocationState>(
                           builder: (context, state) {
                             if (state is LocationFetchState) {
-                              latitude=state.latitude;
-                              longitude=state.longitude;
+                              latitude = state.latitude;
+                              longitude = state.longitude;
                               city = state.city;
                               country = state.country;
                               return DashHeadRight(
@@ -166,13 +182,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GradientContainer(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) =>
-                                          const ReadQuranWrapper()));
-                            },
+                            onTap: () {},
                             size: size,
                             gradient: Gradients.gradientBox1,
                             child: GradientContainerContent(
@@ -277,7 +287,10 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (_) =>  NearByMasjid(latitude: latitude!,longitude: longitude!,),
+                                          builder: (_) => NearbyWrapper(
+                                            latitude: latitude!,
+                                            longitude: longitude!,
+                                          ),
                                         ),
                                       );
                                     },
