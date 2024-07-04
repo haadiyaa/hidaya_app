@@ -14,6 +14,7 @@ import 'package:hidhayah/view/dashboard/widgets/dashheadleft.dart';
 import 'package:hidhayah/view/dashboard/widgets/dashheadright.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontainer.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontent.dart';
+import 'package:hidhayah/view/duas/view/list.dart';
 import 'package:hidhayah/view/loginsignup/view/login_page.dart';
 import 'package:hidhayah/view/nearbymasjid/view/nearbymasjid.dart';
 import 'package:hidhayah/view/prayertime/view/prayertime.dart';
@@ -254,7 +255,10 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                   image: Constants.qiblaDirIcon,
                                   padding: const EdgeInsets.all(5),
                                 ),
-                                const DashboardIcons(
+                                 DashboardIcons(
+                                  onTap: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (_)=>SampleList()));
+                                  },
                                     text: 'Duas', image: Constants.duaIcon),
                                 DashboardIcons(
                                   onTap: () {

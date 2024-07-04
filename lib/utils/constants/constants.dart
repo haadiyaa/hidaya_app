@@ -17,6 +17,8 @@ class Constants {
   static const String loopKey = 'tasbih_loop';
   static const String userLatitude = 'lat';
   static const String userLongitide = 'long';
+  static const String userName = 'username';
+  static const String userEmail = 'email';
   //======================API====================
 
   //=====================mediaquery=================
