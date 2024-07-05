@@ -25,31 +25,8 @@ class FunctionsBloc extends Bloc<FunctionsEvent, FunctionsState> {
       print('sp; ${isLoggedIn.toString()}');
       if (isLoggedIn.isNotEmpty) {
         print('sp notempt $isLoggedIn');
-        // emit(state.copyWith(status: Status.loggedIn));
-        // final Map<String, String>? header = {
-        //   'Content-Type': 'application/json',
-        //   'x-auth-token': isLoggedIn,
-        // };
-        // try {
-          // final response = await http.get(
-          //   Uri.parse('${Secrets.authUrl}${Secrets.getUser}'),
-          //   headers: header,
-          // );
-          // print(response.body);
-          // final data = jsonDecode(response.body);
-          // if (response.statusCode == 200) {
-            // user = UserModel.fromMap(data);
-            // print('user name: ${user.name}');
             print('success');
             emit(state.copyWith(status: Status.loggedIn));
-          // } else {
-            // emit(state.copyWith(status: Status.notLoggedIn));
-            print('not success');
-          // }
-        // } catch (e) {
-          // print('excetion $e');
-          // emit(state.copyWith(status: Status.notLoggedIn));
-        // }
       } else {
         print('sp empt $isLoggedIn');
         emit(state.copyWith(status: Status.notLoggedIn));
