@@ -34,9 +34,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     try {
       final String token = await _apiRepostiroy.loginUser(data);
       print("token - ${token.toString()}");
-      // await sharedPref.setString(Constants.LOGINTOKEN, token.toString());
-      if (token.isEmpty ) {
-        
+      if (token.isEmpty) {
         emit(
           state.copyWith(
             email: event.email,
@@ -44,13 +42,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
             loginStatus: LoginStatus.success,
           ),
         );
-      }else{
-        emit(state.copyWith(message: token,loginStatus: LoginStatus.error));
+      } else {
+        emit(state.copyWith(message: token, loginStatus: LoginStatus.error));
       }
     } catch (e) {
-      emit(state.copyWith(loginStatus: LoginStatus.error,message: e.toString()));
+      emit(state.copyWith(
+          loginStatus: LoginStatus.error, message: e.toString()));
     }
-
   }
 
   Future<void> _signApi(SignUpApi event, Emitter<LoginState> emit) async {
@@ -61,37 +59,27 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       'email': event.user.email,
       'password': event.user.password,
       'name': event.user.name,
+      'username': event.user.name,
     };
     try {
-      final response = await http.post(
-        Uri.parse('${Secrets.authUrl}${Secrets.register}'),
-        body: jsonEncode(data),
-        headers: {'Content-Type': 'application/json'},
-      );
-      print(response.body);
-
-      final data1 = jsonDecode(response.body);
-      if (response.statusCode == 201) {
-        emit(LoginState(
-            email: event.user.email!,
-            password: event.user.password!,
-            name: event.user.name!));
+      final String response=await _apiRepostiroy.signupUser(data);
+      print('respose $response');
+      if (response.isEmpty) {
         emit(state.copyWith(
           message: 'Sign Up Successfull!',
           loginStatus: LoginStatus.success,
         ));
-      } else {
+      }else{
         emit(state.copyWith(
-          message: data1["msg"],
+          message: response,
           loginStatus: LoginStatus.error,
         ));
       }
     } catch (e) {
-      print(e.toString());
       emit(state.copyWith(
-        message: e.toString(),
-        loginStatus: LoginStatus.error,
-      ));
+          message: e.toString(),
+          loginStatus: LoginStatus.error,
+        ));
     }
   }
 

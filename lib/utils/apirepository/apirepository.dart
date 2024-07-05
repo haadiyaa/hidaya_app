@@ -5,4 +5,7 @@ class ApiRepostiroy {
   Future<dynamic> loginUser( Map data)async{
     return _apiProvider.loginUser(data);
   }
+  Future<dynamic> signupUser( Map data)async{
+    return _apiProvider.signupUser(data);
+  }
 }

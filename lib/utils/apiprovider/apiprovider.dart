@@ -53,5 +53,23 @@ class ApiProvider {
       return e.toString();
     }
   }
-  
+
+  Future<String> signupUser(Map data) async {
+    try {
+      final response = await http.post(
+        Uri.parse('${Secrets.authUrl}${Secrets.register}'),
+        body: jsonEncode(data),
+        headers: {'Content-Type': 'application/json'},
+      );
+      print(response.body);
+      final data1 = jsonDecode(response.body);
+      if (response.statusCode==201){
+        return '';
+      }else{
+        return data1['msg'].toString();
+      }
+    } catch (e) {
+      return e.toString();
+    }
+  }
 }

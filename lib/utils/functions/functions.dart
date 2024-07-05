@@ -22,11 +22,11 @@ class Functions {
     return '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')} $meridian';
   }
 
-  static Future<UserModel> fetchUser()async{
-    var sharedPref=await SharedPreferences.getInstance();
-    final name=sharedPref.getString(Constants.userName);
-    final email=sharedPref.getString(Constants.userEmail);
-    return UserModel(name: name,email: email);
+  static Future<UserModel> fetchUser() async {
+    var sharedPref = await SharedPreferences.getInstance();
+    final name = sharedPref.getString(Constants.userName);
+    final email = sharedPref.getString(Constants.userEmail);
+    return UserModel(name: name, email: email);
   }
 
   static Future<Placemark?> getLocationName(Position? position) async {

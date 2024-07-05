@@ -124,8 +124,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                           const SnackBar(content: Text('Sign up successfull!')),
                         );
                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>const LoginPagee()));
-                      // GoRouter.of(context).pushReplacementNamed(
-                      //     MyAppRouteConstants.loginRoute);
                     }
                   },
                   child: CustomButton(
