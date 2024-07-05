@@ -6,7 +6,6 @@ import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/secrets/secrets.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiProvider {
@@ -98,13 +97,13 @@ class ApiProvider {
 
   Future<http.Response> fetchPrayetrtime(
       String year, String month, String city, String country) async {
-    // final year = DateFormat('yyyy').format(DateTime.now());
-    // final month = DateFormat('MM').format(DateTime.now());
-    // print('month $month');
-    // print('fetching prayer time');
-    // PrayerTimeModel prayerTimeModel;
     final response = await http.get(Uri.parse(
-        '${Secrets.prayerUrl}$year/$month${Secrets.city}${city}${Secrets.country}$country${Secrets.end}'));
+        '${Secrets.prayerUrl}$year/$month${Secrets.city}$city${Secrets.country}$country${Secrets.end}'));
     return response;
+  }
+
+  Future<void> surahList()async{
+    // final response=
+    // return response;
   }
 }

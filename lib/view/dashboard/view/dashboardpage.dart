@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hidhayah/bloc/functionbloc/functions_bloc.dart';
 import 'package:hidhayah/bloc/locationbloc/location_bloc.dart';
-import 'package:hidhayah/bloc/prayertimesbloc/prayertime_bloc.dart';
-import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
-import 'package:hidhayah/utils/functions/functions.dart';
 import 'package:hidhayah/utils/styles/gradient.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/common/widgets/customtext.dart';
@@ -20,6 +17,7 @@ import 'package:hidhayah/view/nearbymasjid/view/nearbymasjid.dart';
 import 'package:hidhayah/view/prayertime/view/prayertime.dart';
 import 'package:hidhayah/view/profile/view/profilepage.dart';
 import 'package:hidhayah/view/qibladirection/view/qibladirectionpage.dart';
+import 'package:hidhayah/view/quran/view/quranpage.dart';
 import 'package:hidhayah/view/tasbihpage.dart/view/tasbihpage.dart';
 import 'package:intl/intl.dart';
 
@@ -90,9 +88,6 @@ class _DashBoardPageState extends State<DashBoardPage> {
                             if (state is Loading) {
                               print('loading');
                             }
-                            // if (state.user != null) {
-                            //   user = state.user!;
-                            // }
                             if (state.status == Status.loggedIn) {
                               Navigator.push(
                                   context,
@@ -183,10 +178,13 @@ class _DashBoardPageState extends State<DashBoardPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GradientContainer(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (_)=>QuranpageWrapper()));
+                            },
                             size: size,
                             gradient: Gradients.gradientBox1,
                             child: GradientContainerContent(
+                              
                               title: 'Read the\nQuran',
                               icon: Constants.arrowRight,
                             ),

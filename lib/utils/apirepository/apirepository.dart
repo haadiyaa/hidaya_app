@@ -14,4 +14,9 @@ class ApiRepostiroy {
   Future<dynamic> fetchPrayertime( String year, String month, String city, String country)async{
     return _apiProvider.fetchPrayetrtime(year,month,city,country);
   }
+
+  Future<dynamic> surahList( )async{
+    return _apiProvider.surahList();
+  }
+
 }
