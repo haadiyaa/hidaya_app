@@ -50,7 +50,7 @@ class DashBoardPage extends StatefulWidget {
 }
 
 class _DashBoardPageState extends State<DashBoardPage> {
-  late UserModel user;
+  // late UserModel user;
   String? city;
   String? country;
   double? latitude;
@@ -90,15 +90,15 @@ class _DashBoardPageState extends State<DashBoardPage> {
                             if (state is Loading) {
                               print('loading');
                             }
-                            if (state.user != null) {
-                              user = state.user!;
-                            }
+                            // if (state.user != null) {
+                            //   user = state.user!;
+                            // }
                             if (state.status == Status.loggedIn) {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (_) =>
-                                          ProfilePageWrapper(userModel: user)));
+                                          ProfilePageWrapper()));
                             }
                             if (state.status == Status.notLoggedIn) {
                               Navigator.push(

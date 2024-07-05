@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/secrets/secrets.dart';
+import 'package:hidhayah/utils/apirepository/apirepository.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,6 +14,7 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
+  final ApiRepostiroy _apiRepostiroy = ApiRepostiroy();
   LoginBloc() : super(LoginState()) {
     on<LoginApi>(_loginApi);
     on<SignUpApi>(_signApi);
@@ -30,60 +32,25 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       "password": event.password,
     };
     try {
-      final response = await http.post(
-        Uri.parse('${Secrets.authUrl}${Secrets.login}'),
-        body: jsonEncode(data),
-        headers: {'Content-Type': 'application/json'},
-      );
-      print(response.body);
-      final data1 = jsonDecode(response.body);
-      if (response.statusCode == 200) {
-        await sharedPref.setString(
-            Constants.LOGINTOKEN, data1['token'].toString());
-        final Map<String, String>? header = {
-          'Content-Type': 'application/json',
-          'x-auth-token': data1['token'],
-        };
-        final response = await http.get(
-          Uri.parse('${Secrets.authUrl}${Secrets.getUser}'),
-          headers: header,
-        );
-        print(response.body);
-        final data = jsonDecode(response.body);
-        if (response.statusCode == 200) {
-          user = UserModel.fromMap(data);
-          print('user name: ${user.name}');
-
-          // emit(GetUserState(user: user));
-          emit(state.copyWith(name: user.name, email: user.email));
-          emit(LoginState(
-            name: user.name!,
+      final String token = await _apiRepostiroy.loginUser(data);
+      print("token - ${token.toString()}");
+      // await sharedPref.setString(Constants.LOGINTOKEN, token.toString());
+      if (token.isEmpty ) {
+        
+        emit(
+          state.copyWith(
             email: event.email,
-            password: event.password,
-          ));
-        } else {
-          print('error getting user data');
-          print('not success');
-        }
-
-        emit(state.copyWith(
-          message: 'Login Successfull!',
-          loginStatus: LoginStatus.success,
-        ));
-        print(' token: ${data1['token']}');
-      } else {
-        emit(state.copyWith(
-          message: data1["msg"],
-          loginStatus: LoginStatus.error,
-        ));
+            message: 'Login successful',
+            loginStatus: LoginStatus.success,
+          ),
+        );
+      }else{
+        emit(state.copyWith(message: token,loginStatus: LoginStatus.error));
       }
     } catch (e) {
-      print(e.toString());
-      emit(state.copyWith(
-        message: e.toString(),
-        loginStatus: LoginStatus.error,
-      ));
+      emit(state.copyWith(loginStatus: LoginStatus.error,message: e.toString()));
     }
+
   }
 
   Future<void> _signApi(SignUpApi event, Emitter<LoginState> emit) async {

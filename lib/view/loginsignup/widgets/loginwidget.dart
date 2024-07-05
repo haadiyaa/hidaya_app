@@ -133,7 +133,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           context,
                           MaterialPageRoute(
                               builder: (_) =>
-                                  ProfilePageWrapper(userModel: user)));
+                                  ProfilePageWrapper()));
                       // GoRouter.of(context)
                       //         .pushReplacementNamed(MyAppRouteConstants.profileRoute,extra: user);
                     }

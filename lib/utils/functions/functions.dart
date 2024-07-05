@@ -1,5 +1,6 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,6 +20,13 @@ class Functions {
     hour = hour == 0 ? 12 : hour;
 
     return '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')} $meridian';
+  }
+
+  static Future<UserModel> fetchUser()async{
+    var sharedPref=await SharedPreferences.getInstance();
+    final name=sharedPref.getString(Constants.userName);
+    final email=sharedPref.getString(Constants.userEmail);
+    return UserModel(name: name,email: email);
   }
 
   static Future<Placemark?> getLocationName(Position? position) async {
