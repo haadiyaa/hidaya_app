@@ -4,7 +4,9 @@ import 'package:hidhayah/bloc/functionbloc/functions_bloc.dart';
 import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/functions/functions.dart';
+import 'package:hidhayah/view/about/view/aboutus.dart';
 import 'package:hidhayah/view/dashboard/view/dashboardpage.dart';
+import 'package:hidhayah/view/privacypolicy/view/privacypolicy.dart';
 import 'package:hidhayah/view/profile/widgets/customprofilebutton.dart';
 
 class ProfilePageWrapper extends StatelessWidget {
@@ -17,7 +19,7 @@ class ProfilePageWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => FunctionsBloc(),
-      child: ProfilePage(
+      child: const ProfilePage(
           // userModel: userModel,
           ),
     );
@@ -104,27 +106,32 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 Constants.height20,
                 Constants.height10,
-                const ListTile(
-                  title: Text(
+                 ListTile(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=>const AboutUs()));
+                  },
+                  title: const Text(
                     'About Us',
                     style: TextStyle(
                       color: Constants.white,
                     ),
                   ),
-                  trailing: Icon(
+                  trailing: const Icon(
                     Icons.arrow_circle_right_outlined,
                     color: Constants.white,
                   ),
                 ),
-                Divider(),
-                const ListTile(
-                  title: Text(
+                const Divider(),
+                 ListTile(onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (_)=>const PrivacyPolicy()));
+                },
+                  title: const Text(
                     'Privacy Policy',
                     style: TextStyle(
                       color: Constants.white,
                     ),
                   ),
-                  trailing: Icon(
+                  trailing: const Icon(
                     Icons.arrow_circle_right_outlined,
                     color: Constants.white,
                   ),

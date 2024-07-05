@@ -8,4 +8,10 @@ class ApiRepostiroy {
   Future<dynamic> signupUser( Map data)async{
     return _apiProvider.signupUser(data);
   }
+  Future<dynamic> forgotPass( Map data)async{
+    return _apiProvider.forgotPassword(data);
+  }
+  Future<dynamic> fetchPrayertime( String year, String month, String city, String country)async{
+    return _apiProvider.fetchPrayetrtime(year,month,city,country);
+  }
 }

@@ -1,12 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hidhayah/model/markermodel.dart';
 import 'package:hidhayah/secrets/secrets.dart';
-import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/functions/functions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;

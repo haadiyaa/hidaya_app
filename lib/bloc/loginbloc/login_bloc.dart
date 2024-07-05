@@ -62,14 +62,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       'username': event.user.name,
     };
     try {
-      final String response=await _apiRepostiroy.signupUser(data);
+      final String response = await _apiRepostiroy.signupUser(data);
       print('respose $response');
       if (response.isEmpty) {
         emit(state.copyWith(
           message: 'Sign Up Successfull!',
           loginStatus: LoginStatus.success,
         ));
-      }else{
+      } else {
         emit(state.copyWith(
           message: response,
           loginStatus: LoginStatus.error,
@@ -77,34 +77,45 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       }
     } catch (e) {
       emit(state.copyWith(
-          message: e.toString(),
-          loginStatus: LoginStatus.error,
-        ));
+        message: e.toString(),
+        loginStatus: LoginStatus.error,
+      ));
     }
   }
 
   Future<void> _forgotPass(
       ForgotPasswordEvent event, Emitter<LoginState> emit) async {
+    emit(state.copyWith(
+        loginStatus: LoginStatus.loading, message: 'Plase wait...'));
     final body = {
       "email": event.email,
     };
-    try {
-      final response = await http.post(
-        Uri.parse('${Secrets.authUrl}${Secrets.forgotPassword}'),
-        body: jsonEncode(body),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      );
-      print(response.body);
-      final data = jsonDecode(response.body);
-      if (response == 200) {
-        emit(state.copyWith(message: data['msg']));
-      } else {
-        emit(state.copyWith(message: data['msg']));
-      }
-    } catch (e) {
-      emit(state.copyWith(message: e.toString()));
+    final String response = await _apiRepostiroy.forgotPass(body);
+    if (response.isNotEmpty) {
+      emit(state.copyWith(
+        message: response,
+        loginStatus: LoginStatus.restpass,
+      ));
     }
+    
+
+    // try {
+    //   final response = await http.post(
+    //     Uri.parse('${Secrets.authUrl}${Secrets.forgotPassword}'),
+    //     body: jsonEncode(body),
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //   );
+    //   print(response.body);
+    //   final data = jsonDecode(response.body);
+    //   if (response == 200) {
+    //     emit(state.copyWith(message: data['msg']));
+    //   } else {
+    //     emit(state.copyWith(message: data['msg']));
+    //   }
+    // } catch (e) {
+    //   emit(state.copyWith(message: e.toString()));
+    // }
   }
 }

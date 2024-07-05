@@ -1,6 +1,6 @@
 part of 'login_bloc.dart';
 
-enum LoginStatus { initial, loading, success, error ,loggedIn}
+enum LoginStatus { initial, loading, success, error ,loggedIn,restpass}
 
 class LoginState extends Equatable {
   final String email;

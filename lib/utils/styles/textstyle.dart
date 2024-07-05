@@ -30,4 +30,7 @@ class TextStyles {
   //=====================================prayertime=====================================
   static TextStyle prayerTodayStyle = TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500, );
 
+  static TextStyle size20=TextStyle(fontSize: 20.sp);
+  static TextStyle size18=TextStyle(fontSize: 18.sp);
+
 }

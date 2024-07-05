@@ -67,10 +67,18 @@ class ForgotPasswordWidget extends StatelessWidget {
               Constants.height10,
               BlocListener<LoginBloc, LoginState>(
                 listener: (context, state) {
-                  ScaffoldMessenger.of(context)
-                    ..hideCurrentSnackBar()
-                    ..showSnackBar(
-                        SnackBar(content: Text(state.message.toString())));
+                  if (state.loginStatus == LoginStatus.loading) {
+                    ScaffoldMessenger.of(context)
+                      ..hideCurrentSnackBar()
+                      ..showSnackBar(
+                          SnackBar(content: Text(state.message.toString())));
+                  }
+                  if (state.loginStatus == LoginStatus.restpass) {
+                    ScaffoldMessenger.of(context)
+                      ..hideCurrentSnackBar()
+                      ..showSnackBar(
+                          SnackBar(content: Text(state.message.toString())));
+                  }
                 },
                 child: CustomLightButton(
                   size: size,

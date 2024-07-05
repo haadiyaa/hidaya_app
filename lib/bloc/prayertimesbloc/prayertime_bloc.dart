@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hidhayah/model/prayertimemodel.dart';
 import 'package:hidhayah/secrets/secrets.dart';
+import 'package:hidhayah/utils/apirepository/apirepository.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
@@ -11,6 +12,7 @@ part 'prayertime_event.dart';
 part 'prayertime_state.dart';
 
 class PrayertimeBloc extends Bloc<PrayertimeEvent, PrayertimeState> {
+  final ApiRepostiroy _apiRepostiroy=ApiRepostiroy();
   PrayertimeBloc() : super(FetchPrayerTimeInitial()) {
     on<FetchPrayerTimeEvent>(_fetchPrayertime);
   }
@@ -24,8 +26,9 @@ class PrayertimeBloc extends Bloc<PrayertimeEvent, PrayertimeState> {
     print('fetching prayer time');
     PrayerTimeModel prayerTimeModel;
     try {
-      final response = await http.get(Uri.parse(
-          '${Secrets.prayerUrl}$year/$month${Secrets.city}${event.city}${Secrets.country}${event.country}${Secrets.end}'));
+      // final response = await http.get(Uri.parse(
+      //     '${Secrets.prayerUrl}$year/$month${Secrets.city}${event.city}${Secrets.country}${event.country}${Secrets.end}'));
+      final http.Response response= await _apiRepostiroy.fetchPrayertime(year,month,event.city,event.country);
       print('response.body: ${response.body}');
 
       if (response.statusCode == 200) {
