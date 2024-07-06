@@ -18,7 +18,7 @@ class SurahListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(context,MaterialPageRoute(builder: (_)=>SurahPageWrapper()));
+        Navigator.push(context,MaterialPageRoute(builder: (_)=>SurahPageWrapper(title: title,index: num,)));
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),

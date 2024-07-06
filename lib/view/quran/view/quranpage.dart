@@ -4,7 +4,6 @@ import 'package:hidhayah/bloc/suralistbloc/surahlist_bloc.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/view/quran/widgets/surahlistshimmerwidget.dart';
 import 'package:hidhayah/view/quran/widgets/surahlistwidget.dart';
-import 'package:shimmer/shimmer.dart';
 
 class QuranpageWrapper extends StatelessWidget {
   const QuranpageWrapper({super.key});
