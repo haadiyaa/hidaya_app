@@ -5,6 +5,7 @@ class SurahListModel {
     required this.message,
     required this.data,
   });
+  
   late final int code;
   late final String status;
   late final String message;
@@ -30,36 +31,36 @@ class SurahListModel {
 class Data {
   Data({
     required this.number,
-    required this.sequence,
+    // required this.sequence,
     required this.numberOfVerses,
     required this.name,
-    required this.revelation,
-    required this.tafsir,
+    // required this.revelation,
+    // required this.tafsir,
   });
   late final int number;
-  late final int sequence;
+  // late final int sequence;
   late final int numberOfVerses;
   late final Name name;
-  late final Revelation revelation;
-  late final Tafsir tafsir;
+  // // late final Revelation revelation;
+  // // late final Tafsir tafsir;
   
   Data.fromJson(Map<String, dynamic> json){
     number = json['number'];
-    sequence = json['sequence'];
+    // // sequence = json['sequence'];
     numberOfVerses = json['numberOfVerses'];
     name = Name.fromJson(json['name']);
-    revelation = Revelation.fromJson(json['revelation']);
-    tafsir = Tafsir.fromJson(json['tafsir']);
+    // // // revelation = Revelation.fromJson(json['revelation']);
+    // // // tafsir = Tafsir.fromJson(json['tafsir']);
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
     _data['number'] = number;
-    _data['sequence'] = sequence;
+    // // _data['sequence'] = sequence;
     _data['numberOfVerses'] = numberOfVerses;
     _data['name'] = name.toJson();
-    _data['revelation'] = revelation.toJson();
-    _data['tafsir'] = tafsir.toJson();
+    // // _data['revelation'] = revelation.toJson();
+    // // _data['tafsir'] = tafsir.toJson();
     return _data;
   }
 }
@@ -135,44 +136,44 @@ class Translation {
   }
 }
 
-class Revelation {
-  Revelation({
-    required this.arab,
-    required this.en,
-    required this.id,
-  });
-  late final String arab;
-  late final String en;
-  late final String id;
+// class Revelation {
+  // Revelation({
+  //   required this.arab,
+  //   required this.en,
+  //   required this.id,
+  // });
+  // late final String arab;
+  // late final String en;
+  // late final String id;
   
-  Revelation.fromJson(Map<String, dynamic> json){
-    arab = json['arab'];
-    en = json['en'];
-    id = json['id'];
-  }
+  // Revelation.fromJson(Map<String, dynamic> json){
+  //   arab = json['arab'];
+  //   en = json['en'];
+  //   id = json['id'];
+  // }
 
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['arab'] = arab;
-    _data['en'] = en;
-    _data['id'] = id;
-    return _data;
-  }
-}
+//   Map<String, dynamic> toJson() {
+//     final _data = <String, dynamic>{};
+//     _data['arab'] = arab;
+//     _data['en'] = en;
+//     _data['id'] = id;
+//     return _data;
+//   }
+// }
 
-class Tafsir {
-  Tafsir({
-    required this.id,
-  });
-  late final String id;
+// class Tafsir {
+  // Tafsir({
+  //   required this.id,
+  // });
+  // late final String id;
   
-  Tafsir.fromJson(Map<String, dynamic> json){
-    id = json['id'];
-  }
+  // Tafsir.fromJson(Map<String, dynamic> json){
+//     id = json['id'];
+//   }
 
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    return _data;
-  }
-}
+//   Map<String, dynamic> toJson() {
+//     final _data = <String, dynamic>{};
+//     _data['id'] = id;
+//     return _data;
+//   }
+// }

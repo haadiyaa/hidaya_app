@@ -102,8 +102,8 @@ class ApiProvider {
     return response;
   }
 
-  Future<void> surahList()async{
-    // final response=
-    // return response;
+  Future<http.Response> surahList()async{
+    final response = await http.get(Uri.parse(Secrets.surahList));
+    return response;
   }
 }
