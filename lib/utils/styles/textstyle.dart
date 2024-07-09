@@ -35,7 +35,7 @@ class TextStyles {
   static TextStyle size18=TextStyle(fontSize: 18.sp);
 
   //====================================quran page========================
-  static const TextStyle arabicTransFont=TextStyle(fontStyle: FontStyle.italic,color: Constants.greenLight);
+  static TextStyle arabicTransFont=TextStyle(fontStyle: FontStyle.italic,color: Constants.greenLight,fontSize: 16.sp);
   static TextStyle engFont=TextStyle(fontSize: 18.sp);
   static TextStyle arabicFont=TextStyle(fontSize: 20.sp);
 

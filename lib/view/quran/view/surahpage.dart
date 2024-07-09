@@ -1,9 +1,15 @@
+import 'package:arabic_font/arabic_font.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hidhayah/bloc/suralistbloc/surahlist_bloc.dart';
+import 'package:hidhayah/main.dart';
 import 'package:hidhayah/model/surahmodel.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
+import 'package:hidhayah/view/quran/widgets/shimmerlistview.dart';
+import 'package:hidhayah/view/quran/widgets/surahayatwidget.dart';
+import 'package:shimmer/shimmer.dart';
 
 class SurahPageWrapper extends StatelessWidget {
   final String index;
@@ -34,12 +40,14 @@ class Surahpage extends StatefulWidget {
 class _SurahpageState extends State<Surahpage> {
   late SurahModel surahModel;
   late Revelation? revelation;
+  ScrollController? _controllerOne;
 
   @override
   void initState() {
     super.initState();
     BlocProvider.of<SurahlistBloc>(context)
         .add(SurahFetchEvent(index: widget.index));
+    _controllerOne = ScrollController();
   }
 
   @override
@@ -67,108 +75,68 @@ class _SurahpageState extends State<Surahpage> {
                     decoration: const BoxDecoration(
                       color: Constants.greenDark,
                     ),
-                    child: Text(
-                      surahModel.data!.revelation!.en! ?? 'loading..',
-                      textAlign: TextAlign.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text('Juz: ${surahModel.data!.verses![0].meta!.juz}'),
+                        Text(
+                          surahModel.data!.revelation!.en! ?? 'loading..',
+                          textAlign: TextAlign.center,
+                        ),
+                        Text('Aayat: ${surahModel.data!.numberOfVerses}')
+                      ],
                     ),
                   ),
+                  Constants.height10,
+                  surahModel.data!.preBismillah == null
+                      ? const SizedBox()
+                      : Column(
+                          children: [
+                            Text(
+                              surahModel.data!.preBismillah!.text!.arab!,
+                              style: ArabicTextStyle(
+                                  arabicFont: ArabicFont.amiri,
+                                  fontSize: 25.sp),
+                            ),
+                            Constants.height10,
+                            // Text(
+                            //   surahModel.data!.preBismillah!.text!.transliteration!.en!,
+                            //   style: TextStyles.arabicFont,
+                            // ),
+                          ],
+                        ),
                   Expanded(
-                    child: ListView.separated(
-                      itemCount: surahModel.data!.numberOfVerses!,
-                      separatorBuilder: (BuildContext context, int index) {
-                        return const Divider(
-                          thickness: 0.5,
-                        );
-                      },
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 20),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(8),
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                            color: Constants.greenLight)),
-                                    child: Text(
-                                        '${surahModel.data!.verses![index].number!.inSurah}'),
-                                  ),
-                                  Constants.width8,
-                                  SizedBox(
-                                    width: size.width * 0.8,
-                                    child: Text(
-                                      surahModel
-                                          .data!.verses![index].text!.arab!,
-                                      style: TextStyles.arabicFont,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Constants.height5,
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: size.width * 0.8,
-                                    child: Text(
-                                      surahModel.data!.verses![index].text!
-                                          .transliteration!.en!,
-                                      style: TextStyles.arabicTransFont,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: size.width * 0.8,
-                                    child: Text(
-                                      surahModel.data!.verses![index]
-                                          .translation!.en!,
-                                      style: TextStyles.engFont,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Constants.height10,
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(),
-                                  const Row(
-                                    children: [
-                                      Icon(
-                                        Icons.play_arrow_rounded,
-                                        color: Constants.white,
-                                      ),
-                                      Constants.width8,
-                                      Icon(
-                                        Icons.bookmark_border,
-                                        color: Constants.white,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        );
-                      },
+                    child: Scrollbar(
+                      controller: _controllerOne,
+                      radius: const Radius.circular(10),
+                      thickness: 6,
+                      // thumbVisibility: true,
+                      child: ListView.separated(
+                        controller: _controllerOne,
+                        itemCount: surahModel.data!.numberOfVerses!,
+                        separatorBuilder: (BuildContext context, int index) {
+                          return const Divider(
+                            thickness: 0.5,
+                          );
+                        },
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 20),
+                            child: SurahAyatWidget(
+                              surahModel: surahModel,
+                              size: size,
+                              index: index,
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ],
               );
             }
-            return const Center(
-              child: Text('dd'),
-            );
+            return ShimmerlistView(size: size);
           },
         ),
       ),
