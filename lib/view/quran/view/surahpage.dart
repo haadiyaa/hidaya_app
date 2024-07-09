@@ -3,13 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hidhayah/bloc/suralistbloc/surahlist_bloc.dart';
-import 'package:hidhayah/main.dart';
 import 'package:hidhayah/model/surahmodel.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
-import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/quran/widgets/shimmerlistview.dart';
 import 'package:hidhayah/view/quran/widgets/surahayatwidget.dart';
-import 'package:shimmer/shimmer.dart';
 
 class SurahPageWrapper extends StatelessWidget {
   final String index;
