@@ -8,10 +8,22 @@ class SurahModel {
     SurahModel({this.code, this.status, this.message, this.data});
 
     SurahModel.fromJson(Map<String, dynamic> json) {
-        code = json["code"];
-        status = json["status"];
-        message = json["message"];
-        data = json["data"] == null ? null : Data.fromJson(json["data"]);
+        if(json["code"] is int) {
+            code = json["code"];
+        }
+        if(json["status"] is String) {
+            status = json["status"];
+        }
+        if(json["message"] is String) {
+            message = json["message"];
+        }
+        if(json["data"] is Map) {
+            data = json["data"] == null ? null : Data.fromJson(json["data"]);
+        }
+    }
+
+    static List<SurahModel> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => SurahModel.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
@@ -28,40 +40,48 @@ class SurahModel {
 
 class Data {
     int? number;
-    int? sequence;
     int? numberOfVerses;
     Name? name;
     Revelation? revelation;
-    Tafsir? tafsir;
     PreBismillah? preBismillah;
     List<Verses>? verses;
 
-    Data({this.number, this.sequence, this.numberOfVerses, this.name, this.revelation, this.tafsir, this.preBismillah, this.verses});
+    Data({this.number, this.numberOfVerses, this.name, this.revelation, this.preBismillah, this.verses});
 
     Data.fromJson(Map<String, dynamic> json) {
-        number = json["number"];
-        sequence = json["sequence"];
-        numberOfVerses = json["numberOfVerses"];
-        name = json["name"] == null ? null : Name.fromJson(json["name"]);
-        revelation = json["revelation"] == null ? null : Revelation.fromJson(json["revelation"]);
-        tafsir = json["tafsir"] == null ? null : Tafsir.fromJson(json["tafsir"]);
-        preBismillah = json["preBismillah"] == null ? null : PreBismillah.fromJson(json["preBismillah"]);
-        verses = json["verses"] == null ? null : (json["verses"] as List).map((e) => Verses.fromJson(e)).toList();
+        if(json["number"] is int) {
+            number = json["number"];
+        }
+        if(json["numberOfVerses"] is int) {
+            numberOfVerses = json["numberOfVerses"];
+        }
+        if(json["name"] is Map) {
+            name = json["name"] == null ? null : Name.fromJson(json["name"]);
+        }
+        if(json["revelation"] is Map) {
+            revelation = json["revelation"] == null ? null : Revelation.fromJson(json["revelation"]);
+        }
+        if(json["preBismillah"] is Map) {
+            preBismillah = json["preBismillah"] == null ? null : PreBismillah.fromJson(json["preBismillah"]);
+        }
+        if(json["verses"] is List) {
+            verses = json["verses"] == null ? null : (json["verses"] as List).map((e) => Verses.fromJson(e)).toList();
+        }
+    }
+
+    static List<Data> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => Data.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
         final Map<String, dynamic> _data = <String, dynamic>{};
         _data["number"] = number;
-        _data["sequence"] = sequence;
         _data["numberOfVerses"] = numberOfVerses;
         if(name != null) {
             _data["name"] = name?.toJson();
         }
         if(revelation != null) {
             _data["revelation"] = revelation?.toJson();
-        }
-        if(tafsir != null) {
-            _data["tafsir"] = tafsir?.toJson();
         }
         if(preBismillah != null) {
             _data["preBismillah"] = preBismillah?.toJson();
@@ -79,17 +99,29 @@ class Verses {
     Text1? text;
     Translation2? translation;
     Audio1? audio;
-    Tafsir1? tafsir;
 
-    Verses({this.number, this.meta, this.text, this.translation, this.audio, this.tafsir});
+    Verses({this.number, this.meta, this.text, this.translation, this.audio});
 
     Verses.fromJson(Map<String, dynamic> json) {
-        number = json["number"] == null ? null : Number.fromJson(json["number"]);
-        meta = json["meta"] == null ? null : Meta.fromJson(json["meta"]);
-        text = json["text"] == null ? null : Text1.fromJson(json["text"]);
-        translation = json["translation"] == null ? null : Translation2.fromJson(json["translation"]);
-        audio = json["audio"] == null ? null : Audio1.fromJson(json["audio"]);
-        tafsir = json["tafsir"] == null ? null : Tafsir1.fromJson(json["tafsir"]);
+        if(json["number"] is Map) {
+            number = json["number"] == null ? null : Number.fromJson(json["number"]);
+        }
+        if(json["meta"] is Map) {
+            meta = json["meta"] == null ? null : Meta.fromJson(json["meta"]);
+        }
+        if(json["text"] is Map) {
+            text = json["text"] == null ? null : Text1.fromJson(json["text"]);
+        }
+        if(json["translation"] is Map) {
+            translation = json["translation"] == null ? null : Translation2.fromJson(json["translation"]);
+        }
+        if(json["audio"] is Map) {
+            audio = json["audio"] == null ? null : Audio1.fromJson(json["audio"]);
+        }
+    }
+
+    static List<Verses> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => Verses.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
@@ -109,46 +141,6 @@ class Verses {
         if(audio != null) {
             _data["audio"] = audio?.toJson();
         }
-        if(tafsir != null) {
-            _data["tafsir"] = tafsir?.toJson();
-        }
-        return _data;
-    }
-}
-
-class Tafsir1 {
-    Id? id;
-
-    Tafsir1({this.id});
-
-    Tafsir1.fromJson(Map<String, dynamic> json) {
-        id = json["id"] == null ? null : Id.fromJson(json["id"]);
-    }
-
-    Map<String, dynamic> toJson() {
-        final Map<String, dynamic> _data = <String, dynamic>{};
-        if(id != null) {
-            _data["id"] = id?.toJson();
-        }
-        return _data;
-    }
-}
-
-class Id {
-    String? short;
-    String? long;
-
-    Id({this.short, this.long});
-
-    Id.fromJson(Map<String, dynamic> json) {
-        short = json["short"];
-        long = json["long"];
-    }
-
-    Map<String, dynamic> toJson() {
-        final Map<String, dynamic> _data = <String, dynamic>{};
-        _data["short"] = short;
-        _data["long"] = long;
         return _data;
     }
 }
@@ -160,8 +152,16 @@ class Audio1 {
     Audio1({this.primary, this.secondary});
 
     Audio1.fromJson(Map<String, dynamic> json) {
-        primary = json["primary"];
-        secondary = json["secondary"] == null ? null : List<String>.from(json["secondary"]);
+        if(json["primary"] is String) {
+            primary = json["primary"];
+        }
+        if(json["secondary"] is List) {
+            secondary = json["secondary"] == null ? null : List<String>.from(json["secondary"]);
+        }
+    }
+
+    static List<Audio1> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => Audio1.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
@@ -176,19 +176,22 @@ class Audio1 {
 
 class Translation2 {
     String? en;
-    String? id;
 
-    Translation2({this.en, this.id});
+    Translation2({this.en});
 
     Translation2.fromJson(Map<String, dynamic> json) {
-        en = json["en"];
-        id = json["id"];
+        if(json["en"] is String) {
+            en = json["en"];
+        }
+    }
+
+    static List<Translation2> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => Translation2.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
         final Map<String, dynamic> _data = <String, dynamic>{};
         _data["en"] = en;
-        _data["id"] = id;
         return _data;
     }
 }
@@ -200,8 +203,16 @@ class Text1 {
     Text1({this.arab, this.transliteration});
 
     Text1.fromJson(Map<String, dynamic> json) {
-        arab = json["arab"];
-        transliteration = json["transliteration"] == null ? null : Transliteration2.fromJson(json["transliteration"]);
+        if(json["arab"] is String) {
+            arab = json["arab"];
+        }
+        if(json["transliteration"] is Map) {
+            transliteration = json["transliteration"] == null ? null : Transliteration2.fromJson(json["transliteration"]);
+        }
+    }
+
+    static List<Text1> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => Text1.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
@@ -220,7 +231,13 @@ class Transliteration2 {
     Transliteration2({this.en});
 
     Transliteration2.fromJson(Map<String, dynamic> json) {
-        en = json["en"];
+        if(json["en"] is String) {
+            en = json["en"];
+        }
+    }
+
+    static List<Transliteration2> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => Transliteration2.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
@@ -233,85 +250,73 @@ class Transliteration2 {
 class Meta {
     int? juz;
     int? page;
-    int? manzil;
-    int? ruku;
-    int? hizbQuarter;
-    Sajda? sajda;
 
-    Meta({this.juz, this.page, this.manzil, this.ruku, this.hizbQuarter, this.sajda});
+    Meta({this.juz, this.page});
 
     Meta.fromJson(Map<String, dynamic> json) {
-        juz = json["juz"];
-        page = json["page"];
-        manzil = json["manzil"];
-        ruku = json["ruku"];
-        hizbQuarter = json["hizbQuarter"];
-        sajda = json["sajda"] == null ? null : Sajda.fromJson(json["sajda"]);
+        if(json["juz"] is int) {
+            juz = json["juz"];
+        }
+        if(json["page"] is int) {
+            page = json["page"];
+        }
+    }
+
+    static List<Meta> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => Meta.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
         final Map<String, dynamic> _data = <String, dynamic>{};
         _data["juz"] = juz;
         _data["page"] = page;
-        _data["manzil"] = manzil;
-        _data["ruku"] = ruku;
-        _data["hizbQuarter"] = hizbQuarter;
-        if(sajda != null) {
-            _data["sajda"] = sajda?.toJson();
-        }
-        return _data;
-    }
-}
-
-class Sajda {
-    bool? recommended;
-    bool? obligatory;
-
-    Sajda({this.recommended, this.obligatory});
-
-    Sajda.fromJson(Map<String, dynamic> json) {
-        recommended = json["recommended"];
-        obligatory = json["obligatory"];
-    }
-
-    Map<String, dynamic> toJson() {
-        final Map<String, dynamic> _data = <String, dynamic>{};
-        _data["recommended"] = recommended;
-        _data["obligatory"] = obligatory;
         return _data;
     }
 }
 
 class Number {
-    int? inQuran;
     int? inSurah;
 
-    Number({this.inQuran, this.inSurah});
+    Number({this.inSurah});
 
     Number.fromJson(Map<String, dynamic> json) {
-        inQuran = json["inQuran"];
-        inSurah = json["inSurah"];
+        if(json["inSurah"] is int) {
+            inSurah = json["inSurah"];
+        }
+    }
+
+    static List<Number> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => Number.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
         final Map<String, dynamic> _data = <String, dynamic>{};
-        _data["inQuran"] = inQuran;
         _data["inSurah"] = inSurah;
         return _data;
     }
 }
 
 class PreBismillah {
-    Text? text;
+    TextC? text;
     Translation1? translation;
     Audio? audio;
 
     PreBismillah({this.text, this.translation, this.audio});
 
     PreBismillah.fromJson(Map<String, dynamic> json) {
-        text = json["text"] == null ? null : Text.fromJson(json["text"]);
-        translation = json["translation"] == null ? null : Translation1.fromJson(json["translation"]);
-        audio = json["audio"] == null ? null : Audio.fromJson(json["audio"]);
+        if(json["text"] is Map) {
+            text = json["text"] == null ? null : TextC.fromJson(json["text"]);
+        }
+        if(json["translation"] is Map) {
+            translation = json["translation"] == null ? null : Translation1.fromJson(json["translation"]);
+        }
+        if(json["audio"] is Map) {
+            audio = json["audio"] == null ? null : Audio.fromJson(json["audio"]);
+        }
+    }
+
+    static List<PreBismillah> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => PreBismillah.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
@@ -336,8 +341,16 @@ class Audio {
     Audio({this.primary, this.secondary});
 
     Audio.fromJson(Map<String, dynamic> json) {
-        primary = json["primary"];
-        secondary = json["secondary"] == null ? null : List<String>.from(json["secondary"]);
+        if(json["primary"] is String) {
+            primary = json["primary"];
+        }
+        if(json["secondary"] is List) {
+            secondary = json["secondary"] == null ? null : List<String>.from(json["secondary"]);
+        }
+    }
+
+    static List<Audio> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => Audio.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
@@ -352,32 +365,43 @@ class Audio {
 
 class Translation1 {
     String? en;
-    String? id;
 
-    Translation1({this.en, this.id});
+    Translation1({this.en});
 
     Translation1.fromJson(Map<String, dynamic> json) {
-        en = json["en"];
-        id = json["id"];
+        if(json["en"] is String) {
+            en = json["en"];
+        }
+    }
+
+    static List<Translation1> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => Translation1.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
         final Map<String, dynamic> _data = <String, dynamic>{};
         _data["en"] = en;
-        _data["id"] = id;
         return _data;
     }
 }
 
-class Text {
+class TextC {
     String? arab;
     Transliteration1? transliteration;
 
-    Text({this.arab, this.transliteration});
+    TextC({this.arab, this.transliteration});
 
-    Text.fromJson(Map<String, dynamic> json) {
-        arab = json["arab"];
-        transliteration = json["transliteration"] == null ? null : Transliteration1.fromJson(json["transliteration"]);
+    TextC.fromJson(Map<String, dynamic> json) {
+        if(json["arab"] is String) {
+            arab = json["arab"];
+        }
+        if(json["transliteration"] is Map) {
+            transliteration = json["transliteration"] == null ? null : Transliteration1.fromJson(json["transliteration"]);
+        }
+    }
+
+    static List<TextC> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => TextC.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
@@ -396,73 +420,65 @@ class Transliteration1 {
     Transliteration1({this.en});
 
     Transliteration1.fromJson(Map<String, dynamic> json) {
-        en = json["en"];
+        if(json["en"] is String) {
+            en = json["en"];
+        }
+    }
+
+    static List<Transliteration1> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => Transliteration1.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
         final Map<String, dynamic> _data = <String, dynamic>{};
         _data["en"] = en;
-        return _data;
-    }
-}
-
-class Tafsir {
-    String? id;
-
-    Tafsir({this.id});
-
-    Tafsir.fromJson(Map<String, dynamic> json) {
-        id = json["id"];
-    }
-
-    Map<String, dynamic> toJson() {
-        final Map<String, dynamic> _data = <String, dynamic>{};
-        _data["id"] = id;
         return _data;
     }
 }
 
 class Revelation {
-    String? arab;
     String? en;
-    String? id;
 
-    Revelation({this.arab, this.en, this.id});
+    Revelation({this.en});
 
     Revelation.fromJson(Map<String, dynamic> json) {
-        arab = json["arab"];
-        en = json["en"];
-        id = json["id"];
+        if(json["en"] is String) {
+            en = json["en"];
+        }
+    }
+
+    static List<Revelation> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => Revelation.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
         final Map<String, dynamic> _data = <String, dynamic>{};
-        _data["arab"] = arab;
         _data["en"] = en;
-        _data["id"] = id;
         return _data;
     }
 }
 
 class Name {
-    String? short;
-    String? long;
     Transliteration? transliteration;
     Translation? translation;
 
-    Name({this.short, this.long, this.transliteration, this.translation});
+    Name({this.transliteration, this.translation});
 
     Name.fromJson(Map<String, dynamic> json) {
-        short = json["short"];
-        long = json["long"];
-        transliteration = json["transliteration"] == null ? null : Transliteration.fromJson(json["transliteration"]);
-        translation = json["translation"] == null ? null : Translation.fromJson(json["translation"]);
+        if(json["transliteration"] is Map) {
+            transliteration = json["transliteration"] == null ? null : Transliteration.fromJson(json["transliteration"]);
+        }
+        if(json["translation"] is Map) {
+            translation = json["translation"] == null ? null : Translation.fromJson(json["translation"]);
+        }
+    }
+
+    static List<Name> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => Name.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
         final Map<String, dynamic> _data = <String, dynamic>{};
-        _data["short"] = short;
-        _data["long"] = long;
         if(transliteration != null) {
             _data["transliteration"] = transliteration?.toJson();
         }
@@ -475,38 +491,44 @@ class Name {
 
 class Translation {
     String? en;
-    String? id;
 
-    Translation({this.en, this.id});
+    Translation({this.en});
 
     Translation.fromJson(Map<String, dynamic> json) {
-        en = json["en"];
-        id = json["id"];
+        if(json["en"] is String) {
+            en = json["en"];
+        }
+    }
+
+    static List<Translation> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => Translation.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
         final Map<String, dynamic> _data = <String, dynamic>{};
         _data["en"] = en;
-        _data["id"] = id;
         return _data;
     }
 }
 
 class Transliteration {
     String? en;
-    String? id;
 
-    Transliteration({this.en, this.id});
+    Transliteration({this.en});
 
     Transliteration.fromJson(Map<String, dynamic> json) {
-        en = json["en"];
-        id = json["id"];
+        if(json["en"] is String) {
+            en = json["en"];
+        }
+    }
+
+    static List<Transliteration> fromList(List<Map<String, dynamic>> list) {
+        return list.map((map) => Transliteration.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
         final Map<String, dynamic> _data = <String, dynamic>{};
         _data["en"] = en;
-        _data["id"] = id;
         return _data;
     }
 }
