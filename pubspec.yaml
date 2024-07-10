@@ -53,6 +53,7 @@ dependencies:
   just_audio: ^0.9.38
   audio_video_progress_bar: ^2.0.3
   just_audio_background: ^0.0.1-beta.12
+  rxdart: ^0.27.7
 
 dev_dependencies:
   flutter_test:

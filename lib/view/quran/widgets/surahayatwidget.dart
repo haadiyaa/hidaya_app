@@ -1,10 +1,13 @@
 import 'package:arabic_font/arabic_font.dart';
+import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hidhayah/model/surahmodel.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
+import 'package:hidhayah/view/quran/widgets/controlswidget.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:rxdart/rxdart.dart';
 
 class SurahAyatWidget extends StatefulWidget {
   const SurahAyatWidget({
@@ -24,6 +27,18 @@ class SurahAyatWidget extends StatefulWidget {
 
 class _SurahAyatWidgetState extends State<SurahAyatWidget> {
   late AudioPlayer _audioPlayer;
+
+  Stream<PositionData> get _positionDataStream =>
+      Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
+        _audioPlayer.positionStream,
+        _audioPlayer.bufferedPositionStream,
+        _audioPlayer.durationStream,
+        (position, bufferedPosition, duration) => PositionData(
+          position,
+          bufferedPosition,
+          duration ?? Duration.zero,
+        ),
+      );
 
   @override
   void initState() {
@@ -87,10 +102,10 @@ class _SurahAyatWidgetState extends State<SurahAyatWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(),
+            SizedBox(),
             Row(
               children: [
-                Controls(audioPlayer: _audioPlayer),
+                Controls(audioPlayer: _audioPlayer,positionDataStream: _positionDataStream,),
                 Constants.width8,
                 IconButton(
                   onPressed: () {},
@@ -102,42 +117,39 @@ class _SurahAyatWidgetState extends State<SurahAyatWidget> {
               ],
             ),
           ],
-        )
+        ),
+        
+        StreamBuilder(
+          stream: _positionDataStream,
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            final PositionData? positionData = snapshot.data;
+            return ProgressBar(
+              barHeight: 4,
+              baseBarColor: Constants.greenLight,
+              bufferedBarColor:const Color.fromARGB(255, 149, 190, 169) ,
+              progressBarColor: Constants.greenDark,
+              thumbColor: Constants.greenDark,
+              thumbRadius: 5,
+              timeLabelTextStyle: TextStyle(fontSize: 10),
+              progress: positionData?.position??Duration.zero,
+              buffered: positionData?.bufferedPosition??Duration.zero,
+              total: positionData?.duration??Duration.zero,
+              onSeek: _audioPlayer.seek,
+            );
+          },
+        ),
       ],
     );
   }
 }
 
-class Controls extends StatelessWidget {
-  const Controls({super.key, required this.audioPlayer});
-  final AudioPlayer audioPlayer;
-
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder<PlayerState>(
-      stream: audioPlayer.playerStateStream,
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        final PlayerState? playerState = snapshot.data;
-        final processingState = playerState?.processingState;
-        final playing = playerState?.playing;
-        if (!(playing ?? false)) {
-          return IconButton(
-            onPressed: audioPlayer.play,
-            icon: const Icon(Icons.play_arrow_rounded),
-            color: Constants.white,
-          );
-        } else if (processingState != ProcessingState.completed) {
-          return IconButton(
-            onPressed: audioPlayer.pause,
-            icon: const Icon(Icons.pause),
-            color: Constants.white,
-          );
-        }
-        return const Icon(
-          Icons.play_arrow_rounded,
-          color: Constants.white,
-        );
-      },
-    );
-  }
+class PositionData {
+  const PositionData(
+    this.position,
+    this.bufferedPosition,
+    this.duration,
+  );
+  final Duration position;
+  final Duration bufferedPosition;
+  final Duration duration;
 }
