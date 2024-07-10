@@ -1,115 +1,1217 @@
 {
   "code": 200,
-  "status": "OK.",
-  "message": "Success fetching surah.",
-  "data": {
-    "number": 108,
-    "numberOfVerses": 3,
-    "name": {
-      "transliteration": {
-        "en": "Al-Kawthar"
+  "status": "OK",
+  "data": [
+    {
+      "hijri": {
+        "date": "24-12-1445",
+        "format": "DD-MM-YYYY",
+        "day": "24",
+        "weekday": {
+          "en": "Al Athnayn",
+          "ar": "الاثنين"
+        },
+        "month": {
+          "number": 12,
+          "en": "Dhū al-Ḥijjah",
+          "ar": "ذوالحجة"
+        },
+        "year": "1445",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
       },
-      "translation": {
-        "en": "Abundance"
+      "gregorian": {
+        "date": "01-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "01",
+        "weekday": {
+          "en": "Monday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
       }
     },
-    "revelation": {
-      "en": "Meccan"
-    },
-    "preBismillah": {
-      "text": {
-        "arab": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
-        "transliteration": {
-          "en": "Bismillaahir Rahmaanir Raheem"
+    {
+      "hijri": {
+        "date": "25-12-1445",
+        "format": "DD-MM-YYYY",
+        "day": "25",
+        "weekday": {
+          "en": "Al Thalaata",
+          "ar": "الثلاثاء"
+        },
+        "month": {
+          "number": 12,
+          "en": "Dhū al-Ḥijjah",
+          "ar": "ذوالحجة"
+        },
+        "year": "1445",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "02-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "02",
+        "weekday": {
+          "en": "Tuesday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
         }
+      }
+    },
+    {
+      "hijri": {
+        "date": "26-12-1445",
+        "format": "DD-MM-YYYY",
+        "day": "26",
+        "weekday": {
+          "en": "Al Arba'a",
+          "ar": "الاربعاء"
+        },
+        "month": {
+          "number": 12,
+          "en": "Dhū al-Ḥijjah",
+          "ar": "ذوالحجة"
+        },
+        "year": "1445",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
       },
-      "translation": {
-        "en": "In the name of Allah, the Entirely Merciful, the Especially Merciful."
+      "gregorian": {
+        "date": "03-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "03",
+        "weekday": {
+          "en": "Wednesday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "27-12-1445",
+        "format": "DD-MM-YYYY",
+        "day": "27",
+        "weekday": {
+          "en": "Al Khamees",
+          "ar": "الخميس"
+        },
+        "month": {
+          "number": 12,
+          "en": "Dhū al-Ḥijjah",
+          "ar": "ذوالحجة"
+        },
+        "year": "1445",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
       },
-      "audio": {
-        "primary": "https://cdn.alquran.cloud/media/audio/ayah/ar.alafasy/1",
-        "secondary": [
-          "https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3",
-          "https://cdn.islamic.network/quran/audio/64/ar.alafasy/1.mp3"
+      "gregorian": {
+        "date": "04-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "04",
+        "weekday": {
+          "en": "Thursday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "28-12-1445",
+        "format": "DD-MM-YYYY",
+        "day": "28",
+        "weekday": {
+          "en": "Al Juma'a",
+          "ar": "الجمعة"
+        },
+        "month": {
+          "number": 12,
+          "en": "Dhū al-Ḥijjah",
+          "ar": "ذوالحجة"
+        },
+        "year": "1445",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "05-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "05",
+        "weekday": {
+          "en": "Friday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "29-12-1445",
+        "format": "DD-MM-YYYY",
+        "day": "29",
+        "weekday": {
+          "en": "Al Sabt",
+          "ar": "السبت"
+        },
+        "month": {
+          "number": 12,
+          "en": "Dhū al-Ḥijjah",
+          "ar": "ذوالحجة"
+        },
+        "year": "1445",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "06-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "06",
+        "weekday": {
+          "en": "Saturday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "30-12-1445",
+        "format": "DD-MM-YYYY",
+        "day": "30",
+        "weekday": {
+          "en": "Al Ahad",
+          "ar": "الاحد"
+        },
+        "month": {
+          "number": 12,
+          "en": "Dhū al-Ḥijjah",
+          "ar": "ذوالحجة"
+        },
+        "year": "1445",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "07-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "07",
+        "weekday": {
+          "en": "Sunday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "01-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "01",
+        "weekday": {
+          "en": "Al Athnayn",
+          "ar": "الاثنين"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "08-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "08",
+        "weekday": {
+          "en": "Monday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "02-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "02",
+        "weekday": {
+          "en": "Al Thalaata",
+          "ar": "الثلاثاء"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "09-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "09",
+        "weekday": {
+          "en": "Tuesday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "03-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "03",
+        "weekday": {
+          "en": "Al Arba'a",
+          "ar": "الاربعاء"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "10-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "10",
+        "weekday": {
+          "en": "Wednesday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "04-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "04",
+        "weekday": {
+          "en": "Al Khamees",
+          "ar": "الخميس"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "11-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "11",
+        "weekday": {
+          "en": "Thursday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "05-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "05",
+        "weekday": {
+          "en": "Al Juma'a",
+          "ar": "الجمعة"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "12-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "12",
+        "weekday": {
+          "en": "Friday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "06-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "06",
+        "weekday": {
+          "en": "Al Sabt",
+          "ar": "السبت"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "13-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "13",
+        "weekday": {
+          "en": "Saturday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "07-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "07",
+        "weekday": {
+          "en": "Al Ahad",
+          "ar": "الاحد"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "14-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "14",
+        "weekday": {
+          "en": "Sunday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "08-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "08",
+        "weekday": {
+          "en": "Al Athnayn",
+          "ar": "الاثنين"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "15-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "15",
+        "weekday": {
+          "en": "Monday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "09-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "09",
+        "weekday": {
+          "en": "Al Thalaata",
+          "ar": "الثلاثاء"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "16-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "16",
+        "weekday": {
+          "en": "Tuesday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "10-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "10",
+        "weekday": {
+          "en": "Al Arba'a",
+          "ar": "الاربعاء"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": [
+          "Ashura"
         ]
+      },
+      "gregorian": {
+        "date": "17-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "17",
+        "weekday": {
+          "en": "Wednesday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
       }
     },
-    "verses": [
-      {
-        "number": {
-          "inSurah": 1
+    {
+      "hijri": {
+        "date": "11-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "11",
+        "weekday": {
+          "en": "Al Khamees",
+          "ar": "الخميس"
         },
-        "meta": {
-          "juz": 30,
-          "page": 602
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
         },
-        "text": {
-          "arab": "إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ",
-          "transliteration": {
-            "en": "Innaa a'taina kal kauthar"
-          }
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
         },
-        "translation": {
-          "en": "Indeed, We have granted you, [O Muhammad], al-Kawthar."
-        },
-        "audio": {
-          "primary": "https://cdn.alquran.cloud/media/audio/ayah/ar.alafasy/6205",
-          "secondary": [
-            "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6205.mp3",
-            "https://cdn.islamic.network/quran/audio/64/ar.alafasy/6205.mp3"
-          ]
-        }
+        "holidays": []
       },
-      {
-        "number": {
-          "inSurah": 2
+      "gregorian": {
+        "date": "18-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "18",
+        "weekday": {
+          "en": "Thursday"
         },
-        "meta": {
-          "juz": 30,
-          "page": 602
+        "month": {
+          "number": 7,
+          "en": "July"
         },
-        "text": {
-          "arab": "فَصَلِّ لِرَبِّكَ وَانْحَرْ",
-          "transliteration": {
-            "en": "Fa salli li rabbika wanhar"
-          }
-        },
-        "translation": {
-          "en": "So pray to your Lord and sacrifice [to Him alone]."
-        },
-        "audio": {
-          "primary": "https://cdn.alquran.cloud/media/audio/ayah/ar.alafasy/6206",
-          "secondary": [
-            "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6206.mp3",
-            "https://cdn.islamic.network/quran/audio/64/ar.alafasy/6206.mp3"
-          ]
-        }
-      },
-      {
-        "number": {
-          "inSurah": 3
-        },
-        "meta": {
-          "juz": 30,
-          "page": 602
-        },
-        "text": {
-          "arab": "إِنَّ شَانِئَكَ هُوَ الْأَبْتَرُ",
-          "transliteration": {
-            "en": "Inna shani-aka huwal abtar"
-          }
-        },
-        "translation": {
-          "en": "Indeed, your enemy is the one cut off."
-        },
-        "audio": {
-          "primary": "https://cdn.alquran.cloud/media/audio/ayah/ar.alafasy/6207",
-          "secondary": [
-            "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6207.mp3",
-            "https://cdn.islamic.network/quran/audio/64/ar.alafasy/6207.mp3"
-          ]
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
         }
       }
-    ]
-  }
+    },
+    {
+      "hijri": {
+        "date": "12-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "12",
+        "weekday": {
+          "en": "Al Juma'a",
+          "ar": "الجمعة"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "19-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "19",
+        "weekday": {
+          "en": "Friday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "13-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "13",
+        "weekday": {
+          "en": "Al Sabt",
+          "ar": "السبت"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "20-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "20",
+        "weekday": {
+          "en": "Saturday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "14-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "14",
+        "weekday": {
+          "en": "Al Ahad",
+          "ar": "الاحد"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "21-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "21",
+        "weekday": {
+          "en": "Sunday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "15-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "15",
+        "weekday": {
+          "en": "Al Athnayn",
+          "ar": "الاثنين"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "22-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "22",
+        "weekday": {
+          "en": "Monday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "16-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "16",
+        "weekday": {
+          "en": "Al Thalaata",
+          "ar": "الثلاثاء"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "23-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "23",
+        "weekday": {
+          "en": "Tuesday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "17-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "17",
+        "weekday": {
+          "en": "Al Arba'a",
+          "ar": "الاربعاء"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "24-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "24",
+        "weekday": {
+          "en": "Wednesday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "18-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "18",
+        "weekday": {
+          "en": "Al Khamees",
+          "ar": "الخميس"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "25-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "25",
+        "weekday": {
+          "en": "Thursday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "19-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "19",
+        "weekday": {
+          "en": "Al Juma'a",
+          "ar": "الجمعة"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "26-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "26",
+        "weekday": {
+          "en": "Friday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "20-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "20",
+        "weekday": {
+          "en": "Al Sabt",
+          "ar": "السبت"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "27-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "27",
+        "weekday": {
+          "en": "Saturday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "21-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "21",
+        "weekday": {
+          "en": "Al Ahad",
+          "ar": "الاحد"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "28-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "28",
+        "weekday": {
+          "en": "Sunday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "22-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "22",
+        "weekday": {
+          "en": "Al Athnayn",
+          "ar": "الاثنين"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "29-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "29",
+        "weekday": {
+          "en": "Monday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "23-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "23",
+        "weekday": {
+          "en": "Al Thalaata",
+          "ar": "الثلاثاء"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "30-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "30",
+        "weekday": {
+          "en": "Tuesday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    },
+    {
+      "hijri": {
+        "date": "24-01-1446",
+        "format": "DD-MM-YYYY",
+        "day": "24",
+        "weekday": {
+          "en": "Al Arba'a",
+          "ar": "الاربعاء"
+        },
+        "month": {
+          "number": 1,
+          "en": "Muḥarram",
+          "ar": "مُحَرَّم"
+        },
+        "year": "1446",
+        "designation": {
+          "abbreviated": "AH",
+          "expanded": "Anno Hegirae"
+        },
+        "holidays": []
+      },
+      "gregorian": {
+        "date": "31-07-2024",
+        "format": "DD-MM-YYYY",
+        "day": "31",
+        "weekday": {
+          "en": "Wednesday"
+        },
+        "month": {
+          "number": 7,
+          "en": "July"
+        },
+        "year": "2024",
+        "designation": {
+          "abbreviated": "AD",
+          "expanded": "Anno Domini"
+        }
+      }
+    }
+  ]
 }

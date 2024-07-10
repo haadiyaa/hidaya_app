@@ -39,6 +39,8 @@ class FunctionsBloc extends Bloc<FunctionsEvent, FunctionsState> {
   Future<void> _logout(LogoutEvent event, Emitter<FunctionsState> emit) async {
     emit(state.copyWith(status: Status.loading));
     var sharedPref = await SharedPreferences.getInstance();
+    await sharedPref.remove(Constants.userEmail);
+    await sharedPref.remove(Constants.userName);
     await sharedPref.remove(Constants.LOGINTOKEN);
     emit(state.copyWith(status: Status.notLoggedIn));
   }

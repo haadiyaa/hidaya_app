@@ -18,6 +18,7 @@ class ApiProvider {
         headers: {'Content-Type': 'application/json'},
       );
       print(response.body);
+      // print(response.);
       final data1 = jsonDecode(response.body);
       if (response.statusCode == 200) {
         print(data1['token']);

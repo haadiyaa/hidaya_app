@@ -1,12 +1,16 @@
 import 'package:arabic_font/arabic_font.dart';
+import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hidhayah/bloc/suralistbloc/surahlist_bloc.dart';
 import 'package:hidhayah/model/surahmodel.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
+import 'package:hidhayah/view/quran/widgets/controlswidget.dart';
 import 'package:hidhayah/view/quran/widgets/shimmerlistview.dart';
 import 'package:hidhayah/view/quran/widgets/surahayatwidget.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:rxdart/rxdart.dart';
 
 class SurahPageWrapper extends StatelessWidget {
   final String index;
@@ -38,14 +42,37 @@ class _SurahpageState extends State<Surahpage> {
   late SurahModel surahModel;
   late Revelation? revelation;
   ScrollController? _controllerOne;
+  late AudioPlayer _audioPlayer;
 
   @override
   void initState() {
+    print(' index: ${widget.index}');
     super.initState();
     BlocProvider.of<SurahlistBloc>(context)
         .add(SurahFetchEvent(index: widget.index));
     _controllerOne = ScrollController();
+    _audioPlayer = AudioPlayer()
+      ..setUrl(
+          'https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/1.mp3');
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _audioPlayer.dispose();
+  }
+
+  Stream<PositionData> get _positionDataStream =>
+      Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
+        _audioPlayer.positionStream,
+        _audioPlayer.bufferedPositionStream,
+        _audioPlayer.durationStream,
+        (position, bufferedPosition, duration) => PositionData(
+          position,
+          bufferedPosition,
+          duration ?? Duration.zero,
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +81,9 @@ class _SurahpageState extends State<Surahpage> {
       backgroundColor: Constants.greenDark2,
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          Controls(audioPlayer: _audioPlayer,positionDataStream: _positionDataStream,),
+        ],
       ),
       body: SizedBox(
         height: size.height,
@@ -72,15 +102,42 @@ class _SurahpageState extends State<Surahpage> {
                     decoration: const BoxDecoration(
                       color: Constants.greenDark,
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    child: Column(
                       children: [
-                        Text('Juz: ${surahModel.data!.verses![0].meta!.juz}'),
-                        Text(
-                          surahModel.data!.revelation!.en! ?? 'loading..',
-                          textAlign: TextAlign.center,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                                'Juz: ${surahModel.data!.verses![0].meta!.juz}'),
+                            Text(
+                              surahModel.data!.revelation!.en! ?? 'loading..',
+                              textAlign: TextAlign.center,
+                            ),
+                            Text('Aayat: ${surahModel.data!.numberOfVerses}')
+                          ],
                         ),
-                        Text('Aayat: ${surahModel.data!.numberOfVerses}')
+                        StreamBuilder(
+                          stream: _positionDataStream,
+                          builder:
+                              (BuildContext context, AsyncSnapshot snapshot) {
+                            final PositionData? positionData = snapshot.data;
+                            return ProgressBar(
+                              barHeight: 4,
+                              baseBarColor: Constants.greenLight,
+                              bufferedBarColor:
+                                  const Color.fromARGB(255, 149, 190, 169),
+                              progressBarColor: Constants.greenDark,
+                              thumbColor: Constants.greenDark,
+                              thumbRadius: 5,
+                              timeLabelTextStyle: TextStyle(fontSize: 10),
+                              progress: positionData?.position ?? Duration.zero,
+                              buffered: positionData?.bufferedPosition ??
+                                  Duration.zero,
+                              total: positionData?.duration ?? Duration.zero,
+                              onSeek: _audioPlayer.seek,
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ),

@@ -26,7 +26,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       loginStatus: LoginStatus.loading,
     ));
     UserModel user;
-    var sharedPref = await SharedPreferences.getInstance();
     Map data = {
       "email": event.email,
       "password": event.password,
@@ -74,6 +73,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           message: response,
           loginStatus: LoginStatus.error,
         ));
+        
       }
     } catch (e) {
       emit(state.copyWith(
