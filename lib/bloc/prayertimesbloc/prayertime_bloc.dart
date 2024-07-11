@@ -22,25 +22,26 @@ class PrayertimeBloc extends Bloc<PrayertimeEvent, PrayertimeState> {
         emit(FetchPrayerTimeInitial());
     final year = DateFormat('yyyy').format(DateTime.now());
     final month = DateFormat('MM').format(DateTime.now());
-    print('month $month');
-    print('fetching prayer time');
+    // print('month $month');
+    // print('fetching prayer time');
     PrayerTimeModel prayerTimeModel;
     try {
       // final response = await http.get(Uri.parse(
       //     '${Secrets.prayerUrl}$year/$month${Secrets.city}${event.city}${Secrets.country}${event.country}${Secrets.end}'));
       final http.Response response= await _apiRepostiroy.fetchPrayertime(year,month,event.city,event.country);
-      print('response.body: ${response.body}');
+      // print('response.body: ${response.body}');
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        print('data: $data');
+        // print('data: $data');
         prayerTimeModel = PrayerTimeModel.fromJson(data);
-        print('prayerTimeModel: $prayerTimeModel');
+        // print('prayerTimeModel: $prayerTimeModel');
         print(prayerTimeModel.data[1].timings.Fajr);
         emit(FetchPrayerTimeState(prayerTimeModel: prayerTimeModel));
-        print('emittedddssssssssssssssssssssssssssssssssssssssss');
+        // print('emittedddssssssssssssssssssssssssssssssssssssssss');
       } else {
-        print('error fetch');
+        // print('error fetch');
+        emit(FetchPrayerTimeErrorState('error fetching data'));
       }
     } catch (e) {
       emit(FetchPrayerTimeErrorState(e.toString()));

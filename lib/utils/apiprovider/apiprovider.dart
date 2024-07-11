@@ -17,11 +17,11 @@ class ApiProvider {
         body: jsonEncode(data),
         headers: {'Content-Type': 'application/json'},
       );
-      print(response.body);
+      // print(response.body);
       // print(response.);
       final data1 = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        print(data1['token']);
+        // print(data1['token']);
         var sharedPref = await SharedPreferences.getInstance();
         await sharedPref.setString(
             Constants.LOGINTOKEN, data1['token'].toString());
@@ -34,18 +34,18 @@ class ApiProvider {
           Uri.parse('${Secrets.authUrl}${Secrets.getUser}'),
           headers: header,
         );
-        print(response.body);
+        // print(response.body);
         final data = jsonDecode(response.body);
         if (response.statusCode == 200) {
           user = UserModel.fromMap(data);
-          print('user name: ${user.name}');
+          // print('user name: ${user.name}');
           if (user.email != null && user.name != null) {
             await sharedPref.setString(Constants.userName, user.name!);
             await sharedPref.setString(Constants.userEmail, user.email!);
           }
         } else {
-          print('error getting user data');
-          print('not success');
+          // print('error getting user data');
+          // print('not success');
         }
         return '';
       } else {
@@ -63,7 +63,7 @@ class ApiProvider {
         body: jsonEncode(data),
         headers: {'Content-Type': 'application/json'},
       );
-      print(response.body);
+      // print(response.body);
       final data1 = jsonDecode(response.body);
       if (response.statusCode == 201) {
         return '';
@@ -84,7 +84,7 @@ class ApiProvider {
           'Content-Type': 'application/json',
         },
       );
-      print(response.body);
+      // print(response.body);
       final data1 = jsonDecode(response.body);
       if (response.statusCode == 200) {
         return data1['msg'];

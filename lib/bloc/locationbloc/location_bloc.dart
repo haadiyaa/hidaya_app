@@ -23,16 +23,16 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
   Future<void> _fetchLocation(
       LocationFetchEvent event, Emitter<LocationState> emit) async {
     var sharedPref = await SharedPreferences.getInstance();
-    print('dcdwdsassssrrrdddddddd');
+    // print('dcdwdsassssrrrdddddddd');
     bool serviceEnabled;
     LocationPermission permission;
     Placemark? _currenLocationName;
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       _currentPosition = null;
-      print('service enabled');
+      // print('service enabled');
     } else {
-      print('servicw enabled true');
+      // print('servicw enabled true');
     }
 
     permission = await Geolocator.checkPermission();
@@ -48,10 +48,10 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
       _currentPosition = null;
     }
     _currentPosition = await Geolocator.getCurrentPosition();
-    print('CURRENT POSITION : $_currentPosition');
+    // print('CURRENT POSITION : $_currentPosition');
 
     _currenLocationName = await Functions.getLocationName(_currentPosition);
-    print('CURRENT LOCATION NAME: $_currenLocationName');
+    // print('CURRENT LOCATION NAME: $_currenLocationName');
     if (_currenLocationName != null) {
       emit(LocationFetchState(
           latitude: _currentPosition!.latitude,
@@ -59,7 +59,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
           city: _currenLocationName.locality,
           country: _currenLocationName.country));
     } else {
-      print('$_currenLocationName null');
+      // print('$_currenLocationName null');
       emit(LocationFetchErrorState(msg: 'Can\'t fetch location! try again'));
     }
   }
@@ -91,14 +91,14 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
       );
       final data1 = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        print(response.body);
+        // print(response.body);
         nearbyPlace = NearbyPlace.fromJson(data1);
         emit(FetchNearbyMasjidState(places: nearbyPlace));
       } else {
-        print('error');
+        // print('error');
         emit(FetchNearbyMasjidErrorState(
             msg: data1['error']['message'].toString()));
-        print(data1['error']['message'].toString());
+        // print(data1['error']['message'].toString());
       }
     } catch (e) {
       print(e.toString());

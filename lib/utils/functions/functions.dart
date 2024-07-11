@@ -35,7 +35,7 @@ class Functions {
         final placemark = await placemarkFromCoordinates(
             position.latitude, position.longitude);
         if (placemark.isNotEmpty) {
-          print(placemark[0]);
+          // print(placemark[0]);
           return placemark[0];
         }
       } catch (e) {

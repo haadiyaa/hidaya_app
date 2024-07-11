@@ -22,13 +22,13 @@ class FunctionsBloc extends Bloc<FunctionsEvent, FunctionsState> {
     var isLoggedIn = sharedPref.getString(Constants.LOGINTOKEN);
     UserModel user;
     if (isLoggedIn != null) {
-      print('sp; ${isLoggedIn.toString()}');
+      // print('sp; ${isLoggedIn.toString()}');
       if (isLoggedIn.isNotEmpty) {
-        print('sp notempt $isLoggedIn');
-            print('success');
+        // print('sp notempt $isLoggedIn');
+            // print('success');
             emit(state.copyWith(status: Status.loggedIn));
       } else {
-        print('sp empt $isLoggedIn');
+        // print('sp empt $isLoggedIn');
         emit(state.copyWith(status: Status.notLoggedIn));
       }
     } else {

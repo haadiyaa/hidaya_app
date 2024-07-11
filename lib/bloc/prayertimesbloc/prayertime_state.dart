@@ -11,7 +11,7 @@ class FetchPrayerTimeState extends PrayertimeState {
   final PrayerTimeModel prayerTimeModel;
 
   FetchPrayerTimeState({required this.prayerTimeModel}){
-    print('object');
+    // print('object');
   }
   
   

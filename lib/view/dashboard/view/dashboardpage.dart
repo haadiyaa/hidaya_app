@@ -5,6 +5,7 @@ import 'package:hidhayah/bloc/locationbloc/location_bloc.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/gradient.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
+import 'package:hidhayah/view/calendar/view/calendarpage.dart';
 import 'package:hidhayah/view/common/widgets/customtext.dart';
 import 'package:hidhayah/view/dashboard/widgets/dashboardicons.dart';
 import 'package:hidhayah/view/dashboard/widgets/dashheadleft.dart';
@@ -92,8 +93,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) =>
-                                          ProfilePageWrapper()));
+                                      builder: (_) => ProfilePageWrapper()));
                             }
                             if (state.status == Status.notLoggedIn) {
                               Navigator.push(
@@ -179,12 +179,12 @@ class _DashBoardPageState extends State<DashBoardPage> {
                         children: [
                           GradientContainer(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (_)=>QuranpageWrapper()));
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (_) => QuranpageWrapper()));
                             },
                             size: size,
                             gradient: Gradients.gradientBox1,
                             child: GradientContainerContent(
-                              
                               title: 'Read the\nQuran',
                               icon: Constants.arrowRight,
                             ),
@@ -253,11 +253,15 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                   image: Constants.qiblaDirIcon,
                                   padding: const EdgeInsets.all(5),
                                 ),
-                                 DashboardIcons(
-                                  onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (_)=>SampleList()));
-                                  },
-                                    text: 'Duas', image: Constants.duaIcon),
+                                DashboardIcons(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) => SampleList()));
+                                    },
+                                    text: 'Duas',
+                                    image: Constants.duaIcon),
                                 DashboardIcons(
                                   onTap: () {
                                     Navigator.push(
@@ -281,9 +285,13 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                   image: Constants.quiz,
                                   padding: EdgeInsets.all(5),
                                 ),
-                                const DashboardIcons(
-                                    text: 'Calendar',
-                                    image: Constants.calendar),
+                                 DashboardIcons(
+                                  text: 'Calendar',
+                                  image: Constants.calendar,
+                                  onTap: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (_)=>CalendarpageWrapper()));
+                                  },
+                                ),
                                 DashboardIcons(
                                     onTap: () {
                                       Navigator.push(

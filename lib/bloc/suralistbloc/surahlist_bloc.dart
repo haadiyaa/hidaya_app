@@ -28,7 +28,7 @@ class SurahlistBloc extends Bloc<SurahlistEvent, SurahlistState> {
       if (response.statusCode == 200) {
         emit(SurahlistFetchState(surahListModel: surahListModel));
       } else {
-        print('error');
+        // print('error');
         emit(SurahFetchErrorState(msg: surahListModel.message));
       }
     } catch (e) {
@@ -38,24 +38,24 @@ class SurahlistBloc extends Bloc<SurahlistEvent, SurahlistState> {
 
   Future<void> _fetchSurah(SurahFetchEvent event, Emitter<SurahlistState> emit) async {
     SurahModel surahModel;
-    print('object1');
+    // print('object1');
     try {
       final response=await http.get(Uri.parse('${Secrets.surahList}/${event.index}'));
       final data=jsonDecode(response.body);
-      print('object2');
+      // print('object2');
       surahModel=SurahModel.fromJson(data);
       if (response.statusCode==200) {
-        print('response $data');
-        print('object3');
-        print(surahModel.data!.verses![1].text!.arab);
+        // print('response $data');
+        // print('object3');
+        // print(surahModel.data!.verses![1].text!.arab);
         emit(SurahFetchState(surahModel: surahModel));
       } else {
-        print('object4');
+        // print('object4');
         emit(SurahFetchErrorState(msg: surahModel.message!));
       }
     } catch (e) {
-      print('object5');
-      print(e.toString());
+      // print('object5');
+      // print(e.toString());
       emit(SurahFetchErrorState(msg: e.toString()));
     }
   }

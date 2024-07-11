@@ -11,6 +11,16 @@ class Constants {
     'Isha',
   ];
 
+  static const List<String> weekdays=[
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ];
+
   //===================sharedpref====================
   static const String LOGINTOKEN = 'loginToken';
   static const String countKey = 'tasbih_count';
@@ -19,18 +29,6 @@ class Constants {
   static const String userLongitide = 'long';
   static const String userName = 'username';
   static const String userEmail = 'email';
-  //======================API====================
-
-  //=====================mediaquery=================
-  static double getHeight(context) {
-    final height = MediaQuery.of(context).size.height;
-    return height;
-  }
-
-  static double getWidth(context) {
-    final width = MediaQuery.of(context).size.width;
-    return width;
-  }
 
   //=====================IMAGES==============================
   static const String qiblaDirIcon = 'assets/images/icons/qibla.png';
