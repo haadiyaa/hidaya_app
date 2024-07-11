@@ -34,7 +34,7 @@ class TasbihBloc extends Bloc<TasbihEvent, TasbihState> {
 
   Future<void> _increase(
       IncreaseCounterEvent event, Emitter<TasbihState> emit) async {
-    if (event.value + 1 == initial) {
+    if (event.value  == initial) {
       initial = 0;
       loop=loop+1;
     }

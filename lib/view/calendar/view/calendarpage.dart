@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
-import 'package:intl/intl.dart';
 import 'package:islamic_hijri_calendar/islamic_hijri_calendar.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 
 
@@ -38,7 +35,7 @@ class _CalendarPageState extends State<CalendarPage> {
               ),
               padding: const EdgeInsets.only(bottom: 10),
               margin: const EdgeInsets.all(20),
-              child: IslamicHijriCalendar(
+              child: const IslamicHijriCalendar(
                 defaultBackColor: Constants.transparent,
                 defaultBorder: Constants.transparent,
                 highlightBorder: Constants.greenDark,
