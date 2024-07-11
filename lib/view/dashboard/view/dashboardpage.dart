@@ -93,7 +93,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) => ProfilePageWrapper()));
+                                      builder: (_) => const ProfilePageWrapper()));
                             }
                             if (state.status == Status.notLoggedIn) {
                               Navigator.push(
@@ -180,7 +180,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                           GradientContainer(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (_) => QuranpageWrapper()));
+                                  builder: (_) => const QuranpageWrapper()));
                             },
                             size: size,
                             gradient: Gradients.gradientBox1,
@@ -258,7 +258,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (_) => SampleList()));
+                                              builder: (_) => const SampleList()));
                                     },
                                     text: 'Duas',
                                     image: Constants.duaIcon),
@@ -289,7 +289,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                   text: 'Calendar',
                                   image: Constants.calendar,
                                   onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (_)=>CalendarpageWrapper()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (_)=>const CalendarPage()));
                                   },
                                 ),
                                 DashboardIcons(

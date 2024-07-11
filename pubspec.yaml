@@ -55,7 +55,7 @@ dependencies:
   just_audio_background: ^0.0.1-beta.12
   rxdart: ^0.27.7
   table_calendar: ^3.1.2
-  hijri: ^3.0.0
+  islamic_hijri_calendar: ^0.0.4
 
 dev_dependencies:
   flutter_test:
