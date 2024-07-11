@@ -47,13 +47,16 @@ class _SurahpageState extends State<Surahpage> {
   @override
   void initState() {
     print(' index: ${widget.index}');
+    final String ind = widget.index;
+    const String url =
+        'https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/';
+    final String audioUrl = '$url$ind.mp3';
     super.initState();
     BlocProvider.of<SurahlistBloc>(context)
         .add(SurahFetchEvent(index: widget.index));
     _controllerOne = ScrollController();
-    _audioPlayer = AudioPlayer()
-      ..setUrl(
-          'https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/1.mp3');
+    _audioPlayer = AudioPlayer();
+    // ..setUrl(audioUrl);
   }
 
   @override
@@ -82,7 +85,10 @@ class _SurahpageState extends State<Surahpage> {
       appBar: AppBar(
         title: Text(widget.title),
         actions: [
-          Controls(audioPlayer: _audioPlayer,positionDataStream: _positionDataStream,),
+          Controls(
+            audioPlayer: _audioPlayer,
+            positionDataStream: _positionDataStream,
+          ),
         ],
       ),
       body: SizedBox(
@@ -92,96 +98,111 @@ class _SurahpageState extends State<Surahpage> {
             if (state is SurahFetchState) {
               print('surahfetch state');
               surahModel = state.surahModel;
-              // final data=surahModel.data;
-              // revelation=data!.revelation;
-              return Column(
+              const String baseUrl =
+                  'https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/';
+              final String audioUrl = '$baseUrl${surahModel.data!.number}.mp3';
+              _audioPlayer.setUrl(audioUrl);
+              return Stack(
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    width: size.width,
-                    decoration: const BoxDecoration(
-                      color: Constants.greenDark,
-                    ),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        width: size.width,
+                        decoration: const BoxDecoration(
+                          color: Constants.greenDark,
+                        ),
+                        child: Column(
                           children: [
-                            Text(
-                                'Juz: ${surahModel.data!.verses![0].meta!.juz}'),
-                            Text(
-                              surahModel.data!.revelation!.en! ?? 'loading..',
-                              textAlign: TextAlign.center,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text(
+                                    'Juz: ${surahModel.data!.verses![0].meta!.juz}'),
+                                Text(
+                                  surahModel.data!.revelation!.en! ??
+                                      'loading..',
+                                  textAlign: TextAlign.center,
+                                ),
+                                Text(
+                                    'Aayat: ${surahModel.data!.numberOfVerses}')
+                              ],
                             ),
-                            Text('Aayat: ${surahModel.data!.numberOfVerses}')
                           ],
                         ),
-                        StreamBuilder(
-                          stream: _positionDataStream,
-                          builder:
-                              (BuildContext context, AsyncSnapshot snapshot) {
-                            final PositionData? positionData = snapshot.data;
-                            return ProgressBar(
-                              barHeight: 4,
-                              baseBarColor: Constants.greenLight,
-                              bufferedBarColor:
-                                  const Color.fromARGB(255, 149, 190, 169),
-                              progressBarColor: Constants.greenDark,
-                              thumbColor: Constants.greenDark,
-                              thumbRadius: 5,
-                              timeLabelTextStyle: TextStyle(fontSize: 10),
-                              progress: positionData?.position ?? Duration.zero,
-                              buffered: positionData?.bufferedPosition ??
-                                  Duration.zero,
-                              total: positionData?.duration ?? Duration.zero,
-                              onSeek: _audioPlayer.seek,
-                            );
-                          },
+                      ),
+                      Constants.height10,
+                      surahModel.data!.preBismillah == null
+                          ? const SizedBox()
+                          : Column(
+                              children: [
+                                Text(
+                                  surahModel.data!.preBismillah!.text!.arab!,
+                                  style: ArabicTextStyle(
+                                      arabicFont: ArabicFont.amiri,
+                                      fontSize: 25.sp),
+                                ),
+                                Constants.height10,
+                              ],
+                            ),
+                      Expanded(
+                        child: Scrollbar(
+                          controller: _controllerOne,
+                          radius: const Radius.circular(10),
+                          thickness: 6,
+                          // thumbVisibility: true,
+                          child: ListView.separated(
+                            controller: _controllerOne,
+                            itemCount: surahModel.data!.numberOfVerses!,
+                            separatorBuilder:
+                                (BuildContext context, int index) {
+                              return const Divider(
+                                thickness: 0.5,
+                              );
+                            },
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 20),
+                                child: SurahAyatWidget(
+                                  surahModel: surahModel,
+                                  size: size,
+                                  index: index,
+                                ),
+                              );
+                            },
+                          ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  Constants.height10,
-                  surahModel.data!.preBismillah == null
-                      ? const SizedBox()
-                      : Column(
-                          children: [
-                            Text(
-                              surahModel.data!.preBismillah!.text!.arab!,
-                              style: ArabicTextStyle(
-                                  arabicFont: ArabicFont.amiri,
-                                  fontSize: 25.sp),
-                            ),
-                            Constants.height10,
-                            // Text(
-                            //   surahModel.data!.preBismillah!.text!.transliteration!.en!,
-                            //   style: TextStyles.arabicFont,
-                            // ),
-                          ],
-                        ),
-                  Expanded(
-                    child: Scrollbar(
-                      controller: _controllerOne,
-                      radius: const Radius.circular(10),
-                      thickness: 6,
-                      // thumbVisibility: true,
-                      child: ListView.separated(
-                        controller: _controllerOne,
-                        itemCount: surahModel.data!.numberOfVerses!,
-                        separatorBuilder: (BuildContext context, int index) {
-                          return const Divider(
-                            thickness: 0.5,
-                          );
-                        },
-                        itemBuilder: (BuildContext context, int index) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 20),
-                            child: SurahAyatWidget(
-                              surahModel: surahModel,
-                              size: size,
-                              index: index,
-                            ),
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      decoration: BoxDecoration(color: Constants.greenLight,borderRadius: BorderRadius.circular(20)),
+                      margin: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(20),
+                      child: StreamBuilder(
+                        stream: _positionDataStream,
+                        builder:
+                            (BuildContext context, AsyncSnapshot snapshot) {
+                          final PositionData? positionData = snapshot.data;
+                          return ProgressBar(
+                            barHeight: 4,
+                            baseBarColor: Constants.greenLight,
+                            bufferedBarColor:
+                                const Color.fromARGB(255, 149, 190, 169),
+                            progressBarColor: Constants.greenDark,
+                            thumbColor: Constants.greenDark,
+                            thumbRadius: 5,
+                            timeLabelTextStyle: TextStyle(fontSize: 10),
+                            progress: positionData?.position ?? Duration.zero,
+                            buffered:
+                                positionData?.bufferedPosition ?? Duration.zero,
+                            total: positionData?.duration ?? Duration.zero,
+                            onSeek: _audioPlayer.seek,
                           );
                         },
                       ),

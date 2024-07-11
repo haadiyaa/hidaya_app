@@ -86,7 +86,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Future<void> _forgotPass(
       ForgotPasswordEvent event, Emitter<LoginState> emit) async {
     emit(state.copyWith(
-        loginStatus: LoginStatus.loading, message: 'Plase wait...'));
+        loginStatus: LoginStatus.loading, message: 'Please wait...'));
     final body = {
       "email": event.email,
     };

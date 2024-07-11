@@ -5,10 +5,14 @@ import 'package:hidhayah/view/quran/widgets/surahayatwidget.dart';
 import 'package:just_audio/just_audio.dart';
 
 class Controls extends StatelessWidget {
-  const Controls(
-      {super.key, required this.audioPlayer, required this.positionDataStream});
+  Controls({
+    super.key,
+    required this.audioPlayer,
+    required this.positionDataStream,
+  });
   final AudioPlayer audioPlayer;
   final Stream<PositionData> positionDataStream;
+  // int _playingAyahIndex=-1;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,6 @@ class Controls extends StatelessWidget {
             color: Constants.white,
           );
         } else if (processingState != ProcessingState.completed) {
-          
           return IconButton(
             onPressed: audioPlayer.pause,
             icon: const Icon(Icons.pause),
