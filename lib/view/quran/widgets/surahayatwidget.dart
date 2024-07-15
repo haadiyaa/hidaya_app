@@ -94,7 +94,7 @@ class _SurahAyatWidgetState extends State<SurahAyatWidget> {
               children: [
                 Controls(
                   audioPlayer: _audioPlayer,
-                  positionDataStream: _positionDataStream,
+                  // positionDataStream: _positionDataStream,
                 ),
                 Constants.width8,
                 IconButton(

@@ -226,7 +226,7 @@ class _SurahpageState extends State<Surahpage> {
                           ),
                           Controls(
                             audioPlayer: _audioPlayer,
-                            positionDataStream: _positionDataStream,
+                            // positionDataStream: _positionDataStream,
                           ),
                         ],
                       ),

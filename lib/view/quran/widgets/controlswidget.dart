@@ -8,10 +8,10 @@ class Controls extends StatelessWidget {
   Controls({
     super.key,
     required this.audioPlayer,
-    required this.positionDataStream,
+    // required this.positionDataStream,
   });
   final AudioPlayer audioPlayer;
-  final Stream<PositionData> positionDataStream;
+  // final Stream<PositionData> positionDataStream;
   // int _playingAyahIndex=-1;
 
   @override
@@ -20,7 +20,7 @@ class Controls extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         IconButton(
-          onPressed:audioPlayer.seekToPrevious,
+          onPressed: audioPlayer.seekToPrevious,
           icon: Icon(
             Icons.skip_previous_rounded,
             color: Constants.white,
@@ -44,15 +44,20 @@ class Controls extends StatelessWidget {
                 icon: const Icon(Icons.pause),
                 color: Constants.white,
               );
+            } else if (processingState == ProcessingState.buffering ||
+                processingState == ProcessingState.loading) {
+              return CircularProgressIndicator();
             }
-            return const Icon(
-              Icons.play_arrow_rounded,
-              color: Constants.white,
-            );
+            return IconButton(
+                onPressed: () => audioPlayer.seek(Duration.zero),
+                icon: Icon(
+                  Icons.play_arrow_rounded,
+                  color: Constants.white,
+                ));
           },
         ),
         IconButton(
-          onPressed:audioPlayer.seekToNext,
+          onPressed: audioPlayer.seekToNext,
           icon: Icon(
             Icons.skip_next_rounded,
             color: Constants.white,
