@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:islamic_hijri_calendar/islamic_hijri_calendar.dart';
 
-
-
 class CalendarPage extends StatefulWidget {
   const CalendarPage({super.key});
 
@@ -21,9 +19,7 @@ class _CalendarPageState extends State<CalendarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Constants.greenDark2,
-      appBar: AppBar(
-        title: const Text('Calendar'),
-      ),
+      appBar: AppBar(title: const Text('Calendar')),
       body: Center(
         child: Column(
           children: [

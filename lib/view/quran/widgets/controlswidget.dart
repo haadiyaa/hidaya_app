@@ -16,30 +16,49 @@ class Controls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<PlayerState>(
-      stream: audioPlayer.playerStateStream,
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        final PlayerState? playerState = snapshot.data;
-        final processingState = playerState?.processingState;
-        final playing = playerState?.playing;
-        if (!(playing ?? false)) {
-          return IconButton(
-            onPressed: audioPlayer.play,
-            icon: const Icon(Icons.play_arrow_rounded),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        IconButton(
+          onPressed:audioPlayer.seekToPrevious,
+          icon: Icon(
+            Icons.skip_previous_rounded,
             color: Constants.white,
-          );
-        } else if (processingState != ProcessingState.completed) {
-          return IconButton(
-            onPressed: audioPlayer.pause,
-            icon: const Icon(Icons.pause),
+          ),
+        ),
+        StreamBuilder<PlayerState>(
+          stream: audioPlayer.playerStateStream,
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            final PlayerState? playerState = snapshot.data;
+            final processingState = playerState?.processingState;
+            final playing = playerState?.playing;
+            if (!(playing ?? false)) {
+              return IconButton(
+                onPressed: audioPlayer.play,
+                icon: const Icon(Icons.play_arrow_rounded),
+                color: Constants.white,
+              );
+            } else if (processingState != ProcessingState.completed) {
+              return IconButton(
+                onPressed: audioPlayer.pause,
+                icon: const Icon(Icons.pause),
+                color: Constants.white,
+              );
+            }
+            return const Icon(
+              Icons.play_arrow_rounded,
+              color: Constants.white,
+            );
+          },
+        ),
+        IconButton(
+          onPressed:audioPlayer.seekToNext,
+          icon: Icon(
+            Icons.skip_next_rounded,
             color: Constants.white,
-          );
-        }
-        return const Icon(
-          Icons.play_arrow_rounded,
-          color: Constants.white,
-        );
-      },
+          ),
+        ),
+      ],
     );
   }
 }

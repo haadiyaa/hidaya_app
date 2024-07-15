@@ -44,20 +44,24 @@ class _SurahpageState extends State<Surahpage> {
   ScrollController? _controllerOne;
   late AudioPlayer _audioPlayer;
 
+  final playlist = ConcatenatingAudioSource(children: []);
+
   @override
   void initState() {
     print(' index: ${widget.index}');
-    final String ind = widget.index;
-    const String url =
-        'https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/';
-    final String audioUrl = '$url$ind.mp3';
     super.initState();
     BlocProvider.of<SurahlistBloc>(context)
         .add(SurahFetchEvent(index: widget.index));
     _controllerOne = ScrollController();
     _audioPlayer = AudioPlayer();
+    // init();
     // ..setUrl(audioUrl);
   }
+
+  // Future<void> init() async {
+  //   await _audioPlayer.setLoopMode(LoopMode.all);
+  //   await _audioPlayer.setAudioSource(playlist);
+  // }
 
   @override
   void dispose() {
@@ -85,10 +89,10 @@ class _SurahpageState extends State<Surahpage> {
       appBar: AppBar(
         title: Text(widget.title),
         actions: [
-          Controls(
-            audioPlayer: _audioPlayer,
-            positionDataStream: _positionDataStream,
-          ),
+          // Controls(
+          //   audioPlayer: _audioPlayer,
+          //   positionDataStream: _positionDataStream,
+          // ),
         ],
       ),
       body: SizedBox(
@@ -98,10 +102,10 @@ class _SurahpageState extends State<Surahpage> {
             if (state is SurahFetchState) {
               print('surahfetch state');
               surahModel = state.surahModel;
-              const String baseUrl =
-                  'https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/';
-              final String audioUrl = '$baseUrl${surahModel.data!.number}.mp3';
-              _audioPlayer.setUrl(audioUrl);
+              // const String baseUrl =
+              //     'https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/';
+              // final String audioUrl = '$baseUrl${surahModel.data!.number}.mp3';
+              // _audioPlayer.setUrl(audioUrl);
               return Stack(
                 children: [
                   Column(
@@ -150,7 +154,6 @@ class _SurahpageState extends State<Surahpage> {
                           controller: _controllerOne,
                           radius: const Radius.circular(10),
                           thickness: 6,
-                          // thumbVisibility: true,
                           child: ListView.separated(
                             controller: _controllerOne,
                             itemCount: surahModel.data!.numberOfVerses!,
@@ -161,6 +164,16 @@ class _SurahpageState extends State<Surahpage> {
                               );
                             },
                             itemBuilder: (BuildContext context, int index) {
+                               _audioPlayer.setUrl(surahModel.data!.verses![index].audio!.primary!);
+                              // print(surahModel.data!.verses!);
+                              // for (var e in surahModel.data!.verses!) {
+                              //   playlist.addAll([
+                              //     AudioSource.uri(Uri.parse(e.audio!.primary!))
+                              //   ]);
+                              //   print(e);
+                              //   print(playlist);
+                              // }
+                              print(playlist);
                               return Padding(
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 10, horizontal: 20),
@@ -181,30 +194,41 @@ class _SurahpageState extends State<Surahpage> {
                     left: 0,
                     right: 0,
                     child: Container(
-                      decoration: BoxDecoration(color: Constants.greenLight,borderRadius: BorderRadius.circular(20)),
+                      decoration: BoxDecoration(
+                          color: Constants.greenLight,
+                          borderRadius: BorderRadius.circular(20)),
                       margin: EdgeInsets.all(10),
-                      padding: EdgeInsets.all(20),
-                      child: StreamBuilder(
-                        stream: _positionDataStream,
-                        builder:
-                            (BuildContext context, AsyncSnapshot snapshot) {
-                          final PositionData? positionData = snapshot.data;
-                          return ProgressBar(
-                            barHeight: 4,
-                            baseBarColor: Constants.greenLight,
-                            bufferedBarColor:
-                                const Color.fromARGB(255, 149, 190, 169),
-                            progressBarColor: Constants.greenDark,
-                            thumbColor: Constants.greenDark,
-                            thumbRadius: 5,
-                            timeLabelTextStyle: TextStyle(fontSize: 10),
-                            progress: positionData?.position ?? Duration.zero,
-                            buffered:
-                                positionData?.bufferedPosition ?? Duration.zero,
-                            total: positionData?.duration ?? Duration.zero,
-                            onSeek: _audioPlayer.seek,
-                          );
-                        },
+                      padding: EdgeInsets.only(top: 20,left: 20,right: 20,bottom: 5),
+                      child: Column(
+                        children: [
+                          StreamBuilder(
+                            stream: _positionDataStream,
+                            builder:
+                                (BuildContext context, AsyncSnapshot snapshot) {
+                              final PositionData? positionData = snapshot.data;
+                              return ProgressBar(
+                                barHeight: 4,
+                                baseBarColor: Constants.greenLight,
+                                bufferedBarColor:
+                                    const Color.fromARGB(255, 149, 190, 169),
+                                progressBarColor: Constants.greenDark,
+                                thumbColor: Constants.greenDark,
+                                thumbRadius: 5,
+                                timeLabelTextStyle: TextStyle(fontSize: 10),
+                                progress:
+                                    positionData?.position ?? Duration.zero,
+                                buffered: positionData?.bufferedPosition ??
+                                    Duration.zero,
+                                total: positionData?.duration ?? Duration.zero,
+                                onSeek: _audioPlayer.seek,
+                              );
+                            },
+                          ),
+                          Controls(
+                            audioPlayer: _audioPlayer,
+                            positionDataStream: _positionDataStream,
+                          ),
+                        ],
                       ),
                     ),
                   ),

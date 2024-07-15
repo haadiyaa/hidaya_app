@@ -57,19 +57,6 @@ class _SurahAyatWidgetState extends State<SurahAyatWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.end,
-        //   children: [
-        //     Container(
-        //       padding: const EdgeInsets.all(8),
-        //       decoration: BoxDecoration(
-        //           shape: BoxShape.circle,
-        //           border: Border.all(color: Constants.greenLight)),
-        //       child: Text(
-        //           '${widget.surahModel.data!.verses![widget.index].number!.inSurah}'),
-        //     ),
-        //   ],
-        // ),
         Constants.height8,
         Constants.width8,
         SizedBox(
@@ -130,26 +117,25 @@ class _SurahAyatWidgetState extends State<SurahAyatWidget> {
             ),
           ],
         ),
-
-        StreamBuilder(
-          stream: _positionDataStream,
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            final PositionData? positionData = snapshot.data;
-            return ProgressBar(
-              barHeight: 4,
-              baseBarColor: Constants.greenLight,
-              bufferedBarColor: const Color.fromARGB(255, 149, 190, 169),
-              progressBarColor: Constants.greenDark,
-              thumbColor: Constants.greenDark,
-              thumbRadius: 5,
-              timeLabelTextStyle: TextStyle(fontSize: 10),
-              progress: positionData?.position ?? Duration.zero,
-              buffered: positionData?.bufferedPosition ?? Duration.zero,
-              total: positionData?.duration ?? Duration.zero,
-              onSeek: _audioPlayer.seek,
-            );
-          },
-        ),
+        // StreamBuilder(
+        //   stream: _positionDataStream,
+        //   builder: (BuildContext context, AsyncSnapshot snapshot) {
+        //     final PositionData? positionData = snapshot.data;
+        //     return ProgressBar(
+        //       barHeight: 4,
+        //       baseBarColor: Constants.greenLight,
+        //       bufferedBarColor: const Color.fromARGB(255, 149, 190, 169),
+        //       progressBarColor: Constants.greenDark,
+        //       thumbColor: Constants.greenDark,
+        //       thumbRadius: 5,
+        //       timeLabelTextStyle: TextStyle(fontSize: 10),
+        //       progress: positionData?.position ?? Duration.zero,
+        //       buffered: positionData?.bufferedPosition ?? Duration.zero,
+        //       total: positionData?.duration ?? Duration.zero,
+        //       onSeek: _audioPlayer.seek,
+        //     );
+        //   },
+        // ),
       ],
     );
   }
