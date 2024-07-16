@@ -14,15 +14,16 @@ class YoutubeBloc extends Bloc<YoutubeEvent, YoutubeState> {
   }
 
   FutureOr<void> _fetchPlaylist(
-      YoutubeEvent event, Emitter<YoutubeState> emit) async {
+      fetchPlaylistEvent event, Emitter<YoutubeState> emit) async {
         PlayListModel playListModel;
         print('object');
     //GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&part=snippet&playlistId=PLkNN0jULK8JC0NHd3EsNGNn2mPKF34-yB&key=[YOUR_API_KEY]
+    //PLkNN0jULK8JC0NHd3EsNGNn2mPKF34-yB
 
     try {
       final response = await http.get(
           Uri.parse(
-              '${Secrets.youtubePlaylistUrl}${Secrets.part}${Secrets.playlistId}PLkNN0jULK8JC0NHd3EsNGNn2mPKF34-yB${Secrets.key}'),
+              '${Secrets.youtubePlaylistUrl}${Secrets.part}${Secrets.playlistId}${event.playlistId}${Secrets.key}'),
           headers: {
             "Accept": "application/json",
           });

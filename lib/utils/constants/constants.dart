@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Constants {
+  //======================playlistId================
+  static String kidsPlaylist='PLw37Cz21Cob0xcVb1VEKNAPLNrZmiazn2';
+  static String umarPlaylist='PLuTZssW-V2C8S1hFDyOByXWdn5GYfASAI';
+  static String yaqeenInstitutelist='PLQ02IYL5pmhGZvLrP-_FshmY0aQtwXht6';
   //====================list================
   static const List<String> prayer = [
     'Fajr',
