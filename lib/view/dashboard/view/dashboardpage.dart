@@ -227,7 +227,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                           ),
                           GradientContainer(
                             onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (_)=>VideosPage()));
+                              Navigator.push(context, MaterialPageRoute(builder: (_)=>VideospageWrapper()));
                             },
                             size: size,
                             gradient: Gradients.gradientBox4,

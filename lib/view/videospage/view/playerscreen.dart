@@ -10,6 +10,7 @@ class PlayerScreen extends StatefulWidget {
 }
 
 class _PlayerScreenState extends State<PlayerScreen> {
+  
   late final YoutubePlayerController _controller = YoutubePlayerController(
     initialVideoId: widget.videoId,
     flags: YoutubePlayerFlags(
@@ -19,6 +20,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
 );
   @override
   Widget build(BuildContext context) {
+    print(widget.videoId);
     return Scaffold(
       body: YoutubePlayer(controller: _controller),
     );
