@@ -8,3 +8,13 @@ class fetchPlaylistEvent extends YoutubeEvent{
 
   fetchPlaylistEvent({required this.playlistId});
 }
+class fetchPlaylistEvent2 extends YoutubeEvent{
+  final String playlistId;
+
+  fetchPlaylistEvent2({required this.playlistId});
+}
+class fetchPlaylistEvent3 extends YoutubeEvent{
+  final String playlistId;
+
+  fetchPlaylistEvent3({required this.playlistId});
+}

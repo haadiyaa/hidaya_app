@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Constants {
   //======================playlistId================
-  static String kidsPlaylist='PLw37Cz21Cob0xcVb1VEKNAPLNrZmiazn2';
-  static String umarPlaylist='PLuTZssW-V2C8S1hFDyOByXWdn5GYfASAI';
-  static String yaqeenInstitutelist='PLQ02IYL5pmhGZvLrP-_FshmY0aQtwXht6';
+  static String kidsPlaylist = 'PLw37Cz21Cob0xcVb1VEKNAPLNrZmiazn2';
+  static String umarPlaylist = 'PLuTZssW-V2C8S1hFDyOByXWdn5GYfASAI';
+  static String yaqeenInstitutelist = 'PLQ02IYL5pmhGZvLrP-_FshmY0aQtwXht6';
   //====================list================
   static const List<String> prayer = [
     'Fajr',
@@ -15,7 +15,7 @@ class Constants {
     'Isha',
   ];
 
-  static const List<String> weekdays=[
+  static const List<String> weekdays = [
     'Monday',
     'Tuesday',
     'Wednesday',
@@ -23,6 +23,11 @@ class Constants {
     'Friday',
     'Saturday',
     'Sunday',
+  ];
+  static const List<String> quizLevel = [
+    'Easy',
+    'Medium',
+    'Hard',
   ];
 
   //===================sharedpref====================
@@ -80,6 +85,7 @@ class Constants {
   static const Color white = Color(0xffffffff);
   static const Color black = Color(0xff000000);
   static const Color grey = Color.fromARGB(100, 136, 136, 136);
+  static const Color lightgreengrey =  Color.fromARGB(255, 158, 170, 155);
   static const Color lightGreen = Color(0xff243F33);
   static const Color transparent = Colors.transparent;
 

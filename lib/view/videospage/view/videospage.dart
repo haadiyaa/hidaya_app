@@ -8,6 +8,8 @@ import 'package:hidhayah/utils/constants/yotubeitems.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/videospage/view/playerscreen.dart';
 import 'package:hidhayah/view/videospage/widgets/customcurousel.dart';
+import 'package:hidhayah/view/videospage/widgets/playlistwidget%20copy%202.dart';
+import 'package:hidhayah/view/videospage/widgets/playlistwidget%20copy.dart';
 import 'package:hidhayah/view/videospage/widgets/playlistwidget.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -67,25 +69,25 @@ class _VideosPageState extends State<VideosPage> {
                         style: TextStyles.gradContainerTextStyle,
                       ),
                     ),
-                    PlaylistWidgetKids(size: size, playlist: Constants.umarPlaylist,),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      child: Text(
-                        'Umar Series',
-                        style: TextStyles.gradContainerTextStyle,
-                      ),
-                    ),
-                    PlaylistWidgetKids(size: size, playlist: Constants.umarPlaylist,),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      child: Text(
-                        'The Jannah',
-                        style: TextStyles.gradContainerTextStyle,
-                      ),
-                    ),
-                    PlaylistWidgetKids(size: size, playlist: Constants.yaqeenInstitutelist,),
+                    PlaylistWidgetKids(size: size, playlist: Constants.kidsPlaylist,),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(
+                    //       horizontal: 20, vertical: 10),
+                    //   child: Text(
+                    //     'Umar Series',
+                    //     style: TextStyles.gradContainerTextStyle,
+                    //   ),
+                    // ),
+                    // PlaylistWidgetKids2(size: size, playlist: Constants.umarPlaylist,),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(
+                    //       horizontal: 20, vertical: 10),
+                    //   child: Text(
+                    //     'The Jannah',
+                    //     style: TextStyles.gradContainerTextStyle,
+                    //   ),
+                    // ),
+                    // PlaylistWidgetKids3(size: size, playlist: Constants.yaqeenInstitutelist,),
                   ],
                 ),
               ),

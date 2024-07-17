@@ -10,3 +10,14 @@ final class YoutubeInitial extends YoutubeState {}
 
   fetchPlaylistState({required this.playListModel});
  }
+  class fetchPlaylistState2 extends YoutubeState {
+  final PlayListModel playListModel;
+
+  fetchPlaylistState2({required this.playListModel});
+ }
+
+ class fetchPlaylistState3 extends YoutubeState {
+  final PlayListModel playListModel;
+
+  fetchPlaylistState3({required this.playListModel});
+ }

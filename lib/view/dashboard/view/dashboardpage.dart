@@ -12,7 +12,7 @@ import 'package:hidhayah/view/dashboard/widgets/dashheadleft.dart';
 import 'package:hidhayah/view/dashboard/widgets/dashheadright.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontainer.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontent.dart';
-import 'package:hidhayah/view/duas/view/list.dart';
+import 'package:hidhayah/view/duas/view/duapage.dart';
 import 'package:hidhayah/view/loginsignup/view/login_page.dart';
 import 'package:hidhayah/view/nearbymasjid/view/nearbymasjid.dart';
 import 'package:hidhayah/view/prayertime/view/prayertime.dart';
@@ -83,7 +83,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CustomText(
-                          text: 'Salaam,',
+                          text: 'Assalamu Alaikum,',
                           style: TextStyles.dashboardHeadStyle,
                         ),
                         BlocListener<FunctionsBloc, FunctionsState>(
@@ -263,7 +263,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (_) => const SampleList()));
+                                              builder: (_) => const DuapageWrapper()));
                                     },
                                     text: 'Duas',
                                     image: Constants.duaIcon),

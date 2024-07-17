@@ -6,8 +6,8 @@ import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/view/videospage/view/playerscreen.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class PlaylistWidgetKids extends StatefulWidget {
-  PlaylistWidgetKids({
+class PlaylistWidgetKids3 extends StatefulWidget {
+  PlaylistWidgetKids3({
     super.key,
     required this.size,
     required this.playlist,
@@ -17,15 +17,15 @@ class PlaylistWidgetKids extends StatefulWidget {
   final String playlist;
 
   @override
-  State<PlaylistWidgetKids> createState() => _PlaylistWidgetKidsState();
+  State<PlaylistWidgetKids3> createState() => _PlaylistWidgetKids3State();
 }
 
-class _PlaylistWidgetKidsState extends State<PlaylistWidgetKids> {
+class _PlaylistWidgetKids3State extends State<PlaylistWidgetKids3> {
   @override
   void initState() {
     super.initState();
     BlocProvider.of<YoutubeBloc>(context)
-        .add(fetchPlaylistEvent(playlistId: Constants.kidsPlaylist));
+        .add(fetchPlaylistEvent3(playlistId: widget.playlist));
   }
 
   late PlayListModel playListModel;
@@ -34,7 +34,7 @@ class _PlaylistWidgetKidsState extends State<PlaylistWidgetKids> {
   Widget build(BuildContext context) {
     return BlocBuilder<YoutubeBloc, YoutubeState>(
       builder: (context, state) {
-        if(state is fetchPlaylistState) {
+        if(state is fetchPlaylistState3) {
           playListModel=state.playListModel;
           return SizedBox(
           height: widget.size.height * 0.2,
@@ -76,9 +76,7 @@ class _PlaylistWidgetKidsState extends State<PlaylistWidgetKids> {
           ),
         );
         }
-        else {
-          return const CircularProgressIndicator();
-        }
+        else return CircularProgressIndicator();
       },
     );
   }
