@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:hidhayah/secrets/secrets.dart';
+import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:bloc/bloc.dart';
 import 'package:hidhayah/model/playlistmodel.dart';
@@ -11,28 +12,51 @@ part 'youtube_state.dart';
 class YoutubeBloc extends Bloc<YoutubeEvent, YoutubeState> {
   YoutubeBloc() : super(YoutubeInitial()) {
     on<fetchPlaylistEvent>(_fetchPlaylist);
-    on<fetchPlaylistEvent2>(_fetchPlaylist2);
-    on<fetchPlaylistEvent3>(_fetchPlaylist3);
   }
 
   FutureOr<void> _fetchPlaylist(
       fetchPlaylistEvent event, Emitter<YoutubeState> emit) async {
-        PlayListModel playListModel;
-        print('object');
+    PlayListModel playListModel1;
+    PlayListModel playListModel2;
+    PlayListModel playListModel3;
+    print('object');
 
     try {
-      final response = await http.get(
+      final response1 = await http.get(
           Uri.parse(
-              '${Secrets.youtubePlaylistUrl}${Secrets.part}${Secrets.playlistId}${event.playlistId}${Secrets.key}'),
+              '${Secrets.youtubePlaylistUrl}${Secrets.part}${Secrets.playlistId}${Constants.kidsPlaylist}${Secrets.key}'),
           headers: {
             "Accept": "application/json",
           });
-      print(response.body);
-      final data=jsonDecode(response.body);
-      if (response.statusCode == 200) {
+      final response2 = await http.get(
+          Uri.parse(
+              '${Secrets.youtubePlaylistUrl}${Secrets.part}${Secrets.playlistId}${Constants.umarPlaylist}${Secrets.key}'),
+          headers: {
+            "Accept": "application/json",
+          });
+      final response3 = await http.get(
+          Uri.parse(
+              '${Secrets.youtubePlaylistUrl}${Secrets.part}${Secrets.playlistId}${Constants.yaqeenInstitutelist}${Secrets.key}'),
+          headers: {
+            "Accept": "application/json",
+          });
+      print(response1.body);
+      print(response2.body);
+      print(response3.body);
+      final data1 = jsonDecode(response1.body);
+      final data2 = jsonDecode(response2.body);
+      final data3 = jsonDecode(response3.body);
+      if (response1.statusCode == 200 &&
+          response2.statusCode == 200 &&
+          response3.statusCode == 200) {
         print('success');
-        playListModel=PlayListModel.fromJson(data);
-        emit(fetchPlaylistState(playListModel: playListModel));
+        playListModel1 = PlayListModel.fromJson(data1);
+        playListModel2 = PlayListModel.fromJson(data2);
+        playListModel3 = PlayListModel.fromJson(data3);
+        emit(fetchPlaylistState(
+            playListModel1: playListModel1,
+            playListModel2: playListModel2,
+            playListModel3: playListModel3));
       } else {
         print('failure');
       }
@@ -41,55 +65,4 @@ class YoutubeBloc extends Bloc<YoutubeEvent, YoutubeState> {
     }
   }
 
-  Future<void> _fetchPlaylist2(fetchPlaylistEvent2 event, Emitter<YoutubeState> emit) async {
-    PlayListModel playListModel;
-        print('object');
-
-    try {
-      final response = await http.get(
-          Uri.parse(
-              '${Secrets.youtubePlaylistUrl}${Secrets.part}${Secrets.playlistId}${event.playlistId}${Secrets.key}'),
-          headers: {
-            "Accept": "application/json",
-          });
-      print(response.body);
-      final data=jsonDecode(response.body);
-      if (response.statusCode == 200) {
-        print('success');
-        playListModel=PlayListModel.fromJson(data);
-        emit(fetchPlaylistState2(playListModel: playListModel));
-      } else {
-        print('failure');
-      }
-    } catch (e) {
-      print('exception $e');
-    }
-  }
-
-  Future<void> _fetchPlaylist3(fetchPlaylistEvent3 event, Emitter<YoutubeState> emit) async {
-    PlayListModel playListModel;
-        print('object');
-    //GET https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&part=snippet&playlistId=PLkNN0jULK8JC0NHd3EsNGNn2mPKF34-yB&key=[YOUR_API_KEY]
-    //PLkNN0jULK8JC0NHd3EsNGNn2mPKF34-yB
-
-    try {
-      final response = await http.get(
-          Uri.parse(
-              '${Secrets.youtubePlaylistUrl}${Secrets.part}${Secrets.playlistId}${event.playlistId}${Secrets.key}'),
-          headers: {
-            "Accept": "application/json",
-          });
-      print(response.body);
-      final data=jsonDecode(response.body);
-      if (response.statusCode == 200) {
-        print('success');
-        playListModel=PlayListModel.fromJson(data);
-        emit(fetchPlaylistState3(playListModel: playListModel));
-      } else {
-        print('failure');
-      }
-    } catch (e) {
-      print('exception $e');
-    }
-  }
 }

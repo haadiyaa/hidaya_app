@@ -8,8 +8,6 @@ import 'package:hidhayah/utils/constants/yotubeitems.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/videospage/view/playerscreen.dart';
 import 'package:hidhayah/view/videospage/widgets/customcurousel.dart';
-import 'package:hidhayah/view/videospage/widgets/playlistwidget%20copy%202.dart';
-import 'package:hidhayah/view/videospage/widgets/playlistwidget%20copy.dart';
 import 'package:hidhayah/view/videospage/widgets/playlistwidget.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -33,13 +31,15 @@ class VideosPage extends StatefulWidget {
 }
 
 class _VideosPageState extends State<VideosPage> {
-  late PlayListModel playListModel;
   @override
   void initState() {
-    // BlocProvider.of<YoutubeBloc>(context)
-    //     .add(fetchPlaylistEvent(playlistId: Constants.kidsPlaylist));
+    BlocProvider.of<YoutubeBloc>(context).add(fetchPlaylistEvent());
     super.initState();
   }
+
+  late PlayListModel playListModel1;
+  late PlayListModel playListModel2;
+  late PlayListModel playListModel3;
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +50,16 @@ class _VideosPageState extends State<VideosPage> {
         title: const Text('Watch Videos'),
       ),
       body: SizedBox(
-              height: size.height,
-              width: size.width,
-              child: SingleChildScrollView(
-                child: Column(
+        height: size.height,
+        width: size.width,
+        child: SingleChildScrollView(
+          child: BlocBuilder<YoutubeBloc, YoutubeState>(
+            builder: (context, state) {
+              if (state is fetchPlaylistState) {
+                playListModel1 = state.playListModel1;
+                playListModel2 = state.playListModel2;
+                playListModel3 = state.playListModel3;
+                return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
@@ -65,34 +71,48 @@ class _VideosPageState extends State<VideosPage> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
                       child: Text(
-                        'Kids',
+                        'Kids', 
                         style: TextStyles.gradContainerTextStyle,
                       ),
                     ),
-                    PlaylistWidgetKids(size: size, playlist: Constants.kidsPlaylist,),
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(
-                    //       horizontal: 20, vertical: 10),
-                    //   child: Text(
-                    //     'Umar Series',
-                    //     style: TextStyles.gradContainerTextStyle,
-                    //   ),
-                    // ),
-                    // PlaylistWidgetKids2(size: size, playlist: Constants.umarPlaylist,),
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(
-                    //       horizontal: 20, vertical: 10),
-                    //   child: Text(
-                    //     'The Jannah',
-                    //     style: TextStyles.gradContainerTextStyle,
-                    //   ),
-                    // ),
-                    // PlaylistWidgetKids3(size: size, playlist: Constants.yaqeenInstitutelist,),
+                    PlaylistWidgetKids(
+                      size: size,
+                      playListModel: playListModel1,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      child: Text(
+                        'Umar (R. A.)',
+                        style: TextStyles.gradContainerTextStyle,
+                      ),
+                    ),
+                    PlaylistWidgetKids(
+                      size: size,
+                      playListModel: playListModel2,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      child: Text(
+                        'The Jannath',
+                        style: TextStyles.gradContainerTextStyle,
+                      ),
+                    ),
+                    PlaylistWidgetKids(
+                      size: size,
+                      playListModel: playListModel3,
+                    ),
                   ],
-                ),
-              ),
-            ),
-          
+                );
+              }
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            },
+          ),
+        ),
+      ),
     );
   }
 }

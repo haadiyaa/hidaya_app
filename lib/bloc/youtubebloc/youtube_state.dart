@@ -6,18 +6,9 @@ abstract class YoutubeState {
 
 final class YoutubeInitial extends YoutubeState {}
  class fetchPlaylistState extends YoutubeState {
-  final PlayListModel playListModel;
+  final PlayListModel playListModel1;
+  final PlayListModel playListModel2;
+  final PlayListModel playListModel3;
 
-  fetchPlaylistState({required this.playListModel});
- }
-  class fetchPlaylistState2 extends YoutubeState {
-  final PlayListModel playListModel;
-
-  fetchPlaylistState2({required this.playListModel});
- }
-
- class fetchPlaylistState3 extends YoutubeState {
-  final PlayListModel playListModel;
-
-  fetchPlaylistState3({required this.playListModel});
+  fetchPlaylistState({required this.playListModel1,required this.playListModel2,required this.playListModel3});
  }
