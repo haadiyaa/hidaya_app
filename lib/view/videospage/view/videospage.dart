@@ -34,8 +34,8 @@ class _VideosPageState extends State<VideosPage> {
   late PlayListModel playListModel;
   @override
   void initState() {
-    BlocProvider.of<YoutubeBloc>(context)
-        .add(fetchPlaylistEvent(playlistId: Constants.kidsPlaylist));
+    // BlocProvider.of<YoutubeBloc>(context)
+    //     .add(fetchPlaylistEvent(playlistId: Constants.kidsPlaylist));
     super.initState();
   }
 
@@ -47,11 +47,7 @@ class _VideosPageState extends State<VideosPage> {
       appBar: AppBar(
         title: const Text('Watch Videos'),
       ),
-      body: BlocBuilder<YoutubeBloc, YoutubeState>(
-        builder: (context, state) {
-          if (state is fetchPlaylistState) {
-            playListModel = state.playListModel;
-            return SizedBox(
+      body: SizedBox(
               height: size.height,
               width: size.width,
               child: SingleChildScrollView(
@@ -71,7 +67,7 @@ class _VideosPageState extends State<VideosPage> {
                         style: TextStyles.gradContainerTextStyle,
                       ),
                     ),
-                    PlaylistWidgetKids(size: size, playListModel: playListModel),
+                    PlaylistWidgetKids(size: size, playlist: Constants.umarPlaylist,),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
@@ -80,7 +76,7 @@ class _VideosPageState extends State<VideosPage> {
                         style: TextStyles.gradContainerTextStyle,
                       ),
                     ),
-                    PlaylistWidgetKids(size: size, playListModel: playListModel),
+                    PlaylistWidgetKids(size: size, playlist: Constants.umarPlaylist,),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
@@ -89,15 +85,12 @@ class _VideosPageState extends State<VideosPage> {
                         style: TextStyles.gradContainerTextStyle,
                       ),
                     ),
-                    PlaylistWidgetKids(size: size, playListModel: playListModel),
+                    PlaylistWidgetKids(size: size, playlist: Constants.yaqeenInstitutelist,),
                   ],
                 ),
               ),
-            );
-          }
-          return const Center(child: CircularProgressIndicator());
-        },
-      ),
+            ),
+          
     );
   }
 }
