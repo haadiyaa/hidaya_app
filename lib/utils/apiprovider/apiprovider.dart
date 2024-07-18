@@ -103,8 +103,38 @@ class ApiProvider {
     return response;
   }
 
-  Future<http.Response> surahList()async{
+  Future<http.Response> surahList() async {
     final response = await http.get(Uri.parse(Secrets.surahList));
     return response;
+  }
+
+  Future<http.Response> playlist1() async {
+    final response1 = await http.get(
+        Uri.parse(
+            '${Secrets.youtubePlaylistUrl}${Secrets.part}${Secrets.playlistId}${Constants.kidsPlaylist}${Secrets.key}'),
+        headers: {
+          "Accept": "application/json",
+        });
+    return response1;
+  }
+
+  Future<http.Response> playlist2() async {
+    final response2 = await http.get(
+        Uri.parse(
+            '${Secrets.youtubePlaylistUrl}${Secrets.part}${Secrets.playlistId}${Constants.umarPlaylist}${Secrets.key}'),
+        headers: {
+          "Accept": "application/json",
+        });
+    return response2;
+  }
+
+  Future<http.Response> playlist3() async {
+    final response3 = await http.get(
+          Uri.parse(
+              '${Secrets.youtubePlaylistUrl}${Secrets.part}${Secrets.playlistId}${Constants.yaqeenInstitutelist}${Secrets.key}'),
+          headers: {
+            "Accept": "application/json",
+          });
+    return response3;
   }
 }

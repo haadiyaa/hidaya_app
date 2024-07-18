@@ -18,5 +18,14 @@ class ApiRepostiroy {
   Future<dynamic> surahList( )async{
     return _apiProvider.surahList();
   }
+  Future<dynamic> playlist1()async{
+    return _apiProvider.playlist1();
+  }
+  Future<dynamic> playlist2() async{
+    return _apiProvider.playlist2();
+  }
+  Future<dynamic> playlist3()async{
+    return _apiProvider.playlist3();
+  }
 
 }

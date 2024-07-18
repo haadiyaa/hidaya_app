@@ -19,13 +19,13 @@ class Controls extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        IconButton(
-          onPressed: audioPlayer.seekToPrevious,
-          icon: Icon(
-            Icons.skip_previous_rounded,
-            color: Constants.white,
-          ),
-        ),
+        // IconButton(
+        //   onPressed: audioPlayer.seekToPrevious,
+        //   icon: Icon(
+        //     Icons.skip_previous_rounded,
+        //     color: Constants.white,
+        //   ),
+        // ),
         StreamBuilder<PlayerState>(
           stream: audioPlayer.playerStateStream,
           builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -56,13 +56,13 @@ class Controls extends StatelessWidget {
                 ));
           },
         ),
-        IconButton(
-          onPressed: audioPlayer.seekToNext,
-          icon: Icon(
-            Icons.skip_next_rounded,
-            color: Constants.white,
-          ),
-        ),
+        // IconButton(
+        //   onPressed: audioPlayer.seekToNext,
+        //   icon: Icon(
+        //     Icons.skip_next_rounded,
+        //     color: Constants.white,
+        //   ),
+        // ),
       ],
     );
   }

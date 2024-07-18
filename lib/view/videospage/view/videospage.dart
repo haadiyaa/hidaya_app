@@ -98,7 +98,7 @@ class _VideosPageState extends State<VideosPage> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
                       child: Text(
-                        'The Jannath',
+                        'The Journey',
                         style: TextStyles.gradContainerTextStyle,
                       ),
                     ),

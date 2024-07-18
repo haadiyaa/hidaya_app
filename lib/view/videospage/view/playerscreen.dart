@@ -4,12 +4,12 @@ import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class PlayerScreen extends StatefulWidget {
-  const PlayerScreen({super.key, required this.videoId, this.nextvideoId, required this.text, required this.desc, required this.date});
+  const PlayerScreen({super.key, required this.videoId, this.nextvideoId, required this.text, required this.desc, this.date});
   final String videoId;
   final String? nextvideoId;
   final String text;                                                                                          
   final String desc;                                                                                          
-  final String date;                                                                                          
+  final String? date;                                                                                          
 
   @override
   State<PlayerScreen> createState() => _PlayerScreenState();
@@ -43,6 +43,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                 }
               },
             ),
+            Constants.height10,
             Padding(
               padding: const EdgeInsets.all(10),
               child: Text(widget.text,style: TextStyles.boldHead,),
@@ -50,7 +51,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
             const Divider(),
             Padding(
               padding: const EdgeInsets.all(10),
-              child: Text('Published at : ${widget.date}',style: TextStyles.size16thin,),
+              child:widget.date==null?null: Text('Published at : ${widget.date}',style: TextStyles.size16thin,),
             ),
             Padding(
               padding: const EdgeInsets.all(10),

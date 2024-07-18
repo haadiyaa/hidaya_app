@@ -95,7 +95,8 @@ class _DashBoardPageState extends State<DashBoardPage> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (_) => const ProfilePageWrapper()));
+                                      builder: (_) =>
+                                          const ProfilePageWrapper()));
                             }
                             if (state.status == Status.notLoggedIn) {
                               Navigator.push(
@@ -227,13 +228,17 @@ class _DashBoardPageState extends State<DashBoardPage> {
                             ),
                           ),
                           GradientContainer(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (_)=>const VideospageWrapper()));
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) =>
+                                          const VideospageWrapper()));
                             },
                             size: size,
                             gradient: Gradients.gradientBox4,
                             child: const GradientContainerContent(
-                              title: 'Islamic Videos',
+                              title: 'Videos',
                               subtitle: 'Watch',
                             ),
                           ),
@@ -263,7 +268,8 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (_) => const DuapageWrapper()));
+                                              builder: (_) =>
+                                                  const DuapageWrapper()));
                                     },
                                     text: 'Duas',
                                     image: Constants.duaIcon),
@@ -285,19 +291,27 @@ class _DashBoardPageState extends State<DashBoardPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                 DashboardIcons(
+                                DashboardIcons(
                                   onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (_)=>const QuizpageWrapper()));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) =>
+                                                const QuizpageWrapper()));
                                   },
                                   text: 'Quiz',
                                   image: Constants.quiz,
                                   padding: const EdgeInsets.all(5),
                                 ),
-                                 DashboardIcons(
+                                DashboardIcons(
                                   text: 'Calendar',
                                   image: Constants.calendar,
                                   onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (_)=>const CalendarPage()));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) =>
+                                                const CalendarPage()));
                                   },
                                 ),
                                 DashboardIcons(
@@ -319,16 +333,6 @@ class _DashBoardPageState extends State<DashBoardPage> {
                           ],
                         ),
                       ),
-                      // Constants.height20,
-                      // Container(
-                      //   padding: Constants.duaBoxPadd,
-                      //   width: size.width,
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(10),
-                      //     color: Constants.lightGreen,
-                      //   ),
-                      //   child: const Text('data'),
-                      // ),
                     ],
                   ),
                 ),

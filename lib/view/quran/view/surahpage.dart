@@ -89,10 +89,9 @@ class _SurahpageState extends State<Surahpage> {
       appBar: AppBar(
         title: Text(widget.title),
         actions: [
-          // Controls(
-          //   audioPlayer: _audioPlayer,
-          //   positionDataStream: _positionDataStream,
-          // ),
+          Controls(
+            audioPlayer: _audioPlayer,
+          ),
         ],
       ),
       body: SizedBox(
@@ -102,10 +101,10 @@ class _SurahpageState extends State<Surahpage> {
             if (state is SurahFetchState) {
               print('surahfetch state');
               surahModel = state.surahModel;
-              // const String baseUrl =
-              //     'https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/';
-              // final String audioUrl = '$baseUrl${surahModel.data!.number}.mp3';
-              // _audioPlayer.setUrl(audioUrl);
+              const String baseUrl =
+                  'https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/';
+              final String audioUrl = '$baseUrl${surahModel.data!.number}.mp3';
+              _audioPlayer.setUrl(audioUrl);
               return Stack(
                 children: [
                   Column(
@@ -124,12 +123,11 @@ class _SurahpageState extends State<Surahpage> {
                                 Text(
                                     'Juz: ${surahModel.data!.verses![0].meta!.juz}'),
                                 Text(
-                                  surahModel.data!.revelation!.en! ??
-                                      'loading..',
+                                  surahModel.data!.revelation!.en!,
                                   textAlign: TextAlign.center,
                                 ),
                                 Text(
-                                    'Aayat: ${surahModel.data!.numberOfVerses}')
+                                    'Aayat: ${surahModel.data!.numberOfVerses}'),
                               ],
                             ),
                           ],
@@ -164,7 +162,7 @@ class _SurahpageState extends State<Surahpage> {
                               );
                             },
                             itemBuilder: (BuildContext context, int index) {
-                               _audioPlayer.setUrl(surahModel.data!.verses![index].audio!.primary!);
+                              //  _audioPlayer.setUrl(surahModel.data!.verses![index].audio!.primary!);
                               // print(surahModel.data!.verses!);
                               // for (var e in surahModel.data!.verses!) {
                               //   playlist.addAll([
@@ -198,7 +196,8 @@ class _SurahpageState extends State<Surahpage> {
                           color: Constants.greenLight,
                           borderRadius: BorderRadius.circular(20)),
                       margin: EdgeInsets.all(10),
-                      padding: EdgeInsets.only(top: 20,left: 20,right: 20,bottom: 5),
+                      padding: EdgeInsets.only(
+                          top: 20, left: 20, right: 20, bottom: 5),
                       child: Column(
                         children: [
                           StreamBuilder(

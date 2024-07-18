@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:hidhayah/secrets/secrets.dart';
-import 'package:hidhayah/utils/constants/constants.dart';
+import 'package:hidhayah/utils/apirepository/apirepository.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hidhayah/model/playlistmodel.dart';
@@ -10,6 +9,7 @@ part 'youtube_event.dart';
 part 'youtube_state.dart';
 
 class YoutubeBloc extends Bloc<YoutubeEvent, YoutubeState> {
+  final ApiRepostiroy _apiRepostiroy=ApiRepostiroy();
   YoutubeBloc() : super(YoutubeInitial()) {
     on<fetchPlaylistEvent>(_fetchPlaylist);
   }
@@ -22,24 +22,9 @@ class YoutubeBloc extends Bloc<YoutubeEvent, YoutubeState> {
     print('object');
 
     try {
-      final response1 = await http.get(
-          Uri.parse(
-              '${Secrets.youtubePlaylistUrl}${Secrets.part}${Secrets.playlistId}${Constants.kidsPlaylist}${Secrets.key}'),
-          headers: {
-            "Accept": "application/json",
-          });
-      final response2 = await http.get(
-          Uri.parse(
-              '${Secrets.youtubePlaylistUrl}${Secrets.part}${Secrets.playlistId}${Constants.umarPlaylist}${Secrets.key}'),
-          headers: {
-            "Accept": "application/json",
-          });
-      final response3 = await http.get(
-          Uri.parse(
-              '${Secrets.youtubePlaylistUrl}${Secrets.part}${Secrets.playlistId}${Constants.yaqeenInstitutelist}${Secrets.key}'),
-          headers: {
-            "Accept": "application/json",
-          });
+      final http.Response response1 = await _apiRepostiroy.playlist1();
+      final http.Response response2 = await _apiRepostiroy.playlist2();
+      final http.Response response3 = await _apiRepostiroy.playlist3();
       print(response1.body);
       print(response2.body);
       print(response3.body);

@@ -30,7 +30,7 @@ class CustomCurousel extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (_) =>
-                          PlayerScreen(videoId: videoId,text: '',desc: '',date: '',)));
+                          PlayerScreen(videoId: videoId,text: '',desc: '',)));
             },
             child: Stack(
               children: [
