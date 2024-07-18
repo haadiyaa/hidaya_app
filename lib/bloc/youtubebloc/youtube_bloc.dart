@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:hidhayah/secrets/secrets.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:http/http.dart' as http;
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hidhayah/model/playlistmodel.dart';
 
 part 'youtube_event.dart';

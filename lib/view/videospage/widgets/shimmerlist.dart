@@ -4,23 +4,24 @@ import 'package:hidhayah/bloc/youtubebloc/youtube_bloc.dart';
 import 'package:hidhayah/model/playlistmodel.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/view/videospage/view/playerscreen.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class PlaylistWidgetKids extends StatefulWidget {
-  PlaylistWidgetKids({
+class Shimmerlist extends StatefulWidget {
+  Shimmerlist({
     super.key,
     required this.size,
-    required this.playListModel,
+    // required this.playListModel,
   });
 
   final Size size;
-  final PlayListModel playListModel;
+  // final PlayListModel playListModel;
 
   @override
-  State<PlaylistWidgetKids> createState() => _PlaylistWidgetKidsState();
+  State<Shimmerlist> createState() => _ShimmerlistState();
 }
 
-class _PlaylistWidgetKidsState extends State<PlaylistWidgetKids> {
+class _ShimmerlistState extends State<Shimmerlist> {
   @override
   void initState() {
     super.initState();
@@ -37,35 +38,15 @@ class _PlaylistWidgetKidsState extends State<PlaylistWidgetKids> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         separatorBuilder: (context, index) => Constants.width10,
         scrollDirection: Axis.horizontal,
-        itemCount: widget.playListModel.items!.length,
+        itemCount: 5,
         itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => PlayerScreen(
-                    videoId: widget
-                        .playListModel.items![index].contentDetails!.videoId!,
-                    nextvideoId: widget.playListModel.items![index + 1]
-                        .contentDetails!.videoId!,
-                    text: widget.playListModel.items![index].snippet!.title!,
-                    desc:  widget.playListModel.items![index].snippet!.description!,
-                    date: widget.playListModel.items![index].snippet!.publishedAt!,
-                  ),
-                ),
-              );
-            },
+          return Shimmer.fromColors(
+            baseColor: Constants.greenDark,
+            highlightColor: Constants.greenDark2,
             child: Container(
               width: widget.size.width * 0.4,
+              height: widget.size.height*0.3,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(YoutubePlayer.getThumbnail(
-                    videoId: widget
-                        .playListModel.items![index].contentDetails!.videoId!,
-                  )),
-                  fit: BoxFit.cover,
-                ),
                 borderRadius: BorderRadius.circular(10),
                 color: Constants.greenDark,
               ),

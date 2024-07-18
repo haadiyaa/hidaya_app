@@ -9,6 +9,9 @@ import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/videospage/view/playerscreen.dart';
 import 'package:hidhayah/view/videospage/widgets/customcurousel.dart';
 import 'package:hidhayah/view/videospage/widgets/playlistwidget.dart';
+import 'package:hidhayah/view/videospage/widgets/shimmerlist.dart';
+import 'package:hidhayah/view/videospage/widgets/shimmeryoutube.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideospageWrapper extends StatelessWidget {
@@ -106,9 +109,7 @@ class _VideosPageState extends State<VideosPage> {
                   ],
                 );
               }
-              return Center(
-                child: CircularProgressIndicator(),
-              );
+              return ShimmerYoutube(size: size);
             },
           ),
         ),

@@ -33,7 +33,10 @@ class TextStyles {
 
   static TextStyle size20=TextStyle(fontSize: 20.sp);
   static TextStyle size18=TextStyle(fontSize: 18.sp);
+  static TextStyle size18thin=TextStyle(fontSize: 18.sp,fontWeight: FontWeight.w300);
+  static TextStyle size16thin=TextStyle(fontSize: 16.sp,fontWeight: FontWeight.w300);
   static const TextStyle bold=TextStyle(fontWeight:FontWeight.bold);
+  static TextStyle boldHead=TextStyle(fontWeight:FontWeight.bold,fontSize: 20.sp);
   static const TextStyle thin=TextStyle(fontWeight:FontWeight.w300);
 
   //====================================quran page========================
