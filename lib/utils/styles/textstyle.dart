@@ -19,6 +19,7 @@ class TextStyles {
 
   //===================login style===================================
   static const TextStyle forgotPasStyle =  TextStyle(color: Constants.black,fontWeight: FontWeight.w300);
+  static const TextStyle duaFont =  TextStyle(color: Constants.black,fontWeight: FontWeight.w400);
   static TextStyle textFieldStyle =  TextStyle(color: Constants.black,fontWeight: FontWeight.bold,fontSize: 16.sp);
   static const TextStyle forgottextFieldStyle =  TextStyle(color: Constants.white,fontWeight: FontWeight.bold);
   static const TextStyle loginfooterStyle =  TextStyle(fontWeight: FontWeight.w300);

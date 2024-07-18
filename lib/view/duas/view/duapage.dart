@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hidhayah/bloc/duabloc/dua_bloc.dart';
 import 'package:hidhayah/model/duamodel.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
+import 'package:hidhayah/utils/styles/textstyle.dart';
+import 'package:hidhayah/view/duas/view/duaindividul.dart';
 
 class DuapageWrapper extends StatelessWidget {
   const DuapageWrapper({super.key});
@@ -24,7 +26,7 @@ class Duapage extends StatefulWidget {
 }
 
 class _DuapageState extends State<Duapage> {
-  late DuaModel duaModel;
+  late Duamodel duaModel;
   @override
   void initState() {
     super.initState();
@@ -51,24 +53,31 @@ class _DuapageState extends State<Duapage> {
                   if (state is DuaCetgoriesState) {
                     duaModel=state.duaModel;
                     final list=duaModel.english;
-                    return ListView.separated(
-                      itemCount: list!.length,
+                    if (list!=null) {
+                      return ListView.separated(
+                      itemCount: list.length,
                       separatorBuilder: (BuildContext context, int index) {
                         return Constants.height10;
                       },
                       itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          width: size.width * 0.9,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Constants.lightgreengrey,
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (_)=>DuaIndividualPageWrapper(title: list[index].title!,index: list[index].id!,)));
+                          },
+                          child: Container(
+                            width: size.width * 0.9,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 20),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Constants.lightgreengrey,
+                            ),
+                            child: Text(list[index].title!.toUpperCase(),style: TextStyles.forgotPasStyle,),
                           ),
-                          child: Text(list[index].title!),
                         );
                       },
                     );
+                    }
                   }
                   return const Center(
                     child: CircularProgressIndicator(),

@@ -1,17 +1,13 @@
-class DuaModel {
-  
+
+class Duamodel {
     List<English>? english;
 
-    DuaModel({this.english});
+    Duamodel({this.english});
 
-    DuaModel.fromJson(Map<String, dynamic> json) {
+    Duamodel.fromJson(Map<String, dynamic> json) {
         if(json["English"] is List) {
             english = json["English"] == null ? null : (json["English"] as List).map((e) => English.fromJson(e)).toList();
         }
-    }
-
-    static List<DuaModel> fromList(List<Map<String, dynamic>> list) {
-        return list.map((map) => DuaModel.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {
@@ -44,10 +40,6 @@ class English {
         if(json["TEXT"] is String) {
             text = json["TEXT"];
         }
-    }
-
-    static List<English> fromList(List<Map<String, dynamic>> list) {
-        return list.map((map) => English.fromJson(map)).toList();
     }
 
     Map<String, dynamic> toJson() {

@@ -5,7 +5,7 @@ abstract class DuaState {
 
 class DuaInitial extends DuaState {}
 class DuaCetgoriesState extends DuaState {
-  final DuaModel duaModel;
+  final Duamodel duaModel;
 
   DuaCetgoriesState({required this.duaModel});
 }

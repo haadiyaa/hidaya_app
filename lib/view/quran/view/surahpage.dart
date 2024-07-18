@@ -162,15 +162,6 @@ class _SurahpageState extends State<Surahpage> {
                               );
                             },
                             itemBuilder: (BuildContext context, int index) {
-                              //  _audioPlayer.setUrl(surahModel.data!.verses![index].audio!.primary!);
-                              // print(surahModel.data!.verses!);
-                              // for (var e in surahModel.data!.verses!) {
-                              //   playlist.addAll([
-                              //     AudioSource.uri(Uri.parse(e.audio!.primary!))
-                              //   ]);
-                              //   print(e);
-                              //   print(playlist);
-                              // }
                               print(playlist);
                               return Padding(
                                 padding: const EdgeInsets.symmetric(

@@ -1,226 +1,509 @@
 {
-  "kind": "youtube#playlistItemListResponse",
-  "etag": "pZ246Nej4bHotPRbJW8kEqx65cs",
-  "items": [
-    {
-      "kind": "youtube#playlistItem",
-      "etag": "6AZYlvGLcXq4_X19OsmMzivizl0",
-      "id": "UExrTk4walVMSzhKQzBOSGQzRXNOR05uMm1QS0YzNC15Qi41NkI0NEY2RDEwNTU3Q0M2",
-      "snippet": {
-        "publishedAt": "2021-12-31T18:08:59Z",
-        "channelId": "UCZMKZS3L9GfhcFkMyBRoVFg",
-        "title": "Tinkoo Teaser  | New 3D Cartoon Animation Series | Kids Land",
-        "description": "Tinkoo Teaser  | New 3D Cartoon Animation Series | Kids Land \n\nKids Land is adding another series into their circle! Kids to watch a new series \"Tinkoo\" starting from January 2022  \n\nFirst time in Pakistan, a cartoon series that has everything that takes it to excite all the kids around and provide them with a unique learning opportunity through the action of the most amazing animal characters. Also a special collaboration with Milkateer. \n\nKids like to see animals and observe them closely, thus this idea delivering family values, civic sense, manners and other social awareness with the help of funny stories from this crazy jungle. \n\n#Kidsland \n#TetraPak \n#Milkateer\n#ProtectsWhatsGood",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/BJlELoF8imQ/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/BJlELoF8imQ/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/BJlELoF8imQ/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/BJlELoF8imQ/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          },
-          "maxres": {
-            "url": "https://i.ytimg.com/vi/BJlELoF8imQ/maxresdefault.jpg",
-            "width": 1280,
-            "height": 720
-          }
-        },
-        "channelTitle": "Kids Land",
-        "playlistId": "PLkNN0jULK8JC0NHd3EsNGNn2mPKF34-yB",
-        "position": 0,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "BJlELoF8imQ"
-        },
-        "videoOwnerChannelTitle": "Kids Land",
-        "videoOwnerChannelId": "UCZMKZS3L9GfhcFkMyBRoVFg"
-      },
-      "contentDetails": {
-        "videoId": "BJlELoF8imQ",
-        "videoPublishedAt": "2021-12-31T18:09:48Z"
-      }
-    },
-    {
-      "kind": "youtube#playlistItem",
-      "etag": "qFcDiEFX8PPRYjX877bWWSSyOTo",
-      "id": "UExrTk4walVMSzhKQzBOSGQzRXNOR05uMm1QS0YzNC15Qi4yODlGNEE0NkRGMEEzMEQy",
-      "snippet": {
-        "publishedAt": "2022-01-19T17:00:22Z",
-        "channelId": "UCZMKZS3L9GfhcFkMyBRoVFg",
-        "title": "Tinkoo Promo  2022| New 3D  Animation Series | New Funny  Cartoon Series | Kids Land",
-        "description": "Tinkoo Promo  | New 3D Cartoon Animation Series | Kids Land  Official  | New Jungle Cartoon Series For Kids \n\nKids Land is adding another series into their circle! Kids to watch a new series \"Tinkoo\" starting from January 2022  \n\nFirst time in Pakistan, a cartoon series that has everything that takes it to excite all the kids around and provide them with a unique learning opportunity through the action of the most amazing animal characters. Also a special collaboration with Milkateer. \n\nKids like to see animals and observe them closely, thus this idea delivers family values, civic sense, manners, and other social awareness with the help of funny stories from this crazy jungle. \n\n#Kidsland \n#TetraPak \n#Milkateer\n#ProtectsWhatsGood",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/TtGejSuxI6Y/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/TtGejSuxI6Y/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/TtGejSuxI6Y/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/TtGejSuxI6Y/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          }
-        },
-        "channelTitle": "Kids Land",
-        "playlistId": "PLkNN0jULK8JC0NHd3EsNGNn2mPKF34-yB",
-        "position": 1,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "TtGejSuxI6Y"
-        },
-        "videoOwnerChannelTitle": "Kids Land",
-        "videoOwnerChannelId": "UCZMKZS3L9GfhcFkMyBRoVFg"
-      },
-      "contentDetails": {
-        "videoId": "TtGejSuxI6Y",
-        "videoPublishedAt": "2022-01-20T07:00:07Z"
-      }
-    },
-    {
-      "kind": "youtube#playlistItem",
-      "etag": "VQeZLt2_-OUDYXf3fX1i0QHV-Ag",
-      "id": "UExrTk4walVMSzhKQzBOSGQzRXNOR05uMm1QS0YzNC15Qi4wMTcyMDhGQUE4NTIzM0Y5",
-      "snippet": {
-        "publishedAt": "2022-02-03T18:34:51Z",
-        "channelId": "UCZMKZS3L9GfhcFkMyBRoVFg",
-        "title": "Private video",
-        "description": "This video is private.",
-        "thumbnails": {},
-        "channelTitle": "Kids Land",
-        "playlistId": "PLkNN0jULK8JC0NHd3EsNGNn2mPKF34-yB",
-        "position": 2,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "UaM_A-HAOaI"
-        }
-      },
-      "contentDetails": {
-        "videoId": "UaM_A-HAOaI"
-      }
-    },
-    {
-      "kind": "youtube#playlistItem",
-      "etag": "MPmpPqKEA1hlnZ6UrE6v7hC5C0Y",
-      "id": "UExrTk4walVMSzhKQzBOSGQzRXNOR05uMm1QS0YzNC15Qi4xMkVGQjNCMUM1N0RFNEUx",
-      "snippet": {
-        "publishedAt": "2022-02-09T09:09:17Z",
-        "channelId": "UCZMKZS3L9GfhcFkMyBRoVFg",
-        "title": "Tinkoo  Episode 1- Tinkoo Ki Ammi Pareshan  |  Funny Urdu Cartoon | 3D Animation Cartoon",
-        "description": "Tinkoo  Episode 1- Tinkoo Ki Ammi Pareshan  |  Funny Urdu Cartoon | 3D Animation Cartoon\n\nNew Jungle Cartoon Series For Kids - Tinkoo Aur Tinki 1st Episode 2022 \nFirst time in Pakistan, a cartoon series that has everything that takes it to excite all the kids around and provide them with a unique learning opportunity through the action of the most amazing animal characters. Also a special collaboration with Milkateer. \n\nOur channel (Kids Land Official) contains programs, cartoons, animated stories, and poems aimed at entertaining and educating children and keeping them entertained and away from other harmful content. We Introduce Our New Cartoon Tinkoo after Ghulam Rasool and Kaneez Fatima Cartoon Series.\n\n#Tinkoo\n#TetraPak \n#Milkateer\n#ProtectsWhatsGood",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/pnD7mG4atnA/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/pnD7mG4atnA/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/pnD7mG4atnA/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/pnD7mG4atnA/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          }
-        },
-        "channelTitle": "Kids Land",
-        "playlistId": "PLkNN0jULK8JC0NHd3EsNGNn2mPKF34-yB",
-        "position": 3,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "pnD7mG4atnA"
-        },
-        "videoOwnerChannelTitle": "Kids Land",
-        "videoOwnerChannelId": "UCZMKZS3L9GfhcFkMyBRoVFg"
-      },
-      "contentDetails": {
-        "videoId": "pnD7mG4atnA",
-        "videoPublishedAt": "2022-02-09T10:00:20Z"
-      }
-    },
-    {
-      "kind": "youtube#playlistItem",
-      "etag": "iYXKQyIV4iEERYltznfSySj-iBA",
-      "id": "UExrTk4walVMSzhKQzBOSGQzRXNOR05uMm1QS0YzNC15Qi41MzJCQjBCNDIyRkJDN0VD",
-      "snippet": {
-        "publishedAt": "2022-04-12T12:01:12Z",
-        "channelId": "UCZMKZS3L9GfhcFkMyBRoVFg",
-        "title": "Tinkoo  Episode 2- Tinkoo Jungle Mein Kho Gaya | Funny New Urdu Cartoon Series  | 3D Animation",
-        "description": "Tinkoo  Episode 2- Tinkoo Jungle Mein Kho Gaya | Funny New Urdu Cartoon Series  | 3D Animation \n\nNew Jungle Cartoon Series For Kids - Tinkoo Aur Tinki 2nd Episode 2022 \nFirst time in Pakistan, a cartoon series that has everything that takes it to excite all the kids around and provide them with a unique learning opportunity through the action of the most amazing animal characters. Also a special collaboration with Milkateer. \n\nOur channel (Kids Land Official) contains programs, cartoons, animated stories, and poems aimed at entertaining and educating children and keeping them entertained and away from other harmful content. We Introduce Our New Cartoon Tinkoo after Ghulam Rasool and Kaneez Fatima Cartoon Series.\n\n#Tinkoo\n#TetraPak \n#Milkateer\n#ProtectsWhatsGood",
-        "thumbnails": {
-          "default": {
-            "url": "https://i.ytimg.com/vi/Q2H0LdNHrM8/default.jpg",
-            "width": 120,
-            "height": 90
-          },
-          "medium": {
-            "url": "https://i.ytimg.com/vi/Q2H0LdNHrM8/mqdefault.jpg",
-            "width": 320,
-            "height": 180
-          },
-          "high": {
-            "url": "https://i.ytimg.com/vi/Q2H0LdNHrM8/hqdefault.jpg",
-            "width": 480,
-            "height": 360
-          },
-          "standard": {
-            "url": "https://i.ytimg.com/vi/Q2H0LdNHrM8/sddefault.jpg",
-            "width": 640,
-            "height": 480
-          },
-          "maxres": {
-            "url": "https://i.ytimg.com/vi/Q2H0LdNHrM8/maxresdefault.jpg",
-            "width": 1280,
-            "height": 720
-          }
-        },
-        "channelTitle": "Kids Land",
-        "playlistId": "PLkNN0jULK8JC0NHd3EsNGNn2mPKF34-yB",
-        "position": 4,
-        "resourceId": {
-          "kind": "youtube#video",
-          "videoId": "Q2H0LdNHrM8"
-        },
-        "videoOwnerChannelTitle": "Kids Land",
-        "videoOwnerChannelId": "UCZMKZS3L9GfhcFkMyBRoVFg"
-      },
-      "contentDetails": {
-        "videoId": "Q2H0LdNHrM8",
-        "videoPublishedAt": "2022-04-21T10:24:23Z"
-      }
-    }
-  ],
-  "pageInfo": {
-    "totalResults": 16,
-    "resultsPerPage": 5
-  }
+	"English": 
+	[
+		{
+			"ID": 27,
+			"TITLE": "Words of remembrance for morning and evening",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_028.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/27.json"
+		},
+		{
+			"ID": 50,
+			"TITLE": "The reward for visiting the sick",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_051.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/50.json"
+		},
+		{
+			"ID": 51,
+			"TITLE": "Invocations of the terminal ill",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_052.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/51.json"
+		},
+		{
+			"ID": 52,
+			"TITLE": "What to encourage the dying person to say",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_053.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/52.json"
+		},
+		{
+			"ID": 53,
+			"TITLE": "Invocation for when tragedy strikes",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_054.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/53.json"
+		},
+		{
+			"ID": 54,
+			"TITLE": "Invocation for closing the eyes of the dead",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_055.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/54.json"
+		},
+		{
+			"ID": 55,
+			"TITLE": "Invocations for the dead in the Funeral prayer",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_056.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/55.json"
+		},
+		{
+			"ID": 56,
+			"TITLE": "Invocations for a child in the Funeral prayer",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_057.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/56.json"
+		},
+		{
+			"ID": 57,
+			"TITLE": "Invocation for the bereaved",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_058.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/57.json"
+		},
+		{
+			"ID": 58,
+			"TITLE": "Invocation to be recited when placing the dead in his grave",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_059.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/58.json"
+		},
+		{
+			"ID": 59,
+			"TITLE": "Invocation to be recited after burying the dead",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_060.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/59.json"
+		},
+		{
+			"ID": 60,
+			"TITLE": "Invocation for visiting the graves",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_061.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/60.json"
+		},
+		{
+			"ID": 61,
+			"TITLE": "Invocations for when the wind blows",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_062.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/61.json"
+		},
+		{
+			"ID": 62,
+			"TITLE": "Invocation for when it thunder",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_063.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/62.json"
+		},
+		{
+			"ID": 63,
+			"TITLE": "Some invocations for rain",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_064.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/63.json"
+		},
+		{
+			"ID": 64,
+			"TITLE": "Invocation for when it rains",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_065.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/64.json"
+		},
+		{
+			"ID": 65,
+			"TITLE": "Supplication after it rains",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_066.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/65.json"
+		},
+		{
+			"ID": 66,
+			"TITLE": "Invocation for the withholding of the rain",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_067.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/66.json"
+		},
+		{
+			"ID": 67,
+			"TITLE": "Invocation for sighting the new moon",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_068.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/67.json"
+		},
+		{
+			"ID": 68,
+			"TITLE": "Invocations for breaking the fast",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_069.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/68.json"
+		},
+		{
+			"ID": 69,
+			"TITLE": "Invocations before eating",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_070.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/69.json"
+		},
+		{
+			"ID": 70,
+			"TITLE": "Invocations after eating",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_071.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/70.json"
+		},
+		{
+			"ID": 71,
+			"TITLE": "A dinner guest's invocation for his host",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_072.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/71.json"
+		},
+		{
+			"ID": 72,
+			"TITLE": "Invocation for someone who gives you drink or offers it to you",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_073.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/72.json"
+		},
+		{
+			"ID": 73,
+			"TITLE": "Invocation for a family who invites you to break your fast with them",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_074.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/73.json"
+		},
+		{
+			"ID": 74,
+			"TITLE": "Invocation for someone who offers you food when you are fasting, which you decline",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_075.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/74.json"
+		},
+		{
+			"ID": 75,
+			"TITLE": "What to say when you are fasting and someone is rude to you",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_076.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/75.json"
+		},
+		{
+			"ID": 76,
+			"TITLE": "Invocation for when you see the first dates of the season",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_077.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/76.json"
+		},
+		{
+			"ID": 77,
+			"TITLE": "Invocation for sneezing",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_078.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/77.json"
+		},
+		{
+			"ID": 78,
+			"TITLE": "What to say to the disbeliever if he sneezes and praises Allah",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_079.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/78.json"
+		},
+		{
+			"ID": 79,
+			"TITLE": "Invocation for the groom",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_080.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/79.json"
+		},
+		{
+			"ID": 80,
+			"TITLE": "The groom’s supplication on the wedding night or when buying an animal",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_081.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/80.json"
+		},
+		{
+			"ID": 81,
+			"TITLE": "Invocation to be recited before intercourse",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_082.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/81.json"
+		},
+		{
+			"ID": 82,
+			"TITLE": "Invocation for anger",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_083.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/82.json"
+		},
+		{
+			"ID": 83,
+			"TITLE": "What to say if you see someone afflicted by misfortune",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_084.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/83.json"
+		},
+		{
+			"ID": 84,
+			"TITLE": "What to say while sitting in an assembly",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_085.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/84.json"
+		},
+		{
+			"ID": 85,
+			"TITLE": "The Expiation of Assembly - Kaffaratul-Majlis",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_086.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/85.json"
+		},
+		{
+			"ID": 86,
+			"TITLE": "vocation for someone who says: May Allah forgive you",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_087.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/87.json"
+		},
+		{
+			"ID": 87,
+			"TITLE": "Invocation for someone who does good to you",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_088.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/87.json"
+		},
+		{
+			"ID": 88,
+			"TITLE": "Invocation for Allah's protection from the False Messiah",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_089.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/88.json"
+		},
+		{
+			"ID": 89,
+			"TITLE": "Invocation for someone who tells you I love you for the sake of Allah",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_090.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/89.json"
+		},
+		{
+			"ID": 90,
+			"TITLE": "Invocation for someone who offers you a share of his wealth",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_091.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/90.json"
+		},
+		{
+			"ID": 91,
+			"TITLE": "Invocation (upon receipt of the loan) for someone who lends you money",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_091.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/91.json"
+		},
+		{
+			"ID": 92,
+			"TITLE": "Invocation for fear of Shirk",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_092.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/92.json"
+		},
+		{
+			"ID": 93,
+			"TITLE": "Invocation for someone who tells you: May Allah bless you",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_094.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/93.json"
+		},
+		{
+			"ID": 94,
+			"TITLE": "Invocation against evil portent",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_095.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/94.json"
+		},
+		{
+			"ID": 95,
+			"TITLE": "Invocation for riding in a vehicle or on an animal",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_096.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/95.json"
+		},
+		{
+			"ID": 96,
+			"TITLE": "Invocation for traveling",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_097.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/96.json"
+		},
+		{
+			"ID": 97,
+			"TITLE": "Invocation for entering a town or city",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_098.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/97.json"
+		},
+		{
+			"ID": 98,
+			"TITLE": "Invocation for entering a market",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_099.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/98.json"
+		},
+		{
+			"ID": 99,
+			"TITLE": "Invocation for when your vehicle or mount begins to fail",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_100.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/99.json"
+		},
+		{
+			"ID": 100,
+			"TITLE": " The traveler's invocation for the one he leaves behind",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_101.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/100.json"
+		},
+		{
+			"ID": 101,
+			"TITLE": "The resident's invocations for the traveler",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_102.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/101.json"
+		},
+		{
+			"ID": 102,
+			"TITLE": "Glorifying and magnifying Allah on the journey",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_103.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/102.json"
+		},
+		{
+			"ID": 103,
+			"TITLE": "The traveler's invocation at dawn",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_104.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/103.json"
+		},
+		{
+			"ID": 104,
+			"TITLE": "Invocation for a layover (stopping along the way) on the journey",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_105.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/104.json"
+		},
+		{
+			"ID": 105,
+			"TITLE": "What to say upon returning from a Journey",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_106.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/105.json"
+		},
+		{
+			"ID": 106,
+			"TITLE": "What to say if something happens to please you or to displease you",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_107.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/106.json"
+		},
+		{
+			"ID": 107,
+			"TITLE": "The excellence of asking for Allah's blessings upon the Prophet pbuh",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_108.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/107.json"
+		},
+		{
+			"ID": 108,
+			"TITLE": "spreading the greetings of Salam (Peace)",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_109.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/108.json"
+		},
+		{
+			"ID": 109,
+			"TITLE": "How to reply to a disbeliever if he says Salam to you",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_110.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/109.json"
+		},
+		{
+			"ID": 110,
+			"TITLE": "Invocation upon hearing the cock's crow or the bray of a donkey",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_111.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/110.json"
+		},
+		{
+			"ID": 111,
+			"TITLE": "Invocation upon hearing a dog barking in the night",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_112.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/111.json"
+		},
+		{
+			"ID": 112,
+			"TITLE": "Invocation for someone you have spoken ill to",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_113.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/112.json"
+		},
+		{
+			"ID": 113,
+			"TITLE": "How a Muslim should praise another Muslim",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_114.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/113.json"
+		},
+		{
+			"ID": 114,
+			"TITLE": "What a Muslim should say when he is praised",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_115.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/114.json"
+		},
+		{
+			"ID": 115,
+			"TITLE": "The pilgrim's announcement of his arrival for Hajj or Umrah",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_116.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/115.json"
+		},
+		{
+			"ID": 116,
+			"TITLE": "Saying Allahu Akbar when passing the Black Stone",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_117.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/116.json"
+		},
+		{
+			"ID": 117,
+			"TITLE": "Invocation to be recited between the Yemenite Corner and the Black Stone",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_118.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/117.json"
+		},
+		{
+			"ID": 118,
+			"TITLE": "Invocation to be recited while standing at Safa and Marwah",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_119.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/118.json"
+		},
+		{
+			"ID": 119,
+			"TITLE": "Invocation to be recited on the Day of Arafat",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_120.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/119.json"
+		},
+		{
+			"ID": 120,
+			"TITLE": "Supplication to be recited at the sacred area of Muzdalifah",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_121.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/120.json"
+		},
+		{
+			"ID": 121,
+			"TITLE": "Saying Allahu Akbar while stoning the three pillars at Mina",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_122.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/121.json"
+		},
+		{
+			"ID": 122,
+			"TITLE": "What to say when surprised or startled",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_123.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/122.json"
+		},
+		{
+			"ID": 123,
+			"TITLE": "What to say when something that pleases you happens",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_124.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/123.json"
+		},
+		{
+			"ID": 124,
+			"TITLE": "What to say when you feel a pain in your body",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_125.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/124.json"
+		},
+		{
+			"ID": 125,
+			"TITLE": "What to say when you fear you may afflict something with the evil eye",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_126.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/125.json"
+		},
+		{
+			"ID": 126,
+			"TITLE": "What to say when you feel frightened",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_127.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/126.json"
+		},
+		{
+			"ID": 127,
+			"TITLE": "What to say when slaughtering or sacrificing an animal",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_128.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/127.json"
+		},
+		{
+			"ID": 128,
+			"TITLE": "What to say to foil the devil's plots",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_129.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/128.json"
+		},
+		{
+			"ID": 129,
+			"TITLE": "Repentance and seeking forgiveness",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_130.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/129.json"
+		},
+		{
+			"ID": 130,
+			"TITLE": "The excellence of remembering Allah",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_131.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/130.json"
+		},
+		{
+			"ID": 131,
+			"TITLE": "How the Prophet glorified Allah",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_132.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/131.json"
+		},
+		{
+			"ID": 132,
+			"TITLE": "Types of goodness and good etiquette for community life",
+			"AUDIO_URL": "http://www.hisnmuslim.com/audio/ar/ar_7esn_AlMoslem_by_Doors_133.mp3",
+			"TEXT": "http://www.hisnmuslim.com/api/en/132.json"
+		}
+	]
 }
