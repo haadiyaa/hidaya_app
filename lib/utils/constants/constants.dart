@@ -29,6 +29,10 @@ class Constants {
     'Medium',
     'Hard',
   ];
+  static const List<String> quizCategory = [
+    'Islamic',
+    'Science',
+  ];
 
   //===================sharedpref====================
   static const String LOGINTOKEN = 'loginToken';

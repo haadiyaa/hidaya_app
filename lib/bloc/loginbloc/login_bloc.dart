@@ -97,25 +97,5 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         loginStatus: LoginStatus.restpass,
       ));
     }
-    
-
-    // try {
-    //   final response = await http.post(
-    //     Uri.parse('${Secrets.authUrl}${Secrets.forgotPassword}'),
-    //     body: jsonEncode(body),
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   );
-    //   print(response.body);
-    //   final data = jsonDecode(response.body);
-    //   if (response == 200) {
-    //     emit(state.copyWith(message: data['msg']));
-    //   } else {
-    //     emit(state.copyWith(message: data['msg']));
-    //   }
-    // } catch (e) {
-    //   emit(state.copyWith(message: e.toString()));
-    // }
   }
 }

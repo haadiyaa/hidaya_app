@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 
 class QuizmainpageWrapper extends StatelessWidget {
-  const QuizmainpageWrapper({super.key});
+  const QuizmainpageWrapper({super.key, required this.category, required this.level});
+
+  final String category;
+  final String level;
 
   @override
   Widget build(BuildContext context) {
@@ -10,9 +13,19 @@ class QuizmainpageWrapper extends StatelessWidget {
   }
 }
 
-class QuizmainPage extends StatelessWidget {
+class QuizmainPage extends StatefulWidget {
   const QuizmainPage({super.key});
 
+  @override
+  State<QuizmainPage> createState() => _QuizmainPageState();
+}
+
+class _QuizmainPageState extends State<QuizmainPage> {
+  @override
+  void initState() {
+    super.initState();
+    
+  }
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

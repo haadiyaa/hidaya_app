@@ -17,7 +17,7 @@ class ApiProvider {
         body: jsonEncode(data),
         headers: {'Content-Type': 'application/json'},
       );
-      // print(response.body);
+      print(response.body);
       // print(response.);
       final data1 = jsonDecode(response.body);
       if (response.statusCode == 200) {
@@ -34,7 +34,7 @@ class ApiProvider {
           Uri.parse('${Secrets.authUrl}${Secrets.getUser}'),
           headers: header,
         );
-        // print(response.body);
+        print(response.body);
         final data = jsonDecode(response.body);
         if (response.statusCode == 200) {
           user = UserModel.fromMap(data);
