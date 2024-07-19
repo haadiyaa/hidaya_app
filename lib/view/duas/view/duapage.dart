@@ -5,6 +5,7 @@ import 'package:hidhayah/model/duamodel.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/duas/view/duaindividul.dart';
+import 'package:hidhayah/view/duas/widgets/dualistshimmer.dart';
 
 class DuapageWrapper extends StatelessWidget {
   const DuapageWrapper({super.key});
@@ -41,49 +42,45 @@ class _DuapageState extends State<Duapage> {
       appBar: AppBar(
         title: const Text('Duas'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: SingleChildScrollView(
-          child: Center(
-            child: SizedBox(
-              height: size.height,
-              width: size.width,
-              child: BlocBuilder<DuaBloc, DuaState>(
-                builder: (context, state) {
-                  if (state is DuaCetgoriesState) {
-                    duaModel=state.duaModel;
-                    final list=duaModel.english;
-                    if (list!=null) {
-                      return ListView.separated(
-                      itemCount: list.length,
-                      separatorBuilder: (BuildContext context, int index) {
-                        return Constants.height10;
-                      },
-                      itemBuilder: (BuildContext context, int index) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (_)=>DuaIndividualPageWrapper(title: list[index].title!,url: list[index].text!,)));
-                          },
-                          child: Container(
-                            width: size.width * 0.9,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 20),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Constants.lightgreengrey,
-                            ),
-                            child: Text(list[index].title!.toUpperCase(),style: TextStyles.forgotPasStyle,),
+      body: SingleChildScrollView(
+        child: Center(
+          child: SizedBox(
+            height: size.height,
+            width: size.width,
+            child: BlocBuilder<DuaBloc, DuaState>(
+              builder: (context, state) {
+                if (state is DuaCetgoriesState) {
+                  duaModel=state.duaModel;
+                  final list=duaModel.english;
+                  if (list!=null) {
+                    return ListView.separated(
+                      padding: const EdgeInsets.all(10),
+                    itemCount: list.length,
+                    separatorBuilder: (BuildContext context, int index) {
+                      return Constants.height10;
+                    },
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (_)=>DuaIndividualPageWrapper(title: list[index].title!,url: list[index].text!,)));
+                        },
+                        child: Container(
+                          width: size.width * 0.9,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 20),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Constants.lightgreengrey,
                           ),
-                        );
-                      },
-                    );
-                    }
-                  }
-                  return const Center(
-                    child: CircularProgressIndicator(),
+                          child: Text(list[index].title!.toUpperCase(),style: TextStyles.forgotPasStyle,),
+                        ),
+                      );
+                    },
                   );
-                },
-              ),
+                  }
+                }
+                return DuapageListShimmer(size: size);
+              },
             ),
           ),
         ),

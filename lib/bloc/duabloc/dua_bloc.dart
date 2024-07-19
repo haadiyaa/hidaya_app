@@ -21,7 +21,6 @@ class DuaBloc extends Bloc<DuaEvent, DuaState> {
         Uri.parse(Secrets.duaApiUrl),
         headers: {'Accept': 'application/json'},
       );
-      print(response.body);
       final body = response.body.substring(3);
       final data = jsonDecode(body);
       if (response.statusCode == 200) {
