@@ -62,7 +62,7 @@ class _DuapageState extends State<Duapage> {
                       itemBuilder: (BuildContext context, int index) {
                         return GestureDetector(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (_)=>DuaIndividualPageWrapper(title: list[index].title!,index: list[index].id!,)));
+                            Navigator.push(context, MaterialPageRoute(builder: (_)=>DuaIndividualPageWrapper(title: list[index].title!,url: list[index].text!,)));
                           },
                           child: Container(
                             width: size.width * 0.9,

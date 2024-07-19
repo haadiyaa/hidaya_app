@@ -9,3 +9,8 @@ class DuaCetgoriesState extends DuaState {
 
   DuaCetgoriesState({required this.duaModel});
 }
+class DuaSingleState extends DuaState {
+  final Dua duaModel;
+
+  DuaSingleState({required this.duaModel});
+}
