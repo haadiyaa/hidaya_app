@@ -3,15 +3,10 @@ part of 'functions_bloc.dart';
 enum Status { notLoggedIn, loggedIn, loading }
 
 class FunctionsState {
-  const FunctionsState(
-      {this.user ,
-      this.status = Status.notLoggedIn});
+  const FunctionsState({this.user, this.status = Status.notLoggedIn});
   final Status status;
   final UserModel? user;
-  FunctionsState copyWith({
-    Status? status,
-    UserModel? user
-  }) {
+  FunctionsState copyWith({Status? status, UserModel? user}) {
     return FunctionsState(
         status: status ?? this.status, user: user ?? this.user);
   }

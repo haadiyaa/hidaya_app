@@ -43,12 +43,11 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     super.initState();
     // _getUserData();
-    user=UserModel(name: 'Loading...',email: 'loading...');
+    user = UserModel(name: 'Loading...', email: 'loading...');
   }
 
   Future<void> _getUserData() async {
-    final user =
-        await Functions.fetchUser();
+    final user = await Functions.fetchUser();
     setState(() {
       this.user = user;
     });
@@ -65,9 +64,9 @@ class _ProfilePageState extends State<ProfilePage> {
           IconButton(
             onPressed: () {
               Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (_) => const DashboardpageWrapper()));
+                context,
+                MaterialPageRoute(builder: (_) => const DashboardpageWrapper()),
+              );
             },
             icon: const Icon(Icons.cancel_outlined),
           ),
@@ -106,9 +105,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 Constants.height20,
                 Constants.height10,
-                 ListTile(
+                ListTile(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_)=>const AboutUs()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const AboutUs()));
                   },
                   title: const Text(
                     'About Us',
@@ -122,9 +122,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 const Divider(),
-                 ListTile(onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_)=>const PrivacyPolicy()));
-                },
+                ListTile(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const PrivacyPolicy()));
+                  },
                   title: const Text(
                     'Privacy Policy',
                     style: TextStyle(
@@ -146,8 +150,6 @@ class _ProfilePageState extends State<ProfilePage> {
                           const SnackBar(content: Text('Signed Out')),
                         );
                       Navigator.pop(context);
-                      // GoRouter.of(context).goNamed(
-                      //     MyAppRouteConstants.loginRoute);
                     }
                   },
                   child: CustomProfileButton(
@@ -162,9 +164,6 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ),
-          // Center(
-          //   child:
-          // ),
         ],
       ),
     );

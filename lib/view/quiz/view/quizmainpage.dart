@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hidhayah/bloc/quizbloc/quiz_bloc.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 
 class QuizmainpageWrapper extends StatelessWidget {
@@ -9,7 +11,10 @@ class QuizmainpageWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const QuizmainPage();
+    return BlocProvider(
+      create: (context) => QuizBloc(),
+      child: const QuizmainPage(),
+    );
   }
 }
 

@@ -4,18 +4,14 @@ import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hidhayah/model/usermodel.dart';
-import 'package:hidhayah/secrets/secrets.dart';
 import 'package:hidhayah/utils/apirepository/apirepository.dart';
-import 'package:hidhayah/utils/constants/constants.dart';
-import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final ApiRepostiroy _apiRepostiroy = ApiRepostiroy();
-  LoginBloc() : super(LoginState()) {
+  LoginBloc() : super(const LoginState()) {
     on<LoginApi>(_loginApi);
     on<SignUpApi>(_signApi);
     on<ForgotPasswordEvent>(_forgotPass);
@@ -25,7 +21,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(state.copyWith(
       loginStatus: LoginStatus.loading,
     ));
-    UserModel user;
     Map data = {
       "email": event.email,
       "password": event.password,

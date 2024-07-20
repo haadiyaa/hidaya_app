@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hidhayah/main.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/quiz/view/quizmainpage.dart';
@@ -106,8 +105,6 @@ class QuizPage extends StatelessWidget {
                                     String category =
                                         selected['category'].toString();
                                     String level = selected['level'].toString();
-                                    print('cat $category');
-                                    print('lev $level');
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(

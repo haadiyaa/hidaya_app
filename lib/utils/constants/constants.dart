@@ -42,6 +42,7 @@ class Constants {
   static const String userLongitide = 'long';
   static const String userName = 'username';
   static const String userEmail = 'email';
+  static const String userId = '_id';
 
   //=====================IMAGES==============================
   static const String qiblaDirIcon = 'assets/images/icons/qibla.png';

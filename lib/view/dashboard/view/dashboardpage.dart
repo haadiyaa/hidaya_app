@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hidhayah/bloc/functionbloc/functions_bloc.dart';
 import 'package:hidhayah/bloc/locationbloc/location_bloc.dart';
+import 'package:hidhayah/bloc/statusbloc/status_bloc.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/gradient.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
@@ -36,6 +37,9 @@ class DashboardpageWrapper extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => LocationBloc()..add(LocationFetchEvent()),
+        ),
+        BlocProvider(
+          create: (context) => StatusBloc(),
         ),
       ],
       child: const DashBoardPage(),
@@ -138,8 +142,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                             }
                           },
                           child: DashHeadLeft(
-                            salah:
-                                "${DateFormat('hh:mm a').format(DateTime.now())}",
+                            salah: DateFormat('hh:mm a').format(DateTime.now()),
                           ),
                         ),
                         BlocBuilder<LocationBloc, LocationState>(
@@ -291,17 +294,44 @@ class _DashBoardPageState extends State<DashBoardPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                DashboardIcons(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (_) =>
-                                                const QuizpageWrapper()));
+                                BlocListener<StatusBloc, StatusState>(
+                                  listener: (context, state) {
+                                    if (state is Loading) {
+                                      print('loading');
+                                    }
+                                    if (state is StatusCheckState) {
+                                      if (state.status == Status.loggedIn) {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (_) =>
+                                                    const QuizpageWrapper()));
+                                      } else if (state.status ==
+                                          Status.notLoggedIn) {
+                                        ScaffoldMessenger.of(context)
+                                          ..hideCurrentSnackBar()
+                                          ..showSnackBar(
+                                            const SnackBar(
+                                                content: Text('Plase Log in!')),
+                                          );
+                                      }
+                                    }
                                   },
-                                  text: 'Quiz',
-                                  image: Constants.quiz,
-                                  padding: const EdgeInsets.all(5),
+                                  child: DashboardIcons(
+                                    onTap: () {
+                                      context
+                                          .read<StatusBloc>()
+                                          .add(CheckStatusQuizEvent());
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         builder: (_) =>
+                                      //             const QuizpageWrapper()));
+                                    },
+                                    text: 'Quiz',
+                                    image: Constants.quiz,
+                                    padding: const EdgeInsets.all(5),
+                                  ),
                                 ),
                                 DashboardIcons(
                                   text: 'Calendar',

@@ -1,7 +1,4 @@
 import 'dart:convert';
-
-import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
-import 'package:hidhayah/model/prayertimemodel.dart';
 import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/secrets/secrets.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
@@ -39,7 +36,9 @@ class ApiProvider {
         if (response.statusCode == 200) {
           user = UserModel.fromMap(data);
           // print('user name: ${user.name}');
-          if (user.email != null && user.name != null) {
+          if (user.email != null && user.name != null&&user.id!=null) {
+            print('user _id ${user.id}');
+            await sharedPref.setString(Constants.userId,user.id!);
             await sharedPref.setString(Constants.userName, user.name!);
             await sharedPref.setString(Constants.userEmail, user.email!);
           }

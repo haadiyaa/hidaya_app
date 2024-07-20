@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hidhayah/bloc/loginbloc/login_bloc.dart';
-import 'package:hidhayah/model/usermodel.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/loginsignup/view/signup_page.dart';
@@ -40,11 +39,10 @@ class _LoginWidgetState extends State<LoginWidget> {
           margin: const EdgeInsets.all(20),
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Constants.greenLight,
-              boxShadow: const [
-                BoxShadow(offset: Offset(5, 5), blurRadius: 10)
-              ]),
+            borderRadius: BorderRadius.circular(20),
+            color: Constants.greenLight,
+            boxShadow: const [BoxShadow(offset: Offset(5, 5), blurRadius: 10)],
+          ),
           child: Form(
             key: _key,
             child: Column(
@@ -127,13 +125,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                         ..showSnackBar(
                           const SnackBar(content: Text('Sign in successfull!')),
                         );
-                      final user =
-                          UserModel(name: state.name, email: state.email);
+                      // final user =
+                      //     UserModel(name: state.name, email: state.email);
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (_) =>
-                                  ProfilePageWrapper()));
+                              builder: (_) => const ProfilePageWrapper()));
                       // GoRouter.of(context)
                       //         .pushReplacementNamed(MyAppRouteConstants.profileRoute,extra: user);
                     }
