@@ -33,6 +33,18 @@ class Constants {
     'Islamic',
     'Science',
   ];
+  static const List<String> quizOptions = [
+    'A)',
+    'B)',
+    'C)',
+    'D)',
+  ];
+  static const List<Color> quizOptionColor = [
+     Constants.greenLight,
+     Constants.greenLight,
+     Constants.greenLight,
+     Constants.greenLight,
+  ];
 
   //===================sharedpref====================
   static const String LOGINTOKEN = 'loginToken';

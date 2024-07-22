@@ -1,5 +1,5 @@
 class Dua {
-  final String title; 
+  final String title;   
   final List<DuaIndividualModel> duaItems; 
 
   Dua({required this.title, required this.duaItems});
