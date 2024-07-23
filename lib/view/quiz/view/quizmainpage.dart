@@ -4,8 +4,8 @@ import 'package:hidhayah/bloc/quizbloc/quiz_bloc.dart';
 import 'package:hidhayah/model/quizbycategory.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
+import 'package:hidhayah/view/quiz/view/scorepage.dart';
 import 'package:hidhayah/view/quiz/widgets/quizshimmer.dart';
-import 'package:shimmer/shimmer.dart';
 
 class QuizmainpageWrapper extends StatelessWidget {
   const QuizmainpageWrapper(
@@ -82,30 +82,21 @@ class _QuizmainPageState extends State<QuizmainPage> {
                 width: size.width,
                 child: BlocBuilder<QuizBloc, QuizState>(
                   builder: (context, state) {
-                    if (state is LastQuestionState) {
-                      showDialog(
-                        context: context,
-                        builder: (_) => AlertDialog(
-                          content: const Text(
-                              'Congratulations!\nYou have Got 5 Marks!'),
-                          actions: [
-                            ElevatedButton(
-                              onPressed: () {
-                              },
-                              child: const Text('Go to DashBoard'),
-                            ),
-                          ],
-                        ),
+                    if (state.currentIndex != currentIndex) {
+                      currentIndex = state.currentIndex;
+                    }
+                    if (state.isLast == true) {
+                      WidgetsBinding.instance.addPostFrameCallback(
+                        (timeStamp) {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const ScorePageWrapper()));
+                        },
                       );
                     }
-                    if (state is ChengeIndexState) {
-                      currentIndex = state.index;
-                      BlocProvider.of<QuizBloc>(context).add(
-                          QuizByCategoryAndLevelEvent(
-                              category: widget.category, level: widget.level));
-                    }
-                    if (state is QuizByCategoryLevelState) {
-                      quizByCategoryList = state.quizByCategoryList;
+                    if (state.quizByCategoryList != null) {
+                      quizByCategoryList = state.quizByCategoryList!;
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -155,14 +146,28 @@ class _QuizmainPageState extends State<QuizmainPage> {
                               itemBuilder: (BuildContext context, int index) {
                                 var correctAns = quizByCategoryList
                                     .quizzes[currentIndex].questions![0].answer;
+                                // if (state.color != Constants.greenLight) {
+                                //   quizOptionColor[index] = state.color;
+                                // }
                                 return GestureDetector(
                                   onTap: () {
+                                    // BlocProvider.of<QuizBloc>(context)
+                                    //     .add(CheckAnsEvent(
+                                    //   corerctAns: correctAns.toString(),
+                                    //   selectedAns: quizByCategoryList
+                                    //       .quizzes[currentIndex]
+                                    //       .questions![0]
+                                    //       .options![index],
+                                    //   // color: quizOptionColor[index],
+                                    // ));
+
                                     setState(() {
                                       if (correctAns.toString() ==
                                           quizByCategoryList
                                               .quizzes[currentIndex]
                                               .questions![0]
-                                              .options![index]) {
+                                              .options![index]
+                                              .toString()) {
                                         quizOptionColor[index] =
                                             Constants.gradGreenLight;
                                       } else {

@@ -33,6 +33,12 @@ class ChangeIndexEvent extends QuizEvent {
 }
 
 class CheckAnsEvent extends QuizEvent {
-  final Color color;
-  CheckAnsEvent({required this.color});
+  // final Color color;
+  final String corerctAns;
+  final String selectedAns;
+  CheckAnsEvent({
+    required this.corerctAns,
+    // required this.color,
+    required this.selectedAns,
+  });
 }
