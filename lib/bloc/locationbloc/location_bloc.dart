@@ -98,7 +98,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
         // print('error');
         emit(FetchNearbyMasjidErrorState(
             msg: data1['error']['message'].toString()));
-        // print(data1['error']['message'].toString());
+        print(data1['error']['message'].toString());
       }
     } catch (e) {
       print(e.toString());

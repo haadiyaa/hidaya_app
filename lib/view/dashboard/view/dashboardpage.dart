@@ -322,11 +322,6 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                       context
                                           .read<StatusBloc>()
                                           .add(CheckStatusQuizEvent());
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //         builder: (_) =>
-                                      //             const QuizpageWrapper()));
                                     },
                                     text: 'Quiz',
                                     image: Constants.quiz,

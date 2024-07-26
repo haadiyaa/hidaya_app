@@ -60,6 +60,7 @@ dependencies:
   youtube_player_flutter: ^9.0.1
   overlapped_carousel: ^1.0.2
   card_swiper: ^3.0.1
+  another_flutter_splash_screen: ^1.2.1
 
 dev_dependencies:
   flutter_test:
@@ -88,6 +89,7 @@ flutter:
     - assets/images/icons/
     - assets/images/compass/
     - assets/lottie/
+    - assets/logo/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

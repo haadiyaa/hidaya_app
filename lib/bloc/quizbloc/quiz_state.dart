@@ -27,3 +27,8 @@ class QuizState {
 }
 
 class QuizInitial extends QuizState {}
+class QuizError extends QuizState {
+  final String msg;
+
+  QuizError({super.quizByCategoryList, super.currentIndex, super.color, super.isLast, required this.msg});
+}

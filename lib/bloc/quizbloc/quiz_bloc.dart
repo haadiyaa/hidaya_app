@@ -19,6 +19,7 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
   Future<void> _quizbyCategoryLevel(
       QuizByCategoryAndLevelEvent event, Emitter<QuizState> emit) async {
     QuizByCategoryList quizByCategoryList;
+    emit(QuizInitial());
     try {
       final response = await http.get(Uri.parse(
           '${Secrets.authUrl}${Secrets.allQuiz}/${event.category}/${event.level.toLowerCase()}'));
@@ -27,14 +28,16 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
       if (response.statusCode == 200) {
         print('success');
         quizByCategoryList = QuizByCategoryList.fromJson(data);
+
         print(quizByCategoryList.quizzes[0].questions![0].question);
         print(quizByCategoryList.quizzes.length);
         emit(QuizState(quizByCategoryList: quizByCategoryList));
       } else {
-        print('error');
+        emit(QuizError(msg: 'Error occured'));
       }
     } catch (e) {
       print('error $e');
+      emit(QuizError(msg: e.toString()));
     }
   }
 

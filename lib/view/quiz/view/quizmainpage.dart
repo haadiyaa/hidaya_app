@@ -60,10 +60,6 @@ class _QuizmainPageState extends State<QuizmainPage> {
     Constants.greenLight,
     Constants.greenLight,
   ];
-  // gotoNextQuestion() {
-  //   resetColor();
-  //   currentIndex++;
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -78,141 +74,142 @@ class _QuizmainPageState extends State<QuizmainPage> {
         child: SingleChildScrollView(
           child: Center(
             child: SizedBox(
-                height: size.height,
-                width: size.width,
-                child: BlocBuilder<QuizBloc, QuizState>(
-                  builder: (context, state) {
-                    if (state.currentIndex != currentIndex) {
-                      currentIndex = state.currentIndex;
-                    }
-                    if (state.isLast == true) {
-                      WidgetsBinding.instance.addPostFrameCallback(
-                        (timeStamp) {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => const ScorePageWrapper()));
-                        },
-                      );
-                    }
-                    if (state.quizByCategoryList != null) {
-                      quizByCategoryList = state.quizByCategoryList!;
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                    'Question ${currentIndex + 1} of ${quizByCategoryList.quizzes.length}'),
-                              ],
-                            ),
+              height: size.height,
+              width: size.width,
+              child: BlocBuilder<QuizBloc, QuizState>(
+                builder: (context, state) {
+                  if (state.currentIndex != currentIndex) {
+                    currentIndex = state.currentIndex;
+                  }
+                  if (state.isLast == true) {
+                    WidgetsBinding.instance.addPostFrameCallback(
+                      (timeStamp) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const ScorePageWrapper()));
+                      },
+                    );
+                  }
+                  // if (state is QuizError) {
+                  //   return const Center(
+                  //     child: Text('Category Empty!'),
+                  //   );
+                  // }
+                  if (state.quizByCategoryList != null) {
+                    quizByCategoryList = state.quizByCategoryList!;
+
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                  'Question ${currentIndex + 1} of ${quizByCategoryList.quizzes.length}'),
+                            ],
                           ),
-                          Constants.height10,
-                          Container(
-                            width: size.width * 0.9,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 12),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Constants.greenLight,
-                            ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '${currentIndex + 1}.',
+                        ),
+                        Constants.height10,
+                        Container(
+                          width: size.width * 0.9,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 12),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Constants.greenLight,
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${currentIndex + 1}.',
+                                style: TextStyles.size20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  quizByCategoryList.quizzes[currentIndex].questions[0].question,
                                   style: TextStyles.size20,
                                 ),
-                                Expanded(
+                              ),
+                            ],
+                          ),
+                        ),
+                        Constants.height15,
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: quizByCategoryList.quizzes[currentIndex]
+                                .questions[0].options.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              var correctAns = quizByCategoryList
+                                  .quizzes[currentIndex].questions[0].answerId;
+                              // if (state.color != Constants.greenLight) {
+                              //   quizOptionColor[index] = state.color;
+                              // }
+                              return GestureDetector(
+                                onTap: () {
+                                  // BlocProvider.of<QuizBloc>(context)
+                                  //     .add(CheckAnsEvent(
+                                  //   corerctAns: correctAns.toString(),
+                                  //   selectedAns: quizByCategoryList
+                                  //       .quizzes[currentIndex]
+                                  //       .questions![0]
+                                  //       .options![index],
+                                  //   // color: quizOptionColor[index],
+                                  // ));
+                                  setState(() {
+                                    if (correctAns.toString() ==
+                                        quizByCategoryList.quizzes[currentIndex]
+                                            .questions![0].options![index]
+                                            .toString()) {
+                                      quizOptionColor[index] =
+                                          Constants.gradGreenLight;
+                                    } else {
+                                      quizOptionColor[index] =
+                                          Constants.gradRedDark;
+                                    }
+                                  });
+                                  Future.delayed(
+                                    const Duration(seconds: 1),
+                                    () {
+                                      resetColor();
+                                      BlocProvider.of<QuizBloc>(context).add(
+                                          ChangeIndexEvent(
+                                              currentIndex: currentIndex,
+                                              total: quizByCategoryList
+                                                      .quizzes.length -
+                                                  1));
+                                    },
+                                  );
+                                },
+                                child: Container(
+                                  width: size.width * 0.9,
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 15, vertical: 5),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15, vertical: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: quizOptionColor[index],
+                                  ),
                                   child: Text(
-                                    '${quizByCategoryList.quizzes[currentIndex].questions![0].question}',
-                                    style: TextStyles.size20,
+                                    '${Constants.quizOptions[index]} ${quizByCategoryList.quizzes[currentIndex].questions![0].options![index]}',
+                                    style: TextStyles.size18,
                                   ),
                                 ),
-                              ],
-                            ),
+                              );
+                            },
                           ),
-                          Constants.height15,
-                          Expanded(
-                            child: ListView.builder(
-                              itemCount: quizByCategoryList
-                                  .quizzes[currentIndex]
-                                  .questions![0]
-                                  .options!
-                                  .length,
-                              itemBuilder: (BuildContext context, int index) {
-                                var correctAns = quizByCategoryList
-                                    .quizzes[currentIndex].questions![0].answer;
-                                // if (state.color != Constants.greenLight) {
-                                //   quizOptionColor[index] = state.color;
-                                // }
-                                return GestureDetector(
-                                  onTap: () {
-                                    // BlocProvider.of<QuizBloc>(context)
-                                    //     .add(CheckAnsEvent(
-                                    //   corerctAns: correctAns.toString(),
-                                    //   selectedAns: quizByCategoryList
-                                    //       .quizzes[currentIndex]
-                                    //       .questions![0]
-                                    //       .options![index],
-                                    //   // color: quizOptionColor[index],
-                                    // ));
-
-                                    setState(() {
-                                      if (correctAns.toString() ==
-                                          quizByCategoryList
-                                              .quizzes[currentIndex]
-                                              .questions![0]
-                                              .options![index]
-                                              .toString()) {
-                                        quizOptionColor[index] =
-                                            Constants.gradGreenLight;
-                                      } else {
-                                        quizOptionColor[index] =
-                                            Constants.gradRedDark;
-                                      }
-                                    });
-                                    Future.delayed(
-                                      const Duration(seconds: 1),
-                                      () {
-                                        resetColor();
-                                        BlocProvider.of<QuizBloc>(context).add(
-                                            ChangeIndexEvent(
-                                                currentIndex: currentIndex,
-                                                total: quizByCategoryList
-                                                        .quizzes.length -
-                                                    1));
-                                      },
-                                    );
-                                  },
-                                  child: Container(
-                                    width: size.width * 0.9,
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 15, vertical: 5),
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15, vertical: 10),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: quizOptionColor[index],
-                                    ),
-                                    child: Text(
-                                      '${Constants.quizOptions[index]} ${quizByCategoryList.quizzes[currentIndex].questions![0].options![index]}',
-                                      style: TextStyles.size18,
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        ],
-                      );
-                    }
-                    return QuizShimmer(size: size);
-                  },
-                )),
+                        ),
+                      ],
+                    );
+                  }
+                  return QuizShimmer(size: size);
+                },
+              ),
+            ),
           ),
         ),
       ),
