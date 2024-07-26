@@ -14,17 +14,17 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
+    final size=MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       body: FlutterSplashScreen.fadeIn(
         backgroundColor: Constants.white,
-        childWidget: const SizedBox(
-          height: 200,
-          width: 200,
-          child: Image(
-            image: AssetImage('assets/logo/applogo.jpg'),
+        childWidget:  SizedBox(
+          height: size.width*0.8,
+          width: size.width*0.8,
+          child: const Image(
+            image: AssetImage('assets/logo/applogo.png'),
           ),
-          
         ),
         onAnimationEnd: () {
           Navigator.pushReplacement(
