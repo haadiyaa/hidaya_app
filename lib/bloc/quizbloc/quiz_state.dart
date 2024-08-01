@@ -32,3 +32,9 @@ class QuizError extends QuizState {
 
   QuizError({super.quizByCategoryList, super.currentIndex, super.color, super.isLast, required this.msg});
 }
+
+class GetHighScoreState extends QuizState {
+  final List<HighScore> highScore;
+
+  GetHighScoreState({super.quizByCategoryList, super.currentIndex, super.color, super.isLast, required this.highScore});
+}

@@ -42,3 +42,7 @@ class CheckAnsEvent extends QuizEvent {
     required this.selectedAns,
   });
 }
+
+class GetHighScoreEvent extends QuizEvent {
+  
+}

@@ -108,7 +108,7 @@ class _QuizmainPageState extends State<QuizmainPage> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                  'Question ${currentIndex + 1} of ${quizByCategoryList.quizzes.length}'),
+                                  'Question ${currentIndex + 1} of ${quizByCategoryList.quizzes[1].questions.length}'),
                             ],
                           ),
                         ),
@@ -130,7 +130,7 @@ class _QuizmainPageState extends State<QuizmainPage> {
                               ),
                               Expanded(
                                 child: Text(
-                                  quizByCategoryList.quizzes[currentIndex].questions[0].question,
+                                  quizByCategoryList.quizzes[1].questions[currentIndex].question,
                                   style: TextStyles.size20,
                                 ),
                               ),
@@ -140,14 +140,14 @@ class _QuizmainPageState extends State<QuizmainPage> {
                         Constants.height15,
                         Expanded(
                           child: ListView.builder(
-                            itemCount: quizByCategoryList.quizzes[currentIndex]
-                                .questions[0].options.length,
+                            itemCount: quizByCategoryList.quizzes[1].questions[currentIndex].options.length,
                             itemBuilder: (BuildContext context, int index) {
                               var correctAns = quizByCategoryList
-                                  .quizzes[currentIndex].questions[0].answerId;
+                                  .quizzes[1].questions[currentIndex].answerId;
                               // if (state.color != Constants.greenLight) {
                               //   quizOptionColor[index] = state.color;
                               // }
+                              
                               return GestureDetector(
                                 onTap: () {
                                   // BlocProvider.of<QuizBloc>(context)
@@ -159,11 +159,10 @@ class _QuizmainPageState extends State<QuizmainPage> {
                                   //       .options![index],
                                   //   // color: quizOptionColor[index],
                                   // ));
+                                  print(quizByCategoryList.quizzes[1].questions[currentIndex].options[index].id);
                                   setState(() {
                                     if (correctAns.toString() ==
-                                        quizByCategoryList.quizzes[currentIndex]
-                                            .questions![0].options![index]
-                                            .toString()) {
+                                        quizByCategoryList.quizzes[1].questions[currentIndex].options[index].id) {
                                       quizOptionColor[index] =
                                           Constants.gradGreenLight;
                                     } else {
@@ -179,7 +178,7 @@ class _QuizmainPageState extends State<QuizmainPage> {
                                           ChangeIndexEvent(
                                               currentIndex: currentIndex,
                                               total: quizByCategoryList
-                                                      .quizzes.length -
+                                                      .quizzes[1].questions.length -
                                                   1));
                                     },
                                   );
@@ -195,7 +194,8 @@ class _QuizmainPageState extends State<QuizmainPage> {
                                     color: quizOptionColor[index],
                                   ),
                                   child: Text(
-                                    '${Constants.quizOptions[index]} ${quizByCategoryList.quizzes[currentIndex].questions![0].options![index]}',
+                                    '${Constants.quizOptions[index]} ${quizByCategoryList.quizzes[1].questions[currentIndex].options[index].text
+                                            .toString()}',
                                     style: TextStyles.size18,
                                   ),
                                 ),

@@ -10,6 +10,13 @@ class QuizByCategoryList {
     );
   }
 }
+// To parse this JSON data, do
+//
+//     final quizByCategory = quizByCategoryFromJson(jsonString);
+
+List<QuizByCategory> quizByCategoryFromJson(String str) => List<QuizByCategory>.from(json.decode(str).map((x) => QuizByCategory.fromJson(x)));
+
+String quizByCategoryToJson(List<QuizByCategory> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class QuizByCategory {
     String id;
@@ -26,30 +33,21 @@ class QuizByCategory {
         required this.v,
     });
 
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'category': category,
-      'level': level,
-      'questions': questions.map((x) => x.toMap()).toList(),
-      'v': v,
-    };
-  }
-
-  factory QuizByCategory.fromMap(Map<String, dynamic> map) {
-    return QuizByCategory(
-      id: map['id'] as String,
-      category: map['category'] as String,
-      level: map['level'] as String,
-      questions: List<Question>.from((map['questions'] as List<int>).map<Question>((x) => Question.fromMap(x as Map<String,dynamic>),),),
-      v: map['v'] as int,
+    factory QuizByCategory.fromJson(Map<String, dynamic> json) => QuizByCategory(
+        id: json["_id"],
+        category: json["category"],
+        level: json["level"],
+        questions: List<Question>.from(json["questions"].map((x) => Question.fromJson(x))),
+        v: json["__v"],
     );
-  }
 
-  String toJson() => json.encode(toMap());
-
-  factory QuizByCategory.fromJson(String source) => QuizByCategory.fromMap(json.decode(source) as Map<String, dynamic>);
+    Map<String, dynamic> toJson() => {
+        "_id": id,
+        "category": category,
+        "level": level,
+        "questions": List<dynamic>.from(questions.map((x) => x.toJson())),
+        "__v": v,
+    };
 }
 
 class Question {
@@ -65,28 +63,19 @@ class Question {
         required this.id,
     });
 
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'question': question,
-      'options': options.map((x) => x.toMap()).toList(),
-      'answerId': answerId,
-      'id': id,
-    };
-  }
-
-  factory Question.fromMap(Map<String, dynamic> map) {
-    return Question(
-      question: map['question'] as String,
-      options: List<Option>.from((map['options'] as List<int>).map<Option>((x) => Option.fromMap(x as Map<String,dynamic>),),),
-      answerId: map['answerId'] as String,
-      id: map['id'] as String,
+    factory Question.fromJson(Map<String, dynamic> json) => Question(
+        question: json["question"],
+        options: List<Option>.from(json["options"].map((x) => Option.fromJson(x))),
+        answerId: json["answerId"],
+        id: json["_id"],
     );
-  }
 
-  String toJson() => json.encode(toMap());
-
-  factory Question.fromJson(String source) => Question.fromMap(json.decode(source) as Map<String, dynamic>);
+    Map<String, dynamic> toJson() => {
+        "question": question,
+        "options": List<dynamic>.from(options.map((x) => x.toJson())),
+        "answerId": answerId,
+        "_id": id,
+    };
 }
 
 class Option {
@@ -98,22 +87,13 @@ class Option {
         required this.text,
     });
 
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'text': text,
-    };
-  }
-
-  factory Option.fromMap(Map<String, dynamic> map) {
-    return Option(
-      id: map['id'] as String,
-      text: map['text'] as String,
+    factory Option.fromJson(Map<String, dynamic> json) => Option(
+        id: json["_id"],
+        text: json["text"],
     );
-  }
 
-  String toJson() => json.encode(toMap());
-
-  factory Option.fromJson(String source) => Option.fromMap(json.decode(source) as Map<String, dynamic>);
+    Map<String, dynamic> toJson() => {
+        "_id": id,
+        "text": text,
+    };
 }

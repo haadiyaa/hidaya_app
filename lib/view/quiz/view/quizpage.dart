@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hidhayah/bloc/quizbloc/quiz_bloc.dart';
+import 'package:hidhayah/model/highscoremodel.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/quiz/view/quizmainpage.dart';
@@ -11,13 +14,30 @@ class QuizpageWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return QuizPage();
+    return BlocProvider(
+      create: (context) => QuizBloc(),
+      child: QuizPage(),
+    );
   }
 }
 
-class QuizPage extends StatelessWidget {
+class QuizPage extends StatefulWidget {
   QuizPage({super.key});
+
+  @override
+  State<QuizPage> createState() => _QuizPageState();
+}
+
+class _QuizPageState extends State<QuizPage> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<QuizBloc>(context).add(GetHighScoreEvent());
+  }
+
+  late List<HighScore> highScore;
   late String category;
+
   late String level;
 
   @override
@@ -48,31 +68,66 @@ class QuizPage extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
                 Constants.height15,
-                SizedBox(
-                  height: size.height * 0.4,
-                  child: ListView.separated(
-                    physics: const NeverScrollableScrollPhysics(),
-                    separatorBuilder: (context, index) => Constants.height5,
-                    itemCount: 3,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
-                        dense: true,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        tileColor: Constants.greenLight,
-                        textColor: Constants.black,
-                        titleTextStyle: const TextStyle(color: Constants.black),
-                        leading: Text(
-                          '${index + 1} .',
-                          style: TextStyles.size18,
-                        ),
-                        title: Text(
-                          'user',
-                          style: TextStyles.size18,
-                        ),
-                      );
-                    },
-                  ),
+                BlocBuilder<QuizBloc, QuizState>(
+                  builder: (context, state) {
+                    if (state is GetHighScoreState) {
+                      highScore=state.highScore;
+                      return SizedBox(
+                      height: size.height * 0.4,
+                      child: ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        separatorBuilder: (context, index) => Constants.height5,
+                        itemCount: 3,
+                        itemBuilder: (BuildContext context, int index) {
+                          return ListTile(
+                            dense: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            tileColor: Constants.greenLight,
+                            textColor: Constants.black,
+                            titleTextStyle:
+                                const TextStyle(color: Constants.black),
+                            leading: Text(
+                              '${index + 1} .',
+                              style: TextStyles.size18,
+                            ),
+                            title: Text(
+                              highScore[index].username!,
+                              style: TextStyles.size18,
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                    }
+                    return SizedBox(
+                      height: size.height * 0.4,
+                      child: ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        separatorBuilder: (context, index) => Constants.height5,
+                        itemCount: 3,
+                        itemBuilder: (BuildContext context, int index) {
+                          return ListTile(
+                            dense: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            tileColor: Constants.greenLight,
+                            textColor: Constants.black,
+                            titleTextStyle:
+                                const TextStyle(color: Constants.black),
+                            leading: Text(
+                              '${index + 1} .',
+                              style: TextStyles.size18,
+                            ),
+                            title: Text(
+                              'user',
+                              style: TextStyles.size18,
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  },
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
