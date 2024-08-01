@@ -43,6 +43,12 @@ class CheckAnsEvent extends QuizEvent {
   });
 }
 
+class SubmitAnswerEvent extends QuizEvent {
+  final List<String> answers;
+
+  SubmitAnswerEvent({required this.answers});
+}
+
 class GetHighScoreEvent extends QuizEvent {
   
 }

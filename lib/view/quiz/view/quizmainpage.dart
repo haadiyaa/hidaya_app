@@ -60,6 +60,7 @@ class _QuizmainPageState extends State<QuizmainPage> {
     Constants.greenLight,
     Constants.greenLight,
   ];
+  List<String> ids=[];
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +88,7 @@ class _QuizmainPageState extends State<QuizmainPage> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (_) => const ScorePageWrapper()));
+                                builder: (_) => ScorePageWrapper(ids: ids,)));
                       },
                     );
                   }
@@ -98,7 +99,12 @@ class _QuizmainPageState extends State<QuizmainPage> {
                   // }
                   if (state.quizByCategoryList != null) {
                     quizByCategoryList = state.quizByCategoryList!;
-
+                    print('object ${quizByCategoryList.quizzes.length}');
+                    if (quizByCategoryList.quizzes.isEmpty) {
+                      return const Center(
+                        child: Text('No Questions in this category!'),
+                      );
+                    }
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -130,7 +136,8 @@ class _QuizmainPageState extends State<QuizmainPage> {
                               ),
                               Expanded(
                                 child: Text(
-                                  quizByCategoryList.quizzes[1].questions[currentIndex].question,
+                                  quizByCategoryList.quizzes[1]
+                                      .questions[currentIndex].question,
                                   style: TextStyles.size20,
                                 ),
                               ),
@@ -140,29 +147,34 @@ class _QuizmainPageState extends State<QuizmainPage> {
                         Constants.height15,
                         Expanded(
                           child: ListView.builder(
-                            itemCount: quizByCategoryList.quizzes[1].questions[currentIndex].options.length,
+                            itemCount: quizByCategoryList.quizzes[1]
+                                .questions[currentIndex].options.length,
                             itemBuilder: (BuildContext context, int index) {
                               var correctAns = quizByCategoryList
                                   .quizzes[1].questions[currentIndex].answerId;
                               // if (state.color != Constants.greenLight) {
                               //   quizOptionColor[index] = state.color;
                               // }
-                              
+
                               return GestureDetector(
                                 onTap: () {
-                                  // BlocProvider.of<QuizBloc>(context)
-                                  //     .add(CheckAnsEvent(
-                                  //   corerctAns: correctAns.toString(),
-                                  //   selectedAns: quizByCategoryList
-                                  //       .quizzes[currentIndex]
-                                  //       .questions![0]
-                                  //       .options![index],
-                                  //   // color: quizOptionColor[index],
-                                  // ));
-                                  print(quizByCategoryList.quizzes[1].questions[currentIndex].options[index].id);
+                                  ids.add(quizByCategoryList
+                                            .quizzes[1]
+                                            .questions[currentIndex]
+                                            .options[index]
+                                            .id);
+                                  print(quizByCategoryList
+                                      .quizzes[1]
+                                      .questions[currentIndex]
+                                      .options[index]
+                                      .id);
                                   setState(() {
                                     if (correctAns.toString() ==
-                                        quizByCategoryList.quizzes[1].questions[currentIndex].options[index].id) {
+                                        quizByCategoryList
+                                            .quizzes[1]
+                                            .questions[currentIndex]
+                                            .options[index]
+                                            .id) {
                                       quizOptionColor[index] =
                                           Constants.gradGreenLight;
                                     } else {
@@ -178,7 +190,9 @@ class _QuizmainPageState extends State<QuizmainPage> {
                                           ChangeIndexEvent(
                                               currentIndex: currentIndex,
                                               total: quizByCategoryList
-                                                      .quizzes[1].questions.length -
+                                                      .quizzes[1]
+                                                      .questions
+                                                      .length -
                                                   1));
                                     },
                                   );
@@ -194,8 +208,7 @@ class _QuizmainPageState extends State<QuizmainPage> {
                                     color: quizOptionColor[index],
                                   ),
                                   child: Text(
-                                    '${Constants.quizOptions[index]} ${quizByCategoryList.quizzes[1].questions[currentIndex].options[index].text
-                                            .toString()}',
+                                    '${Constants.quizOptions[index]} ${quizByCategoryList.quizzes[1].questions[currentIndex].options[index].text.toString()}',
                                     style: TextStyles.size18,
                                   ),
                                 ),

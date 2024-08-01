@@ -17,6 +17,7 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
     on<ChangeIndexEvent>(_changeIndex);
     on<CheckAnsEvent>(_checkAns);
     on<GetHighScoreEvent>(_getHighScore);
+    on<SubmitAnswerEvent>(_submit);
   }
 
   Future<void> _quizbyCategoryLevel(
@@ -78,8 +79,7 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
           List<HighScore> highScore = highScoreFromJson(response.body);
           print(highScore[0].username);
           emit(GetHighScoreState(highScore: highScore));
-        }
-        else{
+        } else {
           emit(QuizError(msg: data['msg']));
           print(data['msg']);
         }
@@ -87,6 +87,42 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
     } catch (e) {
       print(e.toString());
       emit(QuizError(msg: e.toString()));
+    }
+  }
+
+  Future<void> _submit(SubmitAnswerEvent event, Emitter<QuizState> emit) async {
+    var sharedPref = await SharedPreferences.getInstance();
+    String? token = sharedPref.getString(Constants.LOGINTOKEN);
+    final ans = [];
+    for (var element in event.answers) {
+      event.answers.map((e) {
+        ans.add({"id":element});
+      });
+    }
+    final body={
+      "answers":ans
+    };
+    try {
+      if (token != null) {
+        final response = await http.post(
+          Uri.parse('${Secrets.authUrl}${Secrets.submit}'),
+          headers: {
+            'x-auth-token': token,
+          },
+          body: body,
+        );
+        final data=jsonDecode(response.body);
+        if (response.statusCode==200) {
+          print(response.body);
+          emit(SubmitState(score: data['currentQuizScore'].toString()));
+        }
+        else{
+          print('error');
+        }
+      }
+    } catch (e) {
+      emit(QuizError(msg: e.toString()));
+      print(e.toString());
     }
   }
 }
