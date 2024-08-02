@@ -152,7 +152,7 @@ class _QuizmainPageState extends State<QuizmainPage> {
                             itemBuilder: (BuildContext context, int index) {
                               var correctAns = quizByCategoryList
                                   .quizzes[1].questions[currentIndex].answerId;
-
+  
                               return GestureDetector(
                                 onTap: () {
                                   ids.add(quizByCategoryList

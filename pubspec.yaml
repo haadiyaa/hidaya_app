@@ -61,6 +61,7 @@ dependencies:
   overlapped_carousel: ^1.0.2
   card_swiper: ^3.0.1
   another_flutter_splash_screen: ^1.2.1
+  neumorphic_button: ^0.0.1+2
 
 dev_dependencies:
   flutter_test:

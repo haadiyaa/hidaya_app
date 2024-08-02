@@ -8,6 +8,7 @@ import 'package:hidhayah/utils/styles/textstyle.dart';
 import 'package:hidhayah/view/quiz/view/quizmainpage.dart';
 import 'package:hidhayah/view/quiz/widgets/categorydialog.dart';
 import 'package:hidhayah/view/quiz/widgets/leveldialog.dart';
+import 'package:shimmer/shimmer.dart';
 
 class QuizpageWrapper extends StatelessWidget {
   const QuizpageWrapper({super.key});
@@ -71,34 +72,35 @@ class _QuizPageState extends State<QuizPage> {
                 BlocBuilder<QuizBloc, QuizState>(
                   builder: (context, state) {
                     if (state is GetHighScoreState) {
-                      highScore=state.highScore;
+                      highScore = state.highScore;
                       return SizedBox(
-                      height: size.height * 0.4,
-                      child: ListView.separated(
-                        physics: const NeverScrollableScrollPhysics(),
-                        separatorBuilder: (context, index) => Constants.height5,
-                        itemCount: 3,
-                        itemBuilder: (BuildContext context, int index) {
-                          return ListTile(
-                            dense: true,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            tileColor: Constants.greenLight,
-                            textColor: Constants.black,
-                            titleTextStyle:
-                                const TextStyle(color: Constants.black),
-                            leading: Text(
-                              '${index + 1} .',
-                              style: TextStyles.size18,
-                            ),
-                            title: Text(
-                              highScore[index].username!,
-                              style: TextStyles.size18,
-                            ),
-                          );
-                        },
-                      ),
-                    );
+                        height: size.height * 0.4,
+                        child: ListView.separated(
+                          physics: const NeverScrollableScrollPhysics(),
+                          separatorBuilder: (context, index) =>
+                              Constants.height5,
+                          itemCount: 3,
+                          itemBuilder: (BuildContext context, int index) {
+                            return ListTile(
+                              dense: true,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              tileColor: Constants.greenLight,
+                              textColor: Constants.black,
+                              titleTextStyle:
+                                  const TextStyle(color: Constants.black),
+                              leading: Text(
+                                '${index + 1} .',
+                                style: TextStyles.size18,
+                              ),
+                              title: Text(
+                                highScore[index].username!,
+                                style: TextStyles.size18,
+                              ),
+                            );
+                          },
+                        ),
+                      );
                     }
                     return SizedBox(
                       height: size.height * 0.4,
@@ -107,21 +109,30 @@ class _QuizPageState extends State<QuizPage> {
                         separatorBuilder: (context, index) => Constants.height5,
                         itemCount: 3,
                         itemBuilder: (BuildContext context, int index) {
-                          return ListTile(
-                            dense: true,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            tileColor: Constants.greenLight,
-                            textColor: Constants.black,
-                            titleTextStyle:
-                                const TextStyle(color: Constants.black),
-                            leading: Text(
-                              '${index + 1} .',
-                              style: TextStyles.size18,
-                            ),
-                            title: Text(
-                              'user',
-                              style: TextStyles.size18,
+                          return Shimmer.fromColors(
+                            baseColor: Constants.greenDark2,
+                            highlightColor: Constants.greenDark,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Constants.white,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: ListTile(
+                                dense: true,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)),
+                                tileColor: Constants.greenLight,
+                                textColor: Constants.black,
+                                titleTextStyle:
+                                    const TextStyle(color: Constants.black),
+                                leading: Text(
+                                  '${index + 1} .',
+                                  style: TextStyles.size18,
+                                ),
+                                title: Text(
+                                  'user',
+                                  style: TextStyles.size18,
+                                ),
+                              ),
                             ),
                           );
                         },

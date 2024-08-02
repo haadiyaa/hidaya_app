@@ -21,6 +21,7 @@ import 'package:hidhayah/view/profile/view/profilepage.dart';
 import 'package:hidhayah/view/qibladirection/view/qibladirectionpage.dart';
 import 'package:hidhayah/view/quiz/view/quizpage.dart';
 import 'package:hidhayah/view/quran/view/quranpage.dart';
+import 'package:hidhayah/view/salatpage/view/salatpage.dart';
 import 'package:hidhayah/view/tasbihpage.dart/view/tasbihpage.dart';
 import 'package:hidhayah/view/videospage/view/videospage.dart';
 import 'package:intl/intl.dart';
@@ -223,6 +224,9 @@ class _DashBoardPageState extends State<DashBoardPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GradientContainer(
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const SalatPage(),));
+                            },
                             size: size,
                             gradient: Gradients.gradientBox3,
                             child: const GradientContainerContent(
