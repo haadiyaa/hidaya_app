@@ -32,9 +32,6 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
       if (response.statusCode == 200) {
         print('success');
         quizByCategoryList = QuizByCategoryList.fromJson(data);
-
-        print(quizByCategoryList.quizzes[0].questions[0].question);
-        print(quizByCategoryList.quizzes.length);
         emit(QuizState(quizByCategoryList: quizByCategoryList));
       } else {
         emit(QuizError(msg: 'Error occured'));
@@ -67,7 +64,6 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
       GetHighScoreEvent event, Emitter<QuizState> emit) async {
     var sharedPref = await SharedPreferences.getInstance();
     String? token = sharedPref.getString(Constants.LOGINTOKEN);
-    // HighScore? highScore;
     try {
       if (token != null) {
         final response = await http.get(
@@ -77,7 +73,6 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
         final data = jsonDecode(response.body);
         if (response.statusCode == 200) {
           List<HighScore> highScore = highScoreFromJson(response.body);
-          print(highScore[0].username);
           emit(GetHighScoreState(highScore: highScore));
         } else {
           emit(QuizError(msg: data['msg']));
@@ -93,36 +88,42 @@ class QuizBloc extends Bloc<QuizEvent, QuizState> {
   Future<void> _submit(SubmitAnswerEvent event, Emitter<QuizState> emit) async {
     var sharedPref = await SharedPreferences.getInstance();
     String? token = sharedPref.getString(Constants.LOGINTOKEN);
-    final ans = [];
-    for (var element in event.answers) {
-      event.answers.map((e) {
-        ans.add({"id":element});
-      });
-    }
-    final body={
-      "answers":ans
-    };
+    print(token);
+     // Prepare the body
+     var ids = event.answers;
+    final body = jsonEncode({
+      'answers': ids.map((e) => {'id': e}).toList(),
+    });
+    print('Request body: $body');
+     // Debug print to check the body
     try {
       if (token != null) {
+        print('Token is not null, proceeding with request...');
         final response = await http.post(
           Uri.parse('${Secrets.authUrl}${Secrets.submit}'),
           headers: {
             'x-auth-token': token,
+            'Content-Type': 'application/json',
           },
           body: body,
         );
-        final data=jsonDecode(response.body);
-        if (response.statusCode==200) {
-          print(response.body);
+        print('Response status: ${response.statusCode}');
+        print('Response body: ${response.body}');
+        final data = jsonDecode(response.body);
+        if (response.statusCode == 200) {
+          print('Request succeeded with body: ${response.body}');
           emit(SubmitState(score: data['currentQuizScore'].toString()));
+        } else {
+          print('Error: ${data['msg']}');
+          emit(QuizError(msg: data['msg']));
         }
-        else{
-          print('error');
-        }
+      } else {
+        print('Token is null');
+        emit(QuizError(msg: 'Token is null'));
       }
     } catch (e) {
       emit(QuizError(msg: e.toString()));
-      print(e.toString());
+      print('Error: ${e.toString()}');
     }
   }
 }

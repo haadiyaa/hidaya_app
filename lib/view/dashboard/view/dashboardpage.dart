@@ -172,7 +172,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
                   padding: Constants.mainContainPadd,
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
-                    color: Constants.greenDark,
+                    color: Constants.greenDark2,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20),
                       topRight: Radius.circular(20),

@@ -152,9 +152,6 @@ class _QuizmainPageState extends State<QuizmainPage> {
                             itemBuilder: (BuildContext context, int index) {
                               var correctAns = quizByCategoryList
                                   .quizzes[1].questions[currentIndex].answerId;
-                              // if (state.color != Constants.greenLight) {
-                              //   quizOptionColor[index] = state.color;
-                              // }
 
                               return GestureDetector(
                                 onTap: () {
