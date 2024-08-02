@@ -72,35 +72,36 @@ class _LoginWidgetState extends State<LoginWidget> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        showBottomSheet(
-                          backgroundColor: Constants.greenLight,
-                          enableDrag: true,
-                          showDragHandle: true,
-                          context: context,
-                          builder: (context) {
-                            return SingleChildScrollView(
-                              child: BottomSheet(
-                                enableDrag: true,
-                                backgroundColor: Constants.greenLight,
-                                onClosing: () {},
-                                builder: (context) {
-                                  return ForgotPasseordWrapper(size: size);
-                                },
-                              ),
-                            );
-                          },
-                        );
-                      },
-                      child: const Padding(
-                        padding: EdgeInsets.only(bottom: 10.0),
-                        child: Text(
-                          'Forgot Password?',
-                          style: TextStyles.forgotPasStyle,
-                        ),
-                      ),
-                    ),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     showBottomSheet(
+                    //       backgroundColor: Constants.greenLight,
+                    //       enableDrag: true,
+                    //       showDragHandle: true,
+                    //       context: context,
+                    //       builder: (context) {
+                    //         return SingleChildScrollView(
+                    //           child: BottomSheet(
+                    //             enableDrag: true,
+                    //             backgroundColor: Constants.greenLight,
+                    //             onClosing: () {},
+                    //             builder: (context) {
+                    //               return ForgotPasseordWrapper(size: size);
+                    //             },
+                    //           ),
+                    //         );
+                    //       },
+                    //     );
+                    //   },
+                    //   child: const Padding(
+                    //     padding: EdgeInsets.only(bottom: 10.0),
+                    //     child: Text(
+                    //       'Forgot Password?',
+                    //       style: TextStyles.forgotPasStyle,
+                    //     ),
+                    //   ),
+                    // ),
+                    Constants.height10
                   ],
                 ),
                 BlocListener<LoginBloc, LoginState>(

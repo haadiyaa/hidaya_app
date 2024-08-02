@@ -85,23 +85,23 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
         Uri.parse(Secrets.nearbyPlaceUrl),
         headers: {
           "Content-Type": "application/json",
-          "X-Goog-Api-Key": Secrets.apiKey,
+          "X-Goog-Api-Key": 'AIzaSyB2AUUmiY9Atpd97w7SQHCZ45HQAXm8U_c',
         },
         body: jsonEncode(data),
       );
       final data1 = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        // print(response.body);
+        print(response.body);
         nearbyPlace = NearbyPlace.fromJson(data1);
         emit(FetchNearbyMasjidState(places: nearbyPlace));
       } else {
         // print('error');
         emit(FetchNearbyMasjidErrorState(
             msg: data1['error']['message'].toString()));
-        print(data1['error']['message'].toString());
+        print('Error: ${data1['error']['message'].toString()}');
       }
     } catch (e) {
-      print(e.toString());
+      print('Exception : ${e.toString()}');
     }
   }
 }

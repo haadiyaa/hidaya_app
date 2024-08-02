@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
-import 'package:hidhayah/view/dashboard/view/dashboardpage.dart';
 import 'package:hidhayah/view/splashpage/view/splashpage.dart';
 
 void main() {

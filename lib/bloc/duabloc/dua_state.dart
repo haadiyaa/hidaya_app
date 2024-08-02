@@ -14,3 +14,8 @@ class DuaSingleState extends DuaState {
 
   DuaSingleState({required this.duaModel});
 }
+class DuaErrorState extends DuaState {
+  final String msg;
+
+  DuaErrorState({required this.msg});
+}

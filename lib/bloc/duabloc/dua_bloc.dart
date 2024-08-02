@@ -27,10 +27,10 @@ class DuaBloc extends Bloc<DuaEvent, DuaState> {
         duaModel = Duamodel.fromJson(data);
         emit(DuaCetgoriesState(duaModel: duaModel));
       } else {
-        print('error');
+        emit(DuaErrorState(msg: 'Error'));
       }
     } catch (e) {
-      print('error $e');
+      emit(DuaErrorState(msg: e.toString()));
     }
   }
 
@@ -44,15 +44,13 @@ class DuaBloc extends Bloc<DuaEvent, DuaState> {
       // final data=jsonDecode(body);
       // print(duaData);
       if (response.statusCode == 200) {
-        print('object');
         dua = Dua.fromJson(duaData);
-        print(dua.duaItems[0].arabicText);
         emit(DuaSingleState(duaModel: dua));
       } else {
-        print('errrrorrrr');
+        emit(DuaErrorState(msg:'Error'));
       }
     } catch (e) {
-      print('errorr $e');
+      emit(DuaErrorState(msg: e.toString()));
     }
   }
 }

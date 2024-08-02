@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hidhayah/model/prayertimemodel.dart';
-import 'package:hidhayah/secrets/secrets.dart';
 import 'package:hidhayah/utils/apirepository/apirepository.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';

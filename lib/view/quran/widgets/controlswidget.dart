@@ -1,11 +1,9 @@
-import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
-import 'package:hidhayah/view/quran/widgets/surahayatwidget.dart';
 import 'package:just_audio/just_audio.dart';
 
 class Controls extends StatelessWidget {
-  Controls({
+  const Controls({
     super.key,
     required this.audioPlayer,
     // required this.positionDataStream,
@@ -46,11 +44,11 @@ class Controls extends StatelessWidget {
               );
             } else if (processingState == ProcessingState.buffering ||
                 processingState == ProcessingState.loading) {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             }
             return IconButton(
                 onPressed: () => audioPlayer.seek(Duration.zero),
-                icon: Icon(
+                icon: const Icon(
                   Icons.play_arrow_rounded,
                   color: Constants.white,
                 ));

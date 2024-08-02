@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hidhayah/bloc/quizbloc/quiz_bloc.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
-import 'package:hidhayah/view/quiz/view/quizpage.dart';
 
 class ScorePageWrapper extends StatelessWidget {
   const ScorePageWrapper({super.key, required this.ids});

@@ -1,18 +1,12 @@
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hidhayah/bloc/youtubebloc/youtube_bloc.dart';
 import 'package:hidhayah/model/playlistmodel.dart';
 import 'package:hidhayah/utils/constants/constants.dart';
-import 'package:hidhayah/utils/constants/yotubeitems.dart';
 import 'package:hidhayah/utils/styles/textstyle.dart';
-import 'package:hidhayah/view/videospage/view/playerscreen.dart';
 import 'package:hidhayah/view/videospage/widgets/customcurousel.dart';
 import 'package:hidhayah/view/videospage/widgets/playlistwidget.dart';
-import 'package:hidhayah/view/videospage/widgets/shimmerlist.dart';
 import 'package:hidhayah/view/videospage/widgets/shimmeryoutube.dart';
-import 'package:shimmer/shimmer.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideospageWrapper extends StatelessWidget {
   const VideospageWrapper({super.key});
