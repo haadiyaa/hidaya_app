@@ -152,25 +152,18 @@ class _QuizmainPageState extends State<QuizmainPage> {
                             itemBuilder: (BuildContext context, int index) {
                               var correctAns = quizByCategoryList
                                   .quizzes[1].questions[currentIndex].answerId;
-  
+                             List<Option> options=quizByCategoryList
+                                  .quizzes[1].questions[currentIndex].options;
+                                  options.shuffle();
                               return GestureDetector(
                                 onTap: () {
-                                  ids.add(quizByCategoryList
-                                            .quizzes[1]
-                                            .questions[currentIndex]
-                                            .options[index]
+                                  ids.add(options[index]
                                             .id);
-                                  print(quizByCategoryList
-                                      .quizzes[1]
-                                      .questions[currentIndex]
-                                      .options[index]
+                                  print(options[index]
                                       .id);
                                   setState(() {
                                     if (correctAns.toString() ==
-                                        quizByCategoryList
-                                            .quizzes[1]
-                                            .questions[currentIndex]
-                                            .options[index]
+                                       options[index]
                                             .id) {
                                       quizOptionColor[index] =
                                           Constants.gradGreenLight;
@@ -205,7 +198,7 @@ class _QuizmainPageState extends State<QuizmainPage> {
                                     color: quizOptionColor[index],
                                   ),
                                   child: Text(
-                                    '${Constants.quizOptions[index]} ${quizByCategoryList.quizzes[1].questions[currentIndex].options[index].text.toString()}',
+                                    '${Constants.quizOptions[index]} ${options[index].text.toString()}',
                                     style: TextStyles.size18,
                                   ),
                                 ),

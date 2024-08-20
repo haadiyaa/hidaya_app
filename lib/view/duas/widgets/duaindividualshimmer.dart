@@ -65,7 +65,7 @@ class DuaIndividualShimmer extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: BorderRadius.circular(10)), 
                 height: 20,
                 width: size.width*0.7,
               ),

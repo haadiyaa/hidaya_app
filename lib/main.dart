@@ -4,6 +4,7 @@ import 'package:hidhayah/utils/constants/constants.dart';
 import 'package:hidhayah/view/splashpage/view/splashpage.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 

@@ -62,6 +62,7 @@ dependencies:
   card_swiper: ^3.0.1
   another_flutter_splash_screen: ^1.2.1
   neumorphic_button: ^0.0.1+2
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:

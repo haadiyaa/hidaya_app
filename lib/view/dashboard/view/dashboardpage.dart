@@ -25,6 +25,7 @@ import 'package:hidhayah/view/salatpage/view/salatpage.dart';
 import 'package:hidhayah/view/tasbihpage.dart/view/tasbihpage.dart';
 import 'package:hidhayah/view/videospage/view/videospage.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DashboardpageWrapper extends StatelessWidget {
   const DashboardpageWrapper({super.key});
@@ -225,7 +226,11 @@ class _DashBoardPageState extends State<DashBoardPage> {
                         children: [
                           GradientContainer(
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const SalatPage(),));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const SalatPage(),
+                                  ));
                             },
                             size: size,
                             gradient: Gradients.gradientBox3,
@@ -316,7 +321,8 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                           ..hideCurrentSnackBar()
                                           ..showSnackBar(
                                             const SnackBar(
-                                                content: Text('Plase Log in!')),
+                                                content:
+                                                    Text('Please Log in!')),
                                           );
                                       }
                                     }
@@ -344,16 +350,9 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                   },
                                 ),
                                 DashboardIcons(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (_) => NearbyWrapper(
-                                            latitude: latitude!,
-                                            longitude: longitude!,
-                                          ),
-                                        ),
-                                      );
+                                    onTap: () async {
+                                      final url = 'https://www.google.com/maps/search/masjid+near+me/@$latitude,$longitude,15z/data=!3m1!4b1?entry=ttu';
+                                      launchURLBrowser(url);
                                     },
                                     text: 'Masgid Near Me',
                                     image: Constants.mapIcon),
@@ -369,5 +368,13 @@ class _DashBoardPageState extends State<DashBoardPage> {
             ],
           ),
         ))));
+  }
+  void launchURLBrowser(String str) async {
+    var url = Uri.parse(str);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

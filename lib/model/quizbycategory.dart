@@ -10,9 +10,6 @@ class QuizByCategoryList {
     );
   }
 }
-// To parse this JSON data, do
-//
-//     final quizByCategory = quizByCategoryFromJson(jsonString);
 
 List<QuizByCategory> quizByCategoryFromJson(String str) => List<QuizByCategory>.from(json.decode(str).map((x) => QuizByCategory.fromJson(x)));
 
