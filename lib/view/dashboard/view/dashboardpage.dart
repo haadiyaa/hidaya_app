@@ -15,7 +15,6 @@ import 'package:hidhayah/view/dashboard/widgets/gradientcontainer.dart';
 import 'package:hidhayah/view/dashboard/widgets/gradientcontent.dart';
 import 'package:hidhayah/view/duas/view/duapage.dart';
 import 'package:hidhayah/view/loginsignup/view/login_page.dart';
-import 'package:hidhayah/view/nearbymasjid/view/nearbymasjid.dart';
 import 'package:hidhayah/view/prayertime/view/prayertime.dart';
 import 'package:hidhayah/view/profile/view/profilepage.dart';
 import 'package:hidhayah/view/qibladirection/view/qibladirectionpage.dart';
