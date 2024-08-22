@@ -74,7 +74,7 @@ class Constants {
   //====================PADDING==========================
   static const EdgeInsets gradContainPadd =
       EdgeInsets.only(left: 20, top: 10, bottom: 10, right: 10);
-  static const EdgeInsets mainContainPadd = EdgeInsets.all(30);
+  static const EdgeInsets mainContainPadd = EdgeInsets.only(top:30,left:30,right:30);
   static const EdgeInsets mainContainSubPadd =
       EdgeInsets.only(left: 30, right: 30, top: 25);
   static const EdgeInsets dashHeadPadd =

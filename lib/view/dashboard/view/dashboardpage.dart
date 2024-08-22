@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hidhayah/bloc/functionbloc/functions_bloc.dart';
@@ -23,6 +26,7 @@ import 'package:hidhayah/view/quran/view/quranpage.dart';
 import 'package:hidhayah/view/salatpage/view/salatpage.dart';
 import 'package:hidhayah/view/tasbihpage.dart/view/tasbihpage.dart';
 import 'package:hidhayah/view/videospage/view/videospage.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -62,141 +66,114 @@ class _DashBoardPageState extends State<DashBoardPage> {
   double? latitude;
   double? longitude;
 
+  late StreamSubscription subscription;
+  var isDeviceConnected = false;
+  bool isAlertSet = false;
+
   @override
   void initState() {
     super.initState();
+    getConnectivity();
   }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
+
+  showDialogBox() => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text(
+            'No Connection',
+            style: TextStyle(color: Constants.black),
+          ),
+          content: const Text('Please check your Internet Connection',style: TextStyle(color: Constants.black),),
+          actions: [
+            TextButton(
+              onPressed: () async {
+                Navigator.pop(context);
+                setState(() {
+                  isAlertSet = false;
+                });
+                isDeviceConnected =
+                    await InternetConnectionChecker().hasConnection;
+                if (!isDeviceConnected) {
+                  showDialogBox();
+                  setState(() {
+                    isAlertSet = true;
+                  });
+                }
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-        backgroundColor: Constants.greenLight,
-        body: SafeArea(
-            child: SingleChildScrollView(
-                child: SizedBox(
-          height: size.height,
-          width: size.width,
-          child: Column(
-            children: [
-              Padding(
-                padding: Constants.dashHeadPadd,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomText(
-                          text: 'Assalamu Alaikum,',
-                          style: TextStyles.dashboardHeadStyle,
-                        ),
-                        BlocListener<FunctionsBloc, FunctionsState>(
-                          listener: (context, state) {
-                            if (state is Loading) {
-                              print('loading');
-                            }
-                            if (state.status == Status.loggedIn) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) =>
-                                          const ProfilePageWrapper()));
-                            }
-                            if (state.status == Status.notLoggedIn) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => const LoginPagee()));
-                            }
-                          },
-                          child: GestureDetector(
-                            onTap: () {
-                              context
-                                  .read<FunctionsBloc>()
-                                  .add(const CheckStatusEvent());
-                            },
-                            child: CircleAvatar(
-                              backgroundColor: Constants.gradGreenDark,
-                              child: Constants.profile,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Constants.height10,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            if (city != null && country != null) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => PrayerTimeWrapper(
-                                            city: city!,
-                                            country: country!,
-                                          )));
-                            } else {
-                              print('retry');
-                            }
-                          },
-                          child: DashHeadLeft(
-                            salah: DateFormat('hh:mm a').format(DateTime.now()),
-                          ),
-                        ),
-                        BlocBuilder<LocationBloc, LocationState>(
-                          builder: (context, state) {
-                            if (state is LocationFetchState) {
-                              latitude = state.latitude;
-                              longitude = state.longitude;
-                              city = state.city;
-                              country = state.country;
-                              return DashHeadRight(
-                                date: DateFormat('dd MMM yyyy')
-                                    .format(DateTime.now()),
-                                place: city ?? 'loading...',
-                              );
-                            }
-                            return const Text('Loading...');
-                          },
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Constants.height8,
-              Expanded(
-                child: Container(
-                  padding: Constants.mainContainPadd,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: const BoxDecoration(
-                    color: Constants.greenDark,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                  ),
+      backgroundColor: Constants.greenLight,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: SizedBox(
+            height: size.height,
+            width: size.width,
+            child: Column(
+              children: [
+                Padding(
+                  padding: Constants.dashHeadPadd,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          GradientContainer(
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (_) => const QuranpageWrapper()));
+                          CustomText(
+                            text: 'Assalamu Alaikum,',
+                            style: TextStyles.dashboardHeadStyle,
+                          ),
+                          BlocListener<FunctionsBloc, FunctionsState>(
+                            listener: (context, state) {
+                              if (state is Loading) {
+                                print('loading');
+                              }
+                              if (state.status == Status.loggedIn) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) =>
+                                            const ProfilePageWrapper()));
+                              }
+                              if (state.status == Status.notLoggedIn) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => const LoginPagee()));
+                              }
                             },
-                            size: size,
-                            gradient: Gradients.gradientBox1,
-                            child: GradientContainerContent(
-                              title: 'Read the\nQuran',
-                              icon: Constants.arrowRight,
+                            child: GestureDetector(
+                              onTap: () {
+                                context
+                                    .read<FunctionsBloc>()
+                                    .add(const CheckStatusEvent());
+                              },
+                              child: CircleAvatar(
+                                backgroundColor: Constants.gradGreenDark,
+                                child: Constants.profile,
+                              ),
                             ),
                           ),
-                          GradientContainer(
+                        ],
+                      ),
+                      Constants.height10,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
                             onTap: () {
                               if (city != null && country != null) {
                                 Navigator.push(
@@ -210,164 +187,241 @@ class _DashBoardPageState extends State<DashBoardPage> {
                                 print('retry');
                               }
                             },
-                            size: size,
-                            gradient: Gradients.gradientBox2,
-                            child: GradientContainerContent(
-                              title: 'Track\nPrayers',
-                              icon: Constants.arrowRight,
+                            child: DashHeadLeft(
+                              salah:
+                                  DateFormat('hh:mm a').format(DateTime.now()),
                             ),
+                          ),
+                          BlocBuilder<LocationBloc, LocationState>(
+                            builder: (context, state) {
+                              if (state is LocationFetchState) {
+                                latitude = state.latitude;
+                                longitude = state.longitude;
+                                city = state.city;
+                                country = state.country;
+                                return DashHeadRight(
+                                  date: DateFormat('dd MMM yyyy')
+                                      .format(DateTime.now()),
+                                  place: city ?? 'loading...',
+                                );
+                              }
+                              return const Text('Loading...');
+                            },
                           )
                         ],
                       ),
-                      Constants.height20,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GradientContainer(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const SalatPage(),
-                                  ));
-                            },
-                            size: size,
-                            gradient: Gradients.gradientBox3,
-                            child: const GradientContainerContent(
-                              title: 'Salah',
-                              subtitle: 'Learn',
-                            ),
-                          ),
-                          GradientContainer(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) =>
-                                          const VideospageWrapper()));
-                            },
-                            size: size,
-                            gradient: Gradients.gradientBox4,
-                            child: const GradientContainerContent(
-                              title: 'Videos',
-                              subtitle: 'Watch',
-                            ),
-                          ),
-                        ],
+                    ],
+                  ),
+                ),
+                Constants.height8,
+                Expanded(
+                  child: Container(
+                    padding: Constants.mainContainPadd,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: const BoxDecoration(
+                      color: Constants.greenDark,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
                       ),
-                      Constants.height10,
-                      Padding(
-                        padding: Constants.mainContainSubPadd,
-                        child: Column(
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                DashboardIcons(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (_) => const QiblaDir()));
-                                  },
-                                  text: 'Qibla',
-                                  image: Constants.qiblaDirIcon,
-                                  padding: const EdgeInsets.all(5),
-                                ),
-                                DashboardIcons(
+                            GradientContainer(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (_) => const QuranpageWrapper()));
+                              },
+                              size: size,
+                              gradient: Gradients.gradientBox1,
+                              child: GradientContainerContent(
+                                title: 'Read the\nQuran',
+                                icon: Constants.arrowRight,
+                              ),
+                            ),
+                            GradientContainer(
+                              onTap: () {
+                                if (city != null && country != null) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => PrayerTimeWrapper(
+                                                city: city!,
+                                                country: country!,
+                                              )));
+                                } else {
+                                  print('retry');
+                                }
+                              },
+                              size: size,
+                              gradient: Gradients.gradientBox2,
+                              child: GradientContainerContent(
+                                title: 'Track\nPrayers',
+                                icon: Constants.arrowRight,
+                              ),
+                            )
+                          ],
+                        ),
+                        Constants.height20,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GradientContainer(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const SalatPage(),
+                                    ));
+                              },
+                              size: size,
+                              gradient: Gradients.gradientBox3,
+                              child: const GradientContainerContent(
+                                title: 'Salah',
+                                subtitle: 'Learn',
+                              ),
+                            ),
+                            GradientContainer(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) =>
+                                            const VideospageWrapper()));
+                              },
+                              size: size,
+                              gradient: Gradients.gradientBox4,
+                              child: const GradientContainerContent(
+                                title: 'Videos',
+                                subtitle: 'Watch',
+                              ),
+                            ),
+                          ],
+                        ),
+                        Constants.height10,
+                        Padding(
+                          padding: Constants.mainContainSubPadd,
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  DashboardIcons(
                                     onTap: () {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (_) =>
-                                                  const DuapageWrapper()));
+                                                  const QiblaDir()));
                                     },
-                                    text: 'Duas',
-                                    image: Constants.duaIcon),
-                                DashboardIcons(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (_) =>
-                                                const TasbihPageWrapper()));
-                                  },
-                                  text: 'Tasbih',
-                                  image: Constants.tasbih2,
-                                ),
-                              ],
-                            ),
-                            Constants.height20,
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                BlocListener<StatusBloc, StatusState>(
-                                  listener: (context, state) {
-                                    if (state is Loading) {
-                                      print('loading');
-                                    }
-                                    if (state is StatusCheckState) {
-                                      if (state.status == Status.loggedIn) {
+                                    text: 'Qibla',
+                                    image: Constants.qiblaDirIcon,
+                                    padding: const EdgeInsets.all(5),
+                                  ),
+                                  DashboardIcons(
+                                      onTap: () {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (_) =>
-                                                    const QuizpageWrapper()));
-                                      } else if (state.status ==
-                                          Status.notLoggedIn) {
-                                        ScaffoldMessenger.of(context)
-                                          ..hideCurrentSnackBar()
-                                          ..showSnackBar(
-                                            const SnackBar(
-                                                content:
-                                                    Text('Please Log in!')),
-                                          );
-                                      }
-                                    }
-                                  },
-                                  child: DashboardIcons(
+                                                    const DuapageWrapper()));
+                                      },
+                                      text: 'Duas',
+                                      image: Constants.duaIcon),
+                                  DashboardIcons(
                                     onTap: () {
-                                      context
-                                          .read<StatusBloc>()
-                                          .add(CheckStatusQuizEvent());
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) =>
+                                                  const TasbihPageWrapper()));
                                     },
-                                    text: 'Quiz',
-                                    image: Constants.quiz,
-                                    padding: const EdgeInsets.all(5),
+                                    text: 'Tasbih',
+                                    image: Constants.tasbih2,
                                   ),
-                                ),
-                                DashboardIcons(
-                                  text: 'Calendar',
-                                  image: Constants.calendar,
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (_) =>
-                                                const CalendarPage()));
-                                  },
-                                ),
-                                DashboardIcons(
-                                    onTap: () async {
-                                      final url = 'https://www.google.com/maps/search/masjid+near+me/@$latitude,$longitude,15z/data=!3m1!4b1?entry=ttu';
-                                      launchURLBrowser(url);
+                                ],
+                              ),
+                              Constants.height20,
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  BlocListener<StatusBloc, StatusState>(
+                                    listener: (context, state) {
+                                      if (state is Loading) {
+                                        print('loading');
+                                      }
+                                      if (state is StatusCheckState) {
+                                        if (state.status == Status.loggedIn) {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (_) =>
+                                                      const QuizpageWrapper()));
+                                        } else if (state.status ==
+                                            Status.notLoggedIn) {
+                                          ScaffoldMessenger.of(context)
+                                            ..hideCurrentSnackBar()
+                                            ..showSnackBar(
+                                              const SnackBar(
+                                                  content:
+                                                      Text('Please Log in!')),
+                                            );
+                                        }
+                                      }
                                     },
-                                    text: 'Masgid Near Me',
-                                    image: Constants.mapIcon),
-                              ],
-                            ),
-                          ],
+                                    child: DashboardIcons(
+                                      onTap: () {
+                                        context
+                                            .read<StatusBloc>()
+                                            .add(CheckStatusQuizEvent());
+                                      },
+                                      text: 'Quiz',
+                                      image: Constants.quiz,
+                                      padding: const EdgeInsets.all(5),
+                                    ),
+                                  ),
+                                  DashboardIcons(
+                                    text: 'Calendar',
+                                    image: Constants.calendar,
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) =>
+                                                  const CalendarPage()));
+                                    },
+                                  ),
+                                  DashboardIcons(
+                                      onTap: () async {
+                                        final url =
+                                            'https://www.google.com/maps/search/masjid+near+me/@$latitude,$longitude,15z/data=!3m1!4b1?entry=ttu';
+                                        launchURLBrowser(url);
+                                      },
+                                      text: 'Masgid Near Me',
+                                      image: Constants.mapIcon),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ))));
+        ),
+      ),
+    );
   }
+
   void launchURLBrowser(String str) async {
     var url = Uri.parse(str);
     if (await canLaunchUrl(url)) {
@@ -376,4 +430,16 @@ class _DashBoardPageState extends State<DashBoardPage> {
       throw 'Could not launch $url';
     }
   }
+
+  getConnectivity() => subscription =
+          Connectivity().onConnectivityChanged.listen((result) async {
+            print(result);
+        isDeviceConnected = await InternetConnectionChecker().hasConnection;
+        if (!isDeviceConnected && isAlertSet == false) {
+          showDialogBox();
+          setState(() {
+            isAlertSet = true;
+          });
+        }
+      });
 }

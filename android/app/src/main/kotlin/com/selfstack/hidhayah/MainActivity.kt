@@ -1,4 +1,4 @@
-package com.example.hidhayah
+package com.selfstack.hidhayah
 
 import io.flutter.embedding.android.FlutterActivity
 

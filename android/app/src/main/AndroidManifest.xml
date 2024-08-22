@@ -2,9 +2,9 @@
 
 <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:label="hidhayah"
+        android:label="Hidhayah"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/applogo"
         android:usesCleartextTraffic="true">
         <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyCF5kb126GzYd50z_mGAdPWWf0y4GmEfVQ"/>    
